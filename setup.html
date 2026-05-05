@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setup — Aptly</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #f8f7f4;
+  --warm-white: #ffffff;
+  --stone: #f2f0ed;
+  --stone-2: #e8e6e3;
+  --ink: #0f0f10;
+  --ink-2: #4a4a55;
+  --ink-3: #6b6b75;
+  --gold: #9b6fd6;
+  --gold-light: #e07bc8;
+  --gold-pale: rgba(155,111,214,0.12);
+  --terracotta: #5dd4ff;
+  --green: #10b981;
+  --shadow-sm: 0 1px 3px rgba(15,15,16,0.06), 0 1px 2px rgba(15,15,16,0.04);
+  --shadow-md: 0 4px 16px rgba(15,15,16,0.08), 0 2px 6px rgba(15,15,16,0.05);
+  --shadow-lg: 0 12px 40px rgba(15,15,16,0.12), 0 4px 12px rgba(15,15,16,0.06);
+  --shadow-xl: 0 24px 64px rgba(15,15,16,0.14), 0 8px 24px rgba(15,15,16,0.08);
+}
+
+html, body {
+  height: 100%;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+.page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+/* ── Header ── */
+.header {
+  padding: 20px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(250,248,244,0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--stone-2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-mark {
+  width: 34px;
+  height: 34px;
+  background: var(--ink);
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+}
+
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--ink);
+}
+
+.progress-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.prog-step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.prog-step.active { color: var(--ink); }
+
+.prog-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--stone-2);
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3);
+  background: var(--warm-white);
+}
+
+.prog-step.active .prog-circle {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: white;
+}
+
+.prog-line {
+  width: 32px;
+  height: 1px;
+  background: var(--stone-2);
+}
+
+/* ── Hero Band ── */
+.hero {
+  background: var(--ink);
+  padding: 56px 48px 52px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(201,150,62,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: 30%;
+  width: 400px; height: 200px;
+  background: radial-gradient(ellipse, rgba(201,150,62,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 24px;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold-light);
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  color: white;
+  margin-bottom: 18px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-sub {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  max-width: 480px;
+  line-height: 1.65;
+}
+
+/* ── Content ── */
+.content {
+  padding: 32px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.content-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  flex: 1;
+  min-height: 0;
+}
+
+.content-bottom {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ── Section Card ── */
+.section-card {
+  background: var(--warm-white);
+  border-radius: 20px;
+  border: 1px solid var(--stone-2);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid var(--stone);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.card-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+}
+
+.card-icon {
+  width: 40px; height: 40px;
+  background: var(--stone);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--ink-2);
+  flex-shrink: 0;
+}
+
+.card-body {
+  padding: 28px;
+}
+
+/* ── Role Selector ── */
+.role-search-wrap {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.role-search-wrap::before {
+  content: '';
+  position: absolute;
+  left: 16px; top: 50%;
+  transform: translateY(-50%);
+  width: 18px; height: 18px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%238c8478' stroke-width='2'%3E%3Crect x='2' y='7' width='20' height='14' rx='2'/%3E%3Cpath d='M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16'/%3E%3C/svg%3E") center/contain no-repeat;
+  pointer-events: none;
+}
+
+.role-select {
+  width: 100%;
+  appearance: none;
+  background: var(--stone);
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  padding: 14px 44px 14px 44px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.role-select:focus {
+  background: var(--warm-white);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,150,62,0.12);
+}
+
+.role-select option { color: var(--ink); background: white; }
+.role-select option:disabled { color: var(--ink-3); }
+
+.role-arrow {
+  position: absolute;
+  right: 14px; top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--ink-3);
+}
+
+/* Selected Role Display */
+.role-selected-display {
+  display: none;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--gold-pale);
+  border: 1.5px solid rgba(201,150,62,0.25);
+  border-radius: 14px;
+  margin-bottom: 20px;
+}
+
+.role-selected-display.visible { display: flex; }
+
+.role-selected-icon {
+  width: 44px; height: 44px;
+  background: var(--gold);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: white;
+}
+
+.role-selected-text strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.role-selected-text span {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.role-change-btn {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.role-change-btn:hover { background: rgba(201,150,62,0.1); }
+
+/* Category pills */
+.category-strip {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cat-pill {
+  padding: 6px 14px;
+  background: var(--stone);
+  border: 1px solid var(--stone-2);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.cat-pill:hover {
+  background: var(--stone-2);
+  color: var(--ink);
+}
+
+.cat-pill.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: white;
+}
+
+/* ── Experience Cards ── */
+.exp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.exp-grid.round-grid {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* ── Round Cards ── */
+.round-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.round-card-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 28px 20px;
+  background: var(--cream);
+  border: 2px solid var(--stone-2);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.round-card-item:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.round-card-item.selected {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+  box-shadow: 0 0 0 3px rgba(155,111,214,0.12), var(--shadow-md);
+}
+
+.round-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--stone);
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.round-card-item.selected .round-icon {
+  background: var(--gold);
+  color: white;
+}
+
+.round-info {
+  flex: 1;
+}
+
+.round-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.2px;
+}
+
+.round-desc {
+  font-size: 13px;
+  color: var(--ink-3);
+  line-height: 1.5;
+}
+
+.round-check {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: none;
+  place-items: center;
+}
+
+.round-card-item.selected .round-check {
+  display: grid;
+}
+
+.exp-card {
+  border: 1.5px solid var(--stone-2);
+  border-radius: 16px;
+  padding: 22px 20px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  background: var(--warm-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.exp-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.22s;
+  background: radial-gradient(circle at 20% 80%, rgba(201,150,62,0.08) 0%, transparent 60%);
+}
+
+.exp-card:hover { border-color: var(--stone-2); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.exp-card:hover::before { opacity: 1; }
+
+.exp-card.selected {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+  box-shadow: 0 0 0 3px rgba(201,150,62,0.12), var(--shadow-md);
+}
+
+.exp-card.selected::before { opacity: 1; }
+
+.exp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.exp-card[data-exp="fresher"] .exp-badge {
+  background: rgba(58,124,94,0.1);
+  color: var(--green);
+}
+
+.exp-card[data-exp="experienced"] .exp-badge {
+  background: rgba(196,98,58,0.1);
+  color: var(--terracotta);
+}
+
+.exp-card.selected[data-exp="fresher"] .exp-badge {
+  background: rgba(58,124,94,0.15);
+}
+
+.exp-card.selected[data-exp="experienced"] .exp-badge {
+  background: rgba(196,98,58,0.15);
+}
+
+.exp-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.2px;
+}
+
+.exp-desc {
+  font-size: 13px;
+  color: var(--ink-3);
+  line-height: 1.5;
+}
+
+.exp-check {
+  position: absolute;
+  top: 14px; right: 14px;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: none;
+  place-items: center;
+}
+
+.exp-card.selected .exp-check { display: grid; }
+
+/* ── Years Slider ── */
+.years-panel {
+  background: var(--stone);
+  border-radius: 16px;
+  padding: 22px 24px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.years-panel.show {
+  max-height: 200px;
+  opacity: 1;
+  padding: 22px 24px;
+}
+
+.years-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.years-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2);
+  letter-spacing: 0.2px;
+}
+
+.years-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.years-value sub {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-3);
+  font-family: 'DM Sans', sans-serif;
+  vertical-align: baseline;
+  margin-left: 3px;
+}
+
+/* Custom slider */
+.slider-wrap {
+  position: relative;
+  padding-bottom: 24px;
+}
+
+input[type=range].slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--stone-2);
+  outline: none;
+  cursor: pointer;
+}
+
+input[type=range].slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--gold) 0%, var(--gold) var(--fill, 10%), var(--stone-2) var(--fill, 10%), var(--stone-2) 100%);
+}
+
+input[type=range].slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: white;
+  border: 2.5px solid var(--gold);
+  box-shadow: 0 2px 8px rgba(201,150,62,0.3);
+  cursor: grab;
+  margin-top: -9px;
+  transition: transform 0.1s;
+}
+
+input[type=range].slider:active::-webkit-slider-thumb {
+  cursor: grabbing;
+  transform: scale(1.15);
+}
+
+.slider-marks {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+/* ── Bottom Bar ── */
+.footer {
+  background: var(--warm-white);
+  border-top: 1px solid var(--stone-2);
+  padding: 20px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.summary-chips {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  background: var(--stone);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+  border: 1px solid var(--stone-2);
+  transition: all 0.2s;
+}
+
+.chip.filled {
+  background: var(--ink);
+  color: white;
+  border-color: var(--ink);
+}
+
+.chip-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+.chip.filled .chip-dot { opacity: 0.6; background: var(--gold-light); }
+
+.chip-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  opacity: 0.55;
+  margin-right: -2px;
+}
+
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.btn-back {
+  background: var(--stone);
+  color: var(--ink-2);
+  border: 1px solid var(--stone-2);
+}
+
+.btn-back:hover { background: var(--stone-2); color: var(--ink); }
+
+.btn-start {
+  background: var(--ink);
+  color: white;
+  box-shadow: 0 4px 14px rgba(22,19,14,0.25);
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.btn-start:hover:not(:disabled) {
+  background: #2a261f;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(22,19,14,0.3);
+}
+
+.btn-start:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-start.ready {
+  background: linear-gradient(135deg, #9b6fd6, #e07bc8);
+  box-shadow: 0 4px 16px rgba(155,111,214,0.35);
+  color: white;
+}
+
+.btn-start.ready:hover:not(:disabled) {
+  box-shadow: 0 6px 24px rgba(155,111,214,0.45);
+}
+
+/* ── Decorative ── */
+.hero-decorations {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.deco-line {
+  position: absolute;
+  height: 1px;
+  background: rgba(255,255,255,0.05);
+}
+
+.deco-line:nth-child(1) { width: 80%; top: 30%; left: -10%; transform: rotate(-8deg); }
+.deco-line:nth-child(2) { width: 60%; top: 60%; right: -5%; transform: rotate(6deg); }
+
+.hero-stat {
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  opacity: 0.5;
+}
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero { animation: fadeUp 0.5s ease both; }
+.section-card { animation: fadeUp 0.5s 0.1s ease both; }
+.round-card { animation: fadeUp 0.5s 0.2s ease both; }
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .hero { padding: 40px 24px; }
+  .hero-stat { display: none; }
+  .content { grid-template-columns: 1fr; padding: 24px; }
+  .header { padding: 16px 24px; }
+  .footer { padding: 16px 24px; flex-direction: column; align-items: stretch; }
+  .footer-actions { justify-content: flex-end; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <div class="logo-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+          <path d="M9 18 L15 18 M9 13 L17 13 M13 8 L19 8"/>
+        </svg>
+      </div>
+      <span class="logo-text">Aptly</span>
+    </div>
+
+    <div class="progress-track">
+      <div class="prog-step active">
+        <div class="prog-circle">1</div>
+        Setup
+      </div>
+      <div class="prog-line"></div>
+      <div class="prog-step">
+        <div class="prog-circle">2</div>
+        Interview
+      </div>
+      <div class="prog-line"></div>
+      <div class="prog-step">
+        <div class="prog-circle">4</div>
+        Results
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-decorations">
+      <div class="deco-line"></div>
+      <div class="deco-line"></div>
+    </div>
+    <div class="hero-tag">Interview Setup</div>
+    <h1 class="hero-title">Configure your<br><em>practice session</em></h1>
+    <p class="hero-sub">Pick a role, experience level, and round — we'll generate questions built exactly for your stage and discipline.</p>
+    <div class="hero-stat">
+      <div class="stat-num">37</div>
+      <div class="stat-label">Roles available</div>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="content">
+
+    <div class="content-top">
+
+      <!-- Card 1: Role -->
+      <div class="section-card">
+        <div class="card-header">
+          <div class="card-header-left">
+            <div class="card-number">Step 01</div>
+            <div class="card-title">Target Role</div>
+          </div>
+          <div class="card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <!-- Selected display -->
+          <div class="role-selected-display" id="roleDisplay">
+            <div class="role-selected-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              </svg>
+            </div>
+            <div class="role-selected-text">
+              <strong id="roleDisplayName"></strong>
+              <span id="roleDisplayCat"></span>
+            </div>
+            <button class="role-change-btn" onclick="clearRole()">Change</button>
+          </div>
+
+          <!-- Dropdown -->
+          <div class="role-search-wrap" id="roleDropWrap">
+            <select class="role-select" id="roleSelect">
+              <option value="" disabled selected>Choose your target position…</option>
+              <optgroup label="Software Engineering">
+                <option value="Software Engineer" data-cat="Engineering">Software Engineer</option>
+                <option value="Frontend Developer" data-cat="Engineering">Frontend Developer</option>
+                <option value="Backend Developer" data-cat="Engineering">Backend Developer</option>
+                <option value="Full Stack Developer" data-cat="Engineering">Full Stack Developer</option>
+                <option value="Senior Software Engineer" data-cat="Engineering">Senior Software Engineer</option>
+                <option value="Staff Engineer" data-cat="Engineering">Staff Engineer</option>
+                <option value="Principal Engineer" data-cat="Engineering">Principal Engineer</option>
+                <option value="DevOps Engineer" data-cat="Engineering">DevOps Engineer</option>
+                <option value="Site Reliability Engineer" data-cat="Engineering">Site Reliability Engineer</option>
+                <option value="Platform Engineer" data-cat="Engineering">Platform Engineer</option>
+                <option value="Mobile Developer" data-cat="Engineering">Mobile Developer</option>
+                <option value="Embedded Systems Engineer" data-cat="Engineering">Embedded Systems Engineer</option>
+              </optgroup>
+              <optgroup label="Data & AI">
+                <option value="Data Scientist" data-cat="Data & AI">Data Scientist</option>
+                <option value="Machine Learning Engineer" data-cat="Data & AI">Machine Learning Engineer</option>
+                <option value="AI Engineer" data-cat="Data & AI">AI Engineer</option>
+                <option value="Data Engineer" data-cat="Data & AI">Data Engineer</option>
+                <option value="Data Analyst" data-cat="Data & AI">Data Analyst</option>
+                <option value="Deep Learning Engineer" data-cat="Data & AI">Deep Learning Engineer</option>
+                <option value="NLP Engineer" data-cat="Data & AI">NLP Engineer</option>
+                <option value="Computer Vision Engineer" data-cat="Data & AI">Computer Vision Engineer</option>
+              </optgroup>
+              <optgroup label="Product & Design">
+                <option value="Product Manager" data-cat="Product">Product Manager</option>
+                <option value="Technical Program Manager" data-cat="Product">Technical Program Manager</option>
+                <option value="Product Owner" data-cat="Product">Product Owner</option>
+                <option value="UX Designer" data-cat="Design">UX Designer</option>
+                <option value="UI Designer" data-cat="Design">UI Designer</option>
+                <option value="Product Designer" data-cat="Design">Product Designer</option>
+              </optgroup>
+              <optgroup label="Security & Infrastructure">
+                <option value="Security Engineer" data-cat="Security">Security Engineer</option>
+                <option value="Cloud Architect" data-cat="Security">Cloud Architect</option>
+                <option value="Infrastructure Engineer" data-cat="Security">Infrastructure Engineer</option>
+                <option value="Network Engineer" data-cat="Security">Network Engineer</option>
+              </optgroup>
+              <optgroup label="Quality Assurance">
+                <option value="QA Engineer" data-cat="QA">QA Engineer</option>
+                <option value="SDET" data-cat="QA">SDET</option>
+                <option value="Test Automation Engineer" data-cat="QA">Test Automation Engineer</option>
+              </optgroup>
+              <optgroup label="Specialized">
+                <option value="Game Developer" data-cat="Specialized">Game Developer</option>
+                <option value="Graphics Programmer" data-cat="Specialized">Graphics Programmer</option>
+                <option value="Blockchain Developer" data-cat="Specialized">Blockchain Developer</option>
+                <option value="Database Administrator" data-cat="Specialized">Database Administrator</option>
+              </optgroup>
+            </select>
+            <div class="role-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+
+          <div class="category-strip" id="catStrip">
+            <button class="cat-pill active" data-cat="all">All</button>
+            <button class="cat-pill" data-cat="Engineering">Engineering</button>
+            <button class="cat-pill" data-cat="Data & AI">Data & AI</button>
+            <button class="cat-pill" data-cat="Product">Product</button>
+            <button class="cat-pill" data-cat="Design">Design</button>
+            <button class="cat-pill" data-cat="Security">Security</button>
+            <button class="cat-pill" data-cat="QA">QA</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Experience -->
+      <div class="section-card">
+        <div class="card-header">
+          <div class="card-header-left">
+            <div class="card-number">Step 02</div>
+            <div class="card-title">Experience Level</div>
+          </div>
+          <div class="card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <div class="exp-grid">
+            <div class="exp-card" data-exp="fresher" onclick="selectExp(this)">
+              <div class="exp-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
+                Entry
+              </div>
+              <div class="exp-title">Fresher</div>
+              <div class="exp-desc">New grad or breaking into the industry</div>
+              <div class="exp-check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+            </div>
+            <div class="exp-card" data-exp="experienced" onclick="selectExp(this)">
+              <div class="exp-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
+                Senior
+              </div>
+              <div class="exp-title">Experienced</div>
+              <div class="exp-desc">Mid to senior level with industry track record</div>
+              <div class="exp-check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="years-panel" id="yearsPanel">
+            <div class="years-top">
+              <div class="years-label">Years of experience</div>
+              <div class="years-value">
+                <span id="yearsDisplay">3</span>
+                <sub>yrs</sub>
+              </div>
+            </div>
+            <div class="slider-wrap">
+              <input type="range" class="slider" id="yearsSlider" min="1" max="20" value="3">
+              <div class="slider-marks">
+                <span>1</span>
+                <span>5</span>
+                <span>10</span>
+                <span>15</span>
+                <span>20+</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="content-bottom">
+
+      <!-- Card 3: Round -->
+      <div class="section-card round-card">
+        <div class="card-header">
+          <div class="card-header-left">
+            <div class="card-number">Step 03</div>
+            <div class="card-title">Interview Round</div>
+          </div>
+          <div class="card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <div class="round-grid">
+            <div class="round-card-item" data-round="aptitude" onclick="selectRound(this)">
+              <div class="round-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <path d="M8 12h8M12 8v8"/>
+                </svg>
+              </div>
+              <div class="round-info">
+                <div class="round-title">Aptitude</div>
+                <div class="round-desc">Logical reasoning, quantitative & verbal ability</div>
+              </div>
+              <div class="round-check">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+            </div>
+
+            <div class="round-card-item" data-round="technical" onclick="selectRound(this)">
+              <div class="round-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 18l6-6-6-6"/>
+                  <path d="M15 6l-6 6 6 6"/>
+                </svg>
+              </div>
+              <div class="round-info">
+                <div class="round-title">Technical</div>
+                <div class="round-desc">DSA, system design & role-specific questions</div>
+              </div>
+              <div class="round-check">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+            </div>
+
+            <div class="round-card-item" data-round="hr" onclick="selectRound(this)">
+              <div class="round-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div class="round-info">
+                <div class="round-title">HR / Behavioural</div>
+                <div class="round-desc">Culture fit, situational & behavioural questions</div>
+              </div>
+              <div class="round-check">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="summary-chips">
+      <div class="chip" id="roleChip">
+        <div class="chip-dot"></div>
+        <span class="chip-label">Role</span>
+        <span id="roleChipVal">Not selected</span>
+      </div>
+      <div class="chip" id="expChip">
+        <div class="chip-dot"></div>
+        <span class="chip-label">Level</span>
+        <span id="expChipVal">Not selected</span>
+      </div>
+      <div class="chip" id="roundChip">
+        <div class="chip-dot"></div>
+        <span class="chip-label">Round</span>
+        <span id="roundChipVal">Not selected</span>
+      </div>
+    </div>
+    <div class="footer-actions">
+      <button class="btn btn-back" onclick="window.location.href='/home.html'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back
+      </button>
+      <button class="btn btn-start" id="startBtn" disabled onclick="start()">
+        Begin Interview
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+let role = null, expType = null, years = 3, round = null;
+
+const roleSelect   = document.getElementById('roleSelect');
+const roleDisplay  = document.getElementById('roleDisplay');
+const roleDropWrap = document.getElementById('roleDropWrap');
+const catStrip     = document.getElementById('catStrip');
+const yearsPanel   = document.getElementById('yearsPanel');
+const yearsSlider  = document.getElementById('yearsSlider');
+const yearsDisplay = document.getElementById('yearsDisplay');
+const startBtn     = document.getElementById('startBtn');
+
+// Role
+roleSelect.addEventListener('change', e => {
+  const opt = e.target.options[e.target.selectedIndex];
+  role = e.target.value;
+  const cat = opt.getAttribute('data-cat') || '';
+
+  document.getElementById('roleDisplayName').textContent = role;
+  document.getElementById('roleDisplayCat').textContent = cat ? cat + ' · Position' : 'Position';
+  roleDisplay.classList.add('visible');
+  roleDropWrap.style.display = 'none';
+  catStrip.style.display = 'none';
+  updateChips();
+  checkReady();
+});
+
+function clearRole() {
+  role = null;
+  roleSelect.value = '';
+  roleDisplay.classList.remove('visible');
+  roleDropWrap.style.display = '';
+  catStrip.style.display = '';
+  updateChips();
+  checkReady();
+}
+
+// Category filter
+catStrip.addEventListener('click', e => {
+  const pill = e.target.closest('.cat-pill');
+  if (!pill) return;
+  catStrip.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  pill.classList.add('active');
+  const cat = pill.dataset.cat;
+  Array.from(roleSelect.options).forEach(opt => {
+    if (!opt.value) return;
+    const optCat = opt.getAttribute('data-cat') || '';
+    opt.hidden = cat !== 'all' && optCat !== cat;
+  });
+  Array.from(roleSelect.querySelectorAll('optgroup')).forEach(grp => {
+    const visibleOpts = Array.from(grp.querySelectorAll('option')).filter(o => !o.hidden);
+    grp.hidden = visibleOpts.length === 0;
+  });
+});
+
+// Experience
+function selectExp(card) {
+  document.querySelectorAll('.exp-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  expType = card.dataset.exp;
+  if (expType === 'experienced') {
+    yearsPanel.classList.add('show');
+    years = parseInt(yearsSlider.value);
+  } else {
+    yearsPanel.classList.remove('show');
+    years = 0;
+  }
+  updateChips();
+  checkReady();
+}
+
+// Round selection
+function selectRound(card) {
+  document.querySelectorAll('[data-round]').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  round = card.dataset.round;
+  updateChips();
+  checkReady();
+}
+
+yearsSlider.addEventListener('input', e => {
+  years = parseInt(e.target.value);
+  yearsDisplay.textContent = years;
+  const pct = ((years - 1) / 19 * 100).toFixed(1);
+  e.target.style.setProperty('--fill', pct + '%');
+  if (expType === 'experienced') {
+    document.getElementById('expChipVal').textContent = years + ' years';
+  }
+});
+
+// Init slider fill
+yearsSlider.dispatchEvent(new Event('input'));
+
+function updateChips() {
+  const rc = document.getElementById('roleChip');
+  const ec = document.getElementById('expChip');
+  const roc = document.getElementById('roundChip');
+  const rv = document.getElementById('roleChipVal');
+  const ev = document.getElementById('expChipVal');
+  const rov = document.getElementById('roundChipVal');
+
+  if (role) { rc.classList.add('filled'); rv.textContent = role; }
+  else { rc.classList.remove('filled'); rv.textContent = 'Not selected'; }
+
+  if (expType) {
+    ec.classList.add('filled');
+    ev.textContent = expType === 'fresher' ? 'Fresher / Entry' : years + ' years';
+  } else {
+    ec.classList.remove('filled');
+    ev.textContent = 'Not selected';
+  }
+
+  if (round) {
+    roc.classList.add('filled');
+    rov.textContent = round === 'hr' ? 'HR / Behavioural' : round.charAt(0).toUpperCase() + round.slice(1);
+  } else {
+    roc.classList.remove('filled');
+    rov.textContent = 'Not selected';
+  }
+}
+
+function checkReady() {
+  const ready = role && expType && round;
+  startBtn.disabled = !ready;
+  if (ready) startBtn.classList.add('ready');
+  else startBtn.classList.remove('ready');
+}
+
+function start() {
+  if (!role || !expType || !round) return;
+  // Save setup object
+  localStorage.setItem('aptly_setup', JSON.stringify({
+    role, experienceType: expType, round,
+    yearsOfExperience: expType === 'fresher' ? 0 : years,
+    timestamp: new Date().toISOString()
+  }));
+  // Also save individual items for other pages to read
+  localStorage.setItem('prepwiseRole', role);
+  localStorage.setItem('prepwiseRound', round);
+  localStorage.setItem('aptlyRole', role);
+  localStorage.setItem('aptlyRound', round);
+  
+  if (round === 'aptitude') {
+    window.location.href = '/aptitude.html';
+  } else if (round === 'hr') {
+    window.location.href = '/hr.html';
+  } else {
+    window.location.href = '/interview.html';
+  }
+}
+</script>
+</body>
+</html>

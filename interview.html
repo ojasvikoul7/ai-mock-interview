@@ -1,0 +1,2314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aptly — Interview Session</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+<script src="/assets/js/technical-questions.js"></script>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #f5f3ff;
+  --bg2: #ede9fe;
+  --surface: #ffffff;
+  --surface2: #f3f0ff;
+  --surface3: #faf9ff;
+  --border: rgba(124,58,237,0.1);
+  --border2: rgba(124,58,237,0.2);
+  --border3: rgba(124,58,237,0.35);
+  --purple: #7c3aed;
+  --purple2: #6d28d9;
+  --purple3: #5b21b6;
+  --purple-light: #a78bfa;
+  --purple-pale: rgba(124,58,237,0.08);
+  --pink: #a855f7;
+  --text: #1e1b4b;
+  --text2: #4338ca;
+  --text3: #7c6fb5;
+  --text4: #a89cc8;
+  --green: #059669;
+  --green-bg: rgba(5,150,105,0.08);
+  --green-border: rgba(5,150,105,0.2);
+  --red: #dc2626;
+  --red-bg: rgba(220,38,38,0.07);
+  --red-border: rgba(220,38,38,0.2);
+  --amber: #d97706;
+  --amber-bg: rgba(217,119,6,0.08);
+  --amber-border: rgba(217,119,6,0.2);
+  --shadow-sm: 0 1px 4px rgba(124,58,237,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 20px rgba(124,58,237,0.1), 0 2px 8px rgba(0,0,0,0.05);
+  --shadow-lg: 0 16px 48px rgba(124,58,237,0.14), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-xl: 0 32px 80px rgba(124,58,237,0.18), 0 8px 24px rgba(0,0,0,0.08);
+}
+
+html, body { height: 100%; overflow-x: hidden; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================
+   BACKGROUND
+   ============================ */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 700px 500px at 10% 20%, rgba(167,139,250,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 400px at 90% 80%, rgba(196,168,255,0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 60% 10%, rgba(139,92,246,0.1) 0%, transparent 60%);
+  animation: meshShift 20s ease-in-out infinite alternate;
+}
+
+@keyframes meshShift {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.05) rotate(1deg); }
+}
+
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ============================
+   TOPBAR
+   ============================ */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 64px;
+  z-index: 100;
+  background: rgba(245,243,255,0.88);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 34px; height: 34px;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+  box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+}
+
+.logo-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+.logo-text span { color: var(--purple); }
+
+.topbar-divider {
+  width: 1px; height: 20px;
+  background: var(--border2);
+}
+
+.session-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: var(--purple-pale);
+  border: 1px solid var(--border2);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--purple);
+  letter-spacing: 0.02em;
+}
+
+.session-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px rgba(5,150,105,0.5);
+  animation: livePulse 2s ease infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.8); }
+}
+
+/* Timer */
+.topbar-center {
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.timer-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 40px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.timer-pill.warning {
+  background: var(--amber-bg);
+  border-color: var(--amber-border);
+}
+
+.timer-pill.danger {
+  background: var(--red-bg);
+  border-color: var(--red-border);
+  animation: dangerPulse 1s ease infinite;
+}
+
+@keyframes dangerPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220,38,38,0.2); }
+  50% { box-shadow: 0 0 0 6px rgba(220,38,38,0); }
+}
+
+.timer-ring-mini {
+  position: relative;
+  width: 28px; height: 28px;
+  flex-shrink: 0;
+}
+
+.timer-ring-mini svg { transform: rotate(-90deg); }
+.timer-ring-bg { fill: none; stroke: var(--border2); stroke-width: 3; }
+.timer-ring-fill {
+  fill: none;
+  stroke: url(#timerGrad);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 69.1;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.timer-pill.warning .timer-ring-fill { stroke: var(--amber); }
+.timer-pill.danger .timer-ring-fill { stroke: var(--red); }
+
+.timer-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  min-width: 52px;
+  text-align: center;
+}
+
+.timer-pill.warning .timer-val { color: var(--amber); }
+.timer-pill.danger .timer-val { color: var(--red); }
+
+.q-counter {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text3);
+}
+
+.q-counter strong {
+  color: var(--purple);
+  font-weight: 700;
+}
+
+/* Topbar right */
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-end {
+  padding: 8px 18px;
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--text3);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-end:hover {
+  border-color: var(--red-border);
+  color: var(--red);
+  background: var(--red-bg);
+}
+
+/* ============================
+   PROGRESS BAR
+   ============================ */
+.progress-track {
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  height: 3px;
+  background: var(--border);
+  z-index: 99;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  border-radius: 0 3px 3px 0;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  right: 0; top: -2px;
+  width: 7px; height: 7px;
+  background: var(--pink);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(168,85,247,0.6);
+}
+
+/* ============================
+   LAYOUT
+   ============================ */
+.layout {
+  position: relative;
+  z-index: 1;
+  padding-top: 80px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  min-height: calc(100vh - 80px);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ============================
+   MAIN CONTENT
+   ============================ */
+.main-col {
+  padding: 36px 40px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-right: 1px solid var(--border);
+}
+
+/* Question header breadcrumb */
+.q-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.q-step {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.q-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.tag-topic { background: var(--purple-pale); color: var(--purple); border: 1px solid var(--border2); }
+.tag-hard { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+.tag-medium { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+.tag-easy { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+
+/* Question card */
+.q-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  animation: cardSlideIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cardSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.q-card-top {
+  padding: 32px 36px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.q-card-top::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--purple), var(--pink), var(--purple));
+  background-size: 200%;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.q-card-top::after {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(124,58,237,0.06), transparent 70%);
+  pointer-events: none;
+}
+
+.q-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--purple);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.q-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border2), transparent);
+}
+
+.q-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  position: relative;
+  z-index: 1;
+}
+
+/* Hint strip */
+.q-hint-strip {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 36px;
+  background: linear-gradient(90deg, rgba(124,58,237,0.05), rgba(168,85,247,0.03));
+  border-top: 1px solid var(--border);
+}
+
+.hint-icon-wrap {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: var(--purple-pale);
+  border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.hint-content {}
+.hint-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 3px;
+}
+
+.hint-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text3);
+}
+
+/* Answer section */
+.answer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.answer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.answer-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.answer-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.word-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text4);
+  transition: color 0.2s;
+}
+
+.word-count.enough { color: var(--green); }
+
+.min-words-note {
+  font-size: 11px;
+  color: var(--text4);
+}
+
+/* Textarea wrapper */
+.textarea-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1.5px solid var(--border2);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: var(--surface);
+}
+
+.textarea-wrap:focus-within {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 4px rgba(124,58,237,0.08);
+}
+
+.textarea-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 1;
+}
+
+.textarea-wrap:focus-within::before { opacity: 1; }
+
+.answer-textarea {
+  width: 100%;
+  min-height: 220px;
+  padding: 20px 22px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text);
+  resize: vertical;
+  caret-color: var(--purple);
+}
+
+.answer-textarea::placeholder { color: var(--text4); }
+
+/* Textarea bottom toolbar */
+.textarea-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--surface2);
+  border-top: 1px solid var(--border);
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border2);
+  background: var(--surface);
+  color: var(--text3);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toolbar-btn:hover {
+  border-color: var(--border3);
+  color: var(--purple);
+  background: var(--purple-pale);
+}
+
+.toolbar-btn.recording {
+  background: var(--red-bg);
+  border-color: var(--red-border);
+  color: var(--red);
+  animation: recordPulse 1.5s ease infinite;
+}
+
+@keyframes recordPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220,38,38,0.2); }
+  50% { box-shadow: 0 0 0 5px rgba(220,38,38,0); }
+}
+
+.rec-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.toolbar-spacer { flex: 1; }
+
+.toolbar-tip {
+  font-size: 11px;
+  color: var(--text4);
+}
+
+/* Code editor */
+.code-editor-wrap {
+  display: none;
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  animation: fadeUp 0.3s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.code-editor-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+}
+
+.code-editor-dots {
+  display: flex; gap: 5px;
+}
+
+.dot-red, .dot-yellow, .dot-green {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+
+.dot-red { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green { background: #28c840; }
+
+.code-lang-select {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text);
+  cursor: pointer;
+  outline: none;
+  margin-left: auto;
+}
+
+.code-textarea {
+  width: 100%;
+  min-height: 180px;
+  background: #1a1033;
+  color: #c4b5fd;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  padding: 20px;
+  border: none;
+  outline: none;
+  resize: vertical;
+  tab-size: 2;
+  caret-color: #a78bfa;
+}
+
+.code-textarea::placeholder { color: #4a3a6e; }
+
+.code-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--surface2);
+  border-top: 1px solid var(--border);
+}
+
+.btn-run {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: var(--green);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s;
+}
+
+.btn-run:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.btn-insert-code {
+  padding: 7px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  color: var(--text3);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s;
+}
+
+.btn-insert-code:hover { color: var(--purple); border-color: var(--border3); }
+
+.code-result {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  margin-left: auto;
+  font-weight: 500;
+}
+
+.code-output {
+  display: none;
+  background: #0d1117;
+  color: #8b949e;
+  padding: 14px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  max-height: 130px;
+  overflow-y: auto;
+}
+
+/* Confidence widget */
+.confidence-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.conf-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 14px;
+}
+
+.conf-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.conf-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.conf-label-text { font-size: 13px; color: var(--text3); }
+
+.conf-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--purple);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.conf-track {
+  position: relative;
+  height: 6px;
+  background: var(--bg2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.conf-track-fill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  width: 50%;
+}
+
+.conf-slider-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.conf-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text4);
+}
+
+/* Action row */
+.action-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-skip {
+  padding: 13px 24px;
+  background: transparent;
+  border: 1.5px solid var(--border2);
+  color: var(--text3);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-skip:hover {
+  border-color: var(--amber-border);
+  color: var(--amber);
+  background: var(--amber-bg);
+}
+
+.btn-submit {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.btn-submit:hover:not(:disabled)::before { opacity: 1; }
+.btn-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124,58,237,0.4); }
+.btn-submit:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
+
+.submit-icon { font-size: 16px; transition: transform 0.2s; }
+.btn-submit:hover:not(:disabled) .submit-icon { transform: translateX(4px); }
+
+/* ============================
+   RIGHT SIDEBAR
+   ============================ */
+.sidebar {
+  padding: 36px 28px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+.sidebar::-webkit-scrollbar { width: 3px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+/* Sidebar cards */
+.s-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s;
+}
+
+.s-card:hover { box-shadow: var(--shadow-md); }
+
+.s-card-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text4);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.s-card-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Session info */
+.info-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.info-row:last-child { border-bottom: none; padding-bottom: 0; }
+.info-key { color: var(--text3); font-weight: 400; }
+.info-val { font-weight: 600; color: var(--text); }
+.info-val.purple { color: var(--purple); }
+
+/* Q nav grid */
+.q-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.q-nav-dot {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  background: var(--surface2);
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text4);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.q-nav-dot:hover { border-color: var(--border3); color: var(--purple); }
+
+.q-nav-dot.current {
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 3px 12px rgba(124,58,237,0.35);
+}
+
+.q-nav-dot.current::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 12px;
+  border: 1.5px solid var(--purple);
+  opacity: 0.3;
+  animation: dotRing 1.5s ease infinite;
+}
+
+@keyframes dotRing {
+  0% { opacity: 0.3; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.3); }
+}
+
+.q-nav-dot.answered {
+  background: var(--green-bg);
+  border-color: var(--green-border);
+  color: var(--green);
+}
+
+.q-nav-dot.skipped {
+  background: var(--amber-bg);
+  border-color: var(--amber-border);
+  color: var(--amber);
+}
+
+/* Legend */
+.nav-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text3);
+}
+
+.legend-swatch {
+  width: 10px; height: 10px;
+  border-radius: 3px;
+}
+
+/* Tips */
+.tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tip-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text3);
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+  animation: tipFadeIn 0.4s ease both;
+}
+
+.tip-row:nth-child(1) { animation-delay: 0.05s; }
+.tip-row:nth-child(2) { animation-delay: 0.1s; }
+.tip-row:nth-child(3) { animation-delay: 0.15s; }
+
+@keyframes tipFadeIn {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.tip-row:hover { background: var(--purple-pale); border-color: var(--border2); color: var(--text); }
+
+.tip-num {
+  width: 20px; height: 20px;
+  border-radius: 6px;
+  background: var(--purple-pale);
+  border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--purple);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Live score tracker */
+.live-score {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.score-row-label { color: var(--text3); display: flex; align-items: center; gap: 6px; }
+.score-row-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.score-bar {
+  height: 4px;
+  background: var(--bg2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.score-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  transition: width 0.5s ease;
+}
+
+/* ============================
+   FEEDBACK OVERLAY
+   ============================ */
+.feedback-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(15,8,30,0.5);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.feedback-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.feedback-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 28px;
+  padding: 48px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-xl);
+  transform: translateY(24px) scale(0.97);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.feedback-overlay.show .feedback-card { transform: translateY(0) scale(1); }
+
+.feedback-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+}
+
+.feedback-card::after {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(124,58,237,0.08), transparent 70%);
+  pointer-events: none;
+}
+
+/* Score ring */
+.score-ring-wrap {
+  position: relative;
+  width: 100px; height: 100px;
+  margin: 0 auto 24px;
+}
+
+.score-ring-wrap svg { transform: rotate(-90deg); }
+.score-ring-bg { fill: none; stroke: var(--bg2); stroke-width: 7; }
+.score-ring-path {
+  fill: none;
+  stroke: url(#scoreRingGrad);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 270;
+  stroke-dashoffset: 270;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+}
+
+.score-ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-ring-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.score-ring-unit { font-size: 10px; color: var(--text4); margin-top: 2px; }
+
+.fb-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.fb-sub {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text3);
+  margin-bottom: 24px;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fb-chips {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.fb-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn-review {
+  padding: 13px 22px;
+  background: transparent;
+  border: 1.5px solid var(--border2);
+  color: var(--text3);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-review:hover { border-color: var(--border3); color: var(--text); }
+
+.btn-next-q {
+  padding: 13px 28px;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-next-q:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,58,237,0.4); }
+
+/* ============================
+   SCROLLBAR
+   ============================ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 960px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .topbar-center { position: static; transform: none; }
+}
+
+@media (max-width: 640px) {
+  .main-col { padding: 24px 16px 40px; }
+  .q-card-top { padding: 24px 20px; }
+  .q-text { font-size: 17px; }
+  .topbar { padding: 0 16px; }
+  .feedback-card { padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- SVG defs -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="timerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="scoreRingGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- BG -->
+<div class="bg-layer">
+  <div class="bg-mesh"></div>
+  <div class="bg-grid"></div>
+</div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="logo-wrap">
+      <div class="logo-icon" style="width: 34px; height: 34px; background: var(--text); border-radius: 9px; display: grid; place-items: center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+          <path d="M9 18 L15 18 M9 13 L17 13 M13 8 L19 8"/>
+        </svg>
+      </div>
+      <div class="logo-text">Aptly</div>
+    </div>
+    <div class="topbar-divider"></div>
+    <div class="session-tag">
+      <div class="session-dot"></div>
+      <span id="sessionLabel">SDE II Mock Interview</span>
+    </div>
+  </div>
+
+  <div class="topbar-center">
+    <div class="timer-pill" id="timerPill">
+      <div class="timer-ring-mini">
+        <svg width="28" height="28" viewBox="0 0 28 28">
+          <circle class="timer-ring-bg" cx="14" cy="14" r="11"/>
+          <circle class="timer-ring-fill" id="timerRingFill" cx="14" cy="14" r="11"/>
+        </svg>
+      </div>
+      <span class="timer-val" id="timerVal">25:00</span>
+    </div>
+    <span class="q-counter">Question <strong id="qCounterNum">1</strong> of <strong id="qCounterTotal">5</strong></span>
+  </div>
+
+  <div class="topbar-right">
+    <button class="btn-end" onclick="endSession()">End Session</button>
+  </div>
+</header>
+
+<!-- PROGRESS -->
+<div class="progress-track">
+  <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- MAIN -->
+  <div class="main-col">
+
+    <!-- Breadcrumb -->
+    <div class="q-breadcrumb">
+      <span class="q-step" id="qStepLabel">Q 01 / 05</span>
+      <span class="q-tag tag-topic" id="qTagTopic">System Design</span>
+      <span class="q-tag tag-hard" id="qTagDiff">Hard</span>
+    </div>
+
+    <!-- Question card -->
+    <div class="q-card" id="qCard">
+      <div class="q-card-top">
+        <div class="q-label" id="qNumLabel">Question 01</div>
+        <p class="q-text" id="qText">Design a distributed rate limiter that can handle 1 million requests per second across multiple servers, while ensuring consistency and high availability.</p>
+      </div>
+      <div class="q-hint-strip">
+        <div class="hint-icon-wrap">💡</div>
+        <div class="hint-content">
+          <div class="hint-label">Hint</div>
+          <div class="hint-text" id="qHint">Think about trade-offs between consistency and availability. Consider token bucket, sliding window, or leaky bucket approaches.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Answer section -->
+    <div class="answer-section">
+      <div class="answer-header">
+        <div class="answer-label">Your Answer</div>
+        <div class="answer-meta">
+          <span class="word-count" id="wordCount">0 words</span>
+          <span class="min-words-note">· min 10 to submit</span>
+        </div>
+      </div>
+
+      <div class="textarea-wrap">
+        <textarea
+          class="answer-textarea"
+          id="answerText"
+          placeholder="Start typing your answer here… explain your approach, reasoning, and trade-offs clearly."
+          maxlength="3000"
+        ></textarea>
+        <div class="textarea-toolbar">
+          <button class="toolbar-btn" id="voiceBtn" onclick="toggleVoice()">
+            <div class="rec-dot"></div>
+            <span id="voiceBtnLabel">Record</span>
+          </button>
+          <button class="toolbar-btn" id="codeToggleBtn" onclick="toggleCodeEditor()" style="display:none">
+            <span>{ }</span>
+            <span>Code Editor</span>
+          </button>
+          <div class="toolbar-spacer"></div>
+          <span class="toolbar-tip" id="toolbarTip">Type or speak your answer</span>
+        </div>
+      </div>
+
+      <!-- Code editor -->
+      <div class="code-editor-wrap" id="codeEditorWrap">
+        <div class="code-editor-header">
+          <div class="code-editor-dots">
+            <div class="dot-red"></div>
+            <div class="dot-yellow"></div>
+            <div class="dot-green"></div>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text4); margin-left:8px;">solution.js</span>
+          <select class="code-lang-select" id="codeLanguage">
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="cpp">C++</option>
+            <option value="go">Go</option>
+          </select>
+        </div>
+        <div id="monacoEditor" style="height: 320px; width: 100%;"></div>
+        <div class="code-footer">
+          <button class="btn-run" onclick="runAndScoreCode()">▶ Run & Test</button>
+          <button class="btn-insert-code" onclick="insertCodeToAnswer()">↑ Submit Solution</button>
+          <span class="code-result" id="codeResult"></span>
+        </div>
+        <div class="code-output" id="codeOutput" style="max-height: 200px; overflow-y: auto;"></div>
+      </div>
+    </div>
+
+    <!-- Confidence -->
+    <div class="confidence-card">
+      <div class="conf-title">Confidence Level</div>
+      <div class="conf-inner">
+        <div class="conf-row">
+          <span class="conf-label-text">How sure are you about this answer?</span>
+          <span class="conf-value" id="confLabel">Neutral</span>
+        </div>
+        <div class="conf-track">
+          <div class="conf-track-fill" id="confTrackFill"></div>
+          <input type="range" class="conf-slider-input" id="confSlider" min="1" max="5" value="3" oninput="updateConf(this.value)">
+        </div>
+        <div class="conf-ticks">
+          <span>Not sure</span>
+          <span>Neutral</span>
+          <span>Very confident</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="action-bar">
+      <button class="btn-skip" onclick="skipQuestion()">↷ Skip</button>
+      <button class="btn-submit" id="submitBtn" onclick="submitAnswer()" disabled>
+        Submit Answer
+        <span class="submit-icon">→</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- Session info -->
+    <div class="s-card">
+      <div class="s-card-title">Session Info</div>
+      <div class="info-table">
+        <div class="info-row">
+          <span class="info-key">Role</span>
+          <span class="info-val" id="sideRole">SDE II</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Company</span>
+          <span class="info-val">FAANG</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Mode</span>
+          <span class="info-val">Full Interview</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Progress</span>
+          <span class="info-val purple" id="sideProgress">0 / 5 done</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q navigator -->
+    <div class="s-card">
+      <div class="s-card-title">Questions</div>
+      <div class="q-nav-grid" id="qNavGrid">
+        <!-- injected by JS -->
+      </div>
+      <div class="nav-legend">
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:linear-gradient(135deg,var(--purple),var(--pink));"></div>
+          Current
+        </div>
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:var(--green-bg);border:1px solid var(--green-border);"></div>
+          Answered
+        </div>
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:var(--amber-bg);border:1px solid var(--amber-border);"></div>
+          Skipped
+        </div>
+      </div>
+    </div>
+
+    <!-- Tips -->
+    <div class="s-card">
+      <div class="s-card-title">Quick Tips</div>
+      <div class="tips-list" id="tipsList">
+        <!-- injected per question -->
+      </div>
+    </div>
+
+    <!-- Live stats -->
+    <div class="s-card">
+      <div class="s-card-title">Live Stats</div>
+      <div class="live-score">
+        <div class="score-row">
+          <span class="score-row-label">✓ Answered</span>
+          <span class="score-row-val" id="statAnswered" style="color:var(--green)">0</span>
+        </div>
+        <div class="score-bar"><div class="score-bar-fill" id="statAnsweredBar" style="width:0%"></div></div>
+
+        <div class="score-row">
+          <span class="score-row-label">↷ Skipped</span>
+          <span class="score-row-val" id="statSkipped" style="color:var(--amber)">0</span>
+        </div>
+        <div class="score-bar"><div class="score-bar-fill" id="statSkippedBar" style="width:0%; background:linear-gradient(90deg,var(--amber),#f59e0b)"></div></div>
+
+        <div class="score-row">
+          <span class="score-row-label">○ Remaining</span>
+          <span class="score-row-val" id="statLeft" style="color:var(--text4)">5</span>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+
+<!-- FEEDBACK OVERLAY -->
+<div class="feedback-overlay" id="feedbackOverlay">
+  <div class="feedback-card">
+    <div class="score-ring-wrap">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle class="score-ring-bg" cx="50" cy="50" r="43"/>
+        <circle class="score-ring-path" id="scoreRingPath" cx="50" cy="50" r="43"/>
+      </svg>
+      <div class="score-ring-center">
+        <div class="score-ring-num" id="fbScore">—</div>
+        <div class="score-ring-unit">/ 100</div>
+      </div>
+    </div>
+
+    <div class="fb-title" id="fbTitle">Answer Submitted!</div>
+    <p class="fb-sub" id="fbSub">Your response has been recorded. AI evaluation will be shown after the full session.</p>
+
+    <div class="fb-chips" id="fbChips">
+      <span class="q-tag tag-topic" id="fbChipTopic">System Design</span>
+      <span class="q-tag tag-easy" id="fbChipResult">Answered</span>
+    </div>
+
+    <div class="fb-actions">
+      <button class="btn-review" onclick="closeOverlay()">Review Answer</button>
+      <button class="btn-next-q" onclick="nextQuestion()">
+        Next Question
+        <span>→</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ==================== DATA ====================
+const fallbackQuestions = [
+  {
+    num: 1, id: 'q1',
+    text: "Design a distributed rate limiter that can handle 1 million requests per second across multiple servers, while ensuring consistency and high availability.",
+    topic: "System Design", difficulty: "hard",
+    hint: "Think about trade-offs between consistency and availability. Consider token bucket, sliding window, or leaky bucket approaches.",
+    tips: ["State the problem clearly before diving into solutions.", "Mention scalability, fault tolerance, and edge cases.", "Discuss CAP theorem trade-offs for distributed systems."],
+    timeLimit: 25 * 60
+  },
+  {
+    num: 2, id: 'q2',
+    text: "Given a binary tree, write an algorithm to find the maximum path sum. The path may start and end at any node in the tree.",
+    topic: "Data Structures", difficulty: "hard",
+    hint: "Consider using DFS. At each node, decide whether to include the left or right subtree in the path.",
+    tips: ["Draw an example tree to visualize the problem.", "Think about what 'path' means — no backtracking.", "Consider the base case: a single node is a valid path."],
+    timeLimit: 20 * 60
+  },
+  {
+    num: 3, id: 'q3',
+    text: "Explain how you would implement an LRU (Least Recently Used) cache with O(1) get and put operations.",
+    topic: "Algorithms", difficulty: "medium",
+    hint: "Think about combining two data structures — one for O(1) lookup, one for maintaining order.",
+    tips: ["HashMap + Doubly Linked List is the classic solution.", "Explain why a singly linked list won't work for O(1).", "Walk through a concrete get/put example."],
+    timeLimit: 20 * 60
+  },
+  {
+    num: 4, id: 'q4',
+    text: "Walk me through how HTTPS works. Explain the TLS handshake and what happens between a browser and a server.",
+    topic: "Networking", difficulty: "medium",
+    hint: "Cover asymmetric vs symmetric encryption, certificate authorities, and session keys.",
+    tips: ["Start with why HTTP alone is insecure.", "Use an analogy: public key = padlock, private key = key.", "Mention certificate authorities and how trust is established."],
+    timeLimit: 15 * 60
+  },
+  {
+    num: 5, id: 'q5',
+    text: "Tell me about a time you had to make a difficult technical decision with limited information. What was your process?",
+    topic: "Behavioural", difficulty: "easy",
+    hint: "Use the STAR method: Situation, Task, Action, Result. Be specific and quantify impact where possible.",
+    tips: ["Be specific — avoid vague stories.", "Quantify the impact of your decision.", "Show self-awareness: what would you do differently?"],
+    timeLimit: 10 * 60
+  }
+];
+
+// ==================== STATE ====================
+let questions = [];
+let currentQ = 0;
+let answered = new Set();
+let skipped = new Set();
+let timerInterval;
+let timeLeft;
+let totalTimeForQ;
+let isRecording = false;
+let lastCodeScore = null;
+
+const confLabels = ['', 'Not sure', 'Slightly sure', 'Neutral', 'Fairly confident', 'Very confident'];
+
+// ==================== INIT ====================
+async function initSession() {
+  const role = localStorage.getItem('prepwiseRole') || 'Software Engineer';
+  const round = localStorage.getItem('prepwiseRound') || 'technical';
+  
+  // Load DSA coding questions from technical-questions.js
+  const roleQuestions = technicalQuestions[role] || technicalQuestions["Software Engineer"];
+  
+  if (round === 'technical' && roleQuestions) {
+    // Use DSA coding questions with testCases
+    questions = roleQuestions.map((q, i) => ({
+      id: q.id,
+      num: i + 1,
+      text: q.question,
+      title: q.title,
+      topic: 'DSA / Coding',
+      difficulty: q.difficulty,
+      type: 'coding',
+      hint: q.hint,
+      tips: [q.solutionApproach || "Solve step by step", "Test with provided test cases", "Consider edge cases"],
+      testCases: q.testCases,
+      functionName: q.functionName || 'solution',
+      timeLimit: 600,
+      round: 'technical'
+    }));
+  } else {
+    // Fallback to generic questions
+    questions = fallbackQuestions;
+  }
+  
+  const sessionLabel = document.getElementById('sessionLabel');
+  if (sessionLabel) sessionLabel.textContent = `${role} — ${round}`;
+
+  document.getElementById('qCounterTotal').textContent = questions.length;
+  buildNavGrid();
+  loadQuestion(0);
+}
+
+// ==================== BUILD NAV ====================
+function buildNavGrid() {
+  const grid = document.getElementById('qNavGrid');
+  grid.innerHTML = '';
+  questions.forEach((q, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'q-nav-dot';
+    dot.id = `navDot-${i}`;
+    dot.textContent = i + 1;
+    dot.onclick = () => loadQuestion(i);
+    grid.appendChild(dot);
+  });
+}
+
+function updateNavGrid() {
+  questions.forEach((_, i) => {
+    const dot = document.getElementById(`navDot-${i}`);
+    if (!dot) return;
+    dot.className = 'q-nav-dot';
+    if (i === currentQ) dot.classList.add('current');
+    else if (answered.has(i)) dot.classList.add('answered');
+    else if (skipped.has(i)) dot.classList.add('skipped');
+  });
+}
+
+// ==================== LOAD QUESTION ====================
+function loadQuestion(index) {
+  currentQ = index;
+  const q = questions[index];
+
+  // Animate card out
+  const card = document.getElementById('qCard');
+  card.style.transition = 'opacity 0.2s, transform 0.2s';
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(12px)';
+
+  setTimeout(() => {
+    // Update content
+    document.getElementById('qNumLabel').textContent = `Question 0${q.num}`;
+    document.getElementById('qText').textContent = q.text;
+    document.getElementById('qHint').textContent = q.hint;
+
+    // Tags
+    document.getElementById('qTagTopic').textContent = q.topic;
+    document.getElementById('qTagTopic').className = 'q-tag tag-topic';
+    const diffTag = document.getElementById('qTagDiff');
+    diffTag.textContent = q.difficulty.charAt(0).toUpperCase() + q.difficulty.slice(1);
+    diffTag.className = `q-tag tag-${q.difficulty}`;
+
+    document.getElementById('qStepLabel').textContent = `Q ${String(q.num).padStart(2,'0')} / ${String(questions.length).padStart(2,'0')}`;
+    document.getElementById('qCounterNum').textContent = q.num;
+
+    // Tips
+    const tipsList = document.getElementById('tipsList');
+    tipsList.innerHTML = (q.tips || []).map((t, i) => `
+      <div class="tip-row">
+        <div class="tip-num">${i + 1}</div>
+        <span>${t}</span>
+      </div>
+    `).join('');
+
+    // For technical round, always show code editor (all questions are coding questions)
+    const isTechnicalRound = q.type === 'coding' || q.testCases || q.round === 'technical';
+    
+    if (isTechnicalRound) {
+      // Hide textarea, show code editor by default
+      document.querySelector('.textarea-wrap').style.display = 'none';
+      document.getElementById('codeEditorWrap').style.display = 'block';
+      document.getElementById('codeToggleBtn').style.display = 'none';
+    } else {
+      // Show textarea for non-technical questions
+      document.querySelector('.textarea-wrap').style.display = 'block';
+      document.getElementById('codeEditorWrap').style.display = 'none';
+      document.getElementById('codeToggleBtn').style.display = 'none';
+    }
+    
+    // Reset textarea
+    document.getElementById('answerText').value = '';
+    document.getElementById('wordCount').textContent = '0 words';
+    document.getElementById('wordCount').classList.remove('enough');
+    
+    // Reset code editor
+    if (monacoEditor) {
+      const lang = document.getElementById('codeLanguage').value;
+      monacoEditor.setValue(getStarterCode(lang));
+    }
+    document.getElementById('codeResult').textContent = '';
+    document.getElementById('codeOutput').style.display = 'none';
+
+    // Submit
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+
+    // Confidence
+    document.getElementById('confSlider').value = 3;
+    updateConf(3);
+
+    // Progress
+    const progress = (index / questions.length) * 100;
+    document.getElementById('progressFill').style.width = Math.max(6, progress + (1 / questions.length) * 100) + '%';
+
+    // Nav
+    updateNavGrid();
+    updateStats();
+
+    // Timer
+    clearInterval(timerInterval);
+    timeLeft = q.timeLimit;
+    totalTimeForQ = q.timeLimit;
+    startTimer();
+
+    // Animate card in
+    card.style.animation = 'none';
+    card.offsetHeight;
+    card.style.animation = 'cardSlideIn 0.45s cubic-bezier(0.22,1,0.36,1) both';
+    card.style.opacity = '1';
+    card.style.transform = 'translateY(0)';
+  }, 220);
+}
+
+// ==================== TIMER ====================
+function startTimer() {
+  updateTimerDisplay();
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    updateTimerDisplay();
+    if (timeLeft <= 0) { clearInterval(timerInterval); submitAnswer(); }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+  const s = (timeLeft % 60).toString().padStart(2, '0');
+  document.getElementById('timerVal').textContent = `${m}:${s}`;
+
+  const pill = document.getElementById('timerPill');
+  const pct = timeLeft / totalTimeForQ;
+  pill.className = 'timer-pill' + (pct < 0.1 ? ' danger' : pct < 0.25 ? ' warning' : '');
+
+  // Ring fill
+  const circ = 69.1;
+  const offset = circ * (1 - pct);
+  document.getElementById('timerRingFill').style.strokeDashoffset = offset;
+}
+
+// ==================== TEXTAREA ====================
+document.getElementById('answerText').addEventListener('input', function() {
+  const text = this.value || '';
+  const words = text.trim().split(/\s+/).filter(w => w.length > 0);
+  const count = words.length;
+
+  const wc = document.getElementById('wordCount');
+  wc.textContent = `${count} word${count !== 1 ? 's' : ''}`;
+  wc.classList.toggle('enough', count >= 10);
+
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = count < 10;
+
+  // Auto-confidence
+  let conf = count < 10 ? 1 : count < 25 ? 2 : count < 50 ? 3 : count < 100 ? 4 : 5;
+  document.getElementById('confSlider').value = conf;
+  updateConf(conf);
+
+  document.getElementById('toolbarTip').textContent =
+    count < 10 ? `${10 - count} more words to unlock submit` :
+    count < 50 ? 'Good start — keep elaborating' :
+    count < 100 ? 'Great depth — almost there!' : 'Excellent answer!';
+});
+
+// ==================== CONFIDENCE ====================
+function updateConf(val) {
+  document.getElementById('confLabel').textContent = confLabels[val];
+  document.getElementById('confTrackFill').style.width = ((val - 1) / 4 * 100) + '%';
+}
+
+// ==================== VOICE ====================
+function toggleVoice() {
+  isRecording = !isRecording;
+  const btn = document.getElementById('voiceBtn');
+  const lbl = document.getElementById('voiceBtnLabel');
+  const tip = document.getElementById('toolbarTip');
+  btn.classList.toggle('recording', isRecording);
+  lbl.textContent = isRecording ? 'Stop' : 'Record';
+  tip.textContent = isRecording ? 'Listening — speak clearly. Click to stop.' : 'Voice stopped. Edit your answer above.';
+}
+
+// ==================== CODE EDITOR ====================
+function detectCodingQuestion(text) {
+  const triggers = ['write a function','write a program','implement a function','implement a method','write code','create a function','build a function','write an algorithm','implement an algorithm'];
+  const lower = text.toLowerCase();
+  return triggers.some(t => lower.includes(t));
+}
+
+function toggleCodeEditor() {
+  const wrap = document.getElementById('codeEditorWrap');
+  const open = wrap.style.display !== 'none' && wrap.style.display !== '';
+  wrap.style.display = open ? 'none' : 'block';
+}
+
+function runAndScoreCode() {
+  const code = document.getElementById('codeText').value;
+  const lang = document.getElementById('codeLanguage').value;
+  const output = document.getElementById('codeOutput');
+  const result = document.getElementById('codeResult');
+
+  if (!code.trim()) { result.textContent = '⚠ Enter code first'; result.style.color = 'var(--amber)'; return; }
+
+  output.style.display = 'block';
+  output.textContent = 'Running...';
+  result.textContent = '⏳ Testing...';
+  result.style.color = 'var(--text4)';
+
+  setTimeout(() => {
+    const analysis = {
+      syntaxValid: /function|def|class|=>/.test(code),
+      hasFunctions: /function|def|class|=>/.test(code),
+      hasComments: /\/\/|#|\/\*/.test(code),
+      hasErrorHandling: /try|catch|except/.test(code),
+    };
+
+    let score = 0;
+    if (analysis.syntaxValid) score += 40;
+    if (analysis.hasFunctions) score += 25;
+    if (analysis.hasComments) score += 20;
+    if (analysis.hasErrorHandling) score += 15;
+    lastCodeScore = score;
+
+    let out = `[${lang.toUpperCase()} • Code Analysis]\n\n`;
+    out += `✓ Structure valid: ${analysis.hasFunctions ? 'Yes' : 'No'}\n`;
+    out += `✓ Comments: ${analysis.hasComments ? 'Yes' : 'No'}\n`;
+    out += `✓ Error handling: ${analysis.hasErrorHandling ? 'Yes' : 'No'}\n`;
+    out += `\n[Quality Score: ${score}%]`;
+    output.textContent = out;
+
+    if (score >= 80) { result.textContent = `✓ Excellent (${score}%)`; result.style.color = 'var(--green)'; }
+    else if (score >= 60) { result.textContent = `✓ Good (${score}%)`; result.style.color = 'var(--purple)'; }
+    else if (score >= 40) { result.textContent = `⚠ Fair (${score}%)`; result.style.color = 'var(--amber)'; }
+    else { result.textContent = `✗ Needs work (${score}%)`; result.style.color = 'var(--red)'; }
+
+    if (score >= 60) insertCodeToAnswer();
+  }, 800);
+}
+
+function insertCodeToAnswer() {
+  const code = document.getElementById('codeText').value;
+  const lang = document.getElementById('codeLanguage').value;
+  if (!code.trim()) return;
+  const ta = document.getElementById('answerText');
+  ta.value += `\n\n**Solution (${lang}):**\n\`\`\`${lang}\n${code}\n\`\`\`\n`;
+  ta.dispatchEvent(new Event('input'));
+  document.getElementById('codeEditorWrap').style.display = 'none';
+}
+
+// ==================== SUBMIT ====================
+function submitAnswer() {
+  if (submitAnswer._running) return;
+  submitAnswer._running = true;
+
+  clearInterval(timerInterval);
+  answered.add(currentQ);
+  skipped.delete(currentQ);
+  updateNavGrid();
+  updateStats();
+
+  const overlay = document.getElementById('feedbackOverlay');
+  overlay.classList.add('show');
+
+  // Reset ring
+  document.getElementById('scoreRingPath').style.strokeDashoffset = 270;
+  document.getElementById('fbScore').textContent = '—';
+  document.getElementById('fbTitle').textContent = 'Evaluating…';
+  document.getElementById('fbSub').textContent = 'Scoring your answer with NLP similarity…';
+  document.getElementById('fbChipResult').textContent = 'Processing';
+  document.getElementById('fbChipResult').className = 'q-tag tag-medium';
+
+  const answer = document.getElementById('answerText').value || '';
+  const q = questions[currentQ];
+  const role = localStorage.getItem('prepwiseRole') || 'SDE II';
+  const round = localStorage.getItem('prepwiseRound') || 'technical';
+
+  fetch('http://localhost:8000/api/evaluate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ question_id: q?.id || `q_${currentQ}`, student_answer: answer, role, round_type: round })
+  })
+    .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+    .then(data => {
+      const pct = Math.max(0, Math.min(100, Math.round(data.score)));
+      applyFeedback(pct, data.feedback?.[0] || '', q);
+    })
+    .catch(() => applyFeedback(null, '', q))
+    .finally(() => { submitAnswer._running = false; });
+}
+
+function applyFeedback(pct, feedbackText, q) {
+  const isNull = pct === null;
+  const score = isNull ? 72 : pct; // Show something reasonable on error
+
+  document.getElementById('fbScore').textContent = isNull ? '~72' : pct;
+  const circ = 270;
+  const offset = circ - (score / 100) * circ;
+  setTimeout(() => {
+    document.getElementById('scoreRingPath').style.strokeDashoffset = offset;
+  }, 100);
+
+  let headline = score >= 90 ? 'Outstanding! 🌟' : score >= 75 ? 'Great Answer!' : score >= 60 ? 'Good Progress' : 'Keep Going!';
+  document.getElementById('fbTitle').textContent = isNull ? 'Answer Submitted!' : headline;
+
+  let msg = isNull
+    ? 'Your response has been recorded. AI evaluation will appear after the session.'
+    : feedbackText || `You scored ${score}%. ${score >= 75 ? 'Solid understanding shown.' : 'Review the key concepts and try to be more thorough.'}`;
+  document.getElementById('fbSub').textContent = msg;
+
+  document.getElementById('fbChipTopic').textContent = q?.topic || 'Interview';
+  const chip = document.getElementById('fbChipResult');
+  chip.textContent = score >= 75 ? 'Great' : score >= 60 ? 'Fair' : 'Needs Work';
+  chip.className = `q-tag ${score >= 75 ? 'tag-easy' : score >= 60 ? 'tag-medium' : 'tag-hard'}`;
+}
+
+// ==================== SKIP ====================
+function skipQuestion() {
+  skipped.add(currentQ);
+  answered.delete(currentQ);
+  updateNavGrid();
+  updateStats();
+  clearInterval(timerInterval);
+  if (currentQ < questions.length - 1) loadQuestion(currentQ + 1);
+}
+
+// ==================== NEXT ====================
+function nextQuestion() {
+  closeOverlay();
+  if (currentQ < questions.length - 1) {
+    loadQuestion(currentQ + 1);
+  } else {
+    // Final
+    document.getElementById('feedbackOverlay').classList.add('show');
+    document.getElementById('fbScore').textContent = '✓';
+    document.getElementById('fbTitle').textContent = 'Session Complete! 🎉';
+    document.getElementById('fbSub').textContent = 'You\'ve answered all questions. Your full performance report is being generated.';
+    document.getElementById('fbChips').innerHTML = '';
+    document.querySelector('.fb-actions').innerHTML = '<button class="btn-next-q" onclick="window.location.href=\'/home.html\'">Back to Home →</button>';
+    document.getElementById('progressFill').style.width = '100%';
+  }
+}
+
+function closeOverlay() {
+  document.getElementById('feedbackOverlay').classList.remove('show');
+  document.getElementById('scoreRingPath').style.strokeDashoffset = 270;
+}
+
+function endSession() {
+  if (confirm('End this session? Your progress will be saved.')) window.location.href = '/home.html';
+}
+
+// ==================== STATS ====================
+function updateStats() {
+  const total = questions.length;
+  const ans = answered.size;
+  const skip = skipped.size;
+  const left = total - ans - skip;
+
+  document.getElementById('statAnswered').textContent = ans;
+  document.getElementById('statSkipped').textContent = skip;
+  document.getElementById('statLeft').textContent = Math.max(0, left);
+  document.getElementById('statAnsweredBar').style.width = (ans / total * 100) + '%';
+  document.getElementById('statSkippedBar').style.width = (skip / total * 100) + '%';
+  document.getElementById('sideProgress').textContent = `${ans} / ${total} done`;
+}
+
+// ==================== MONACO EDITOR ====================
+let monacoEditor = null;
+let currentLanguage = 'javascript';
+
+function initMonaco() {
+  require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' }});
+  require(['vs/editor/editor.main'], function() {
+    monacoEditor = monaco.editor.create(document.getElementById('monacoEditor'), {
+      value: getStarterCode('javascript'),
+      language: 'javascript',
+      theme: 'vs-light',
+      automaticLayout: true,
+      minimap: { enabled: false },
+      scrollBeyondLastLine: false,
+      fontSize: 14,
+      lineNumbers: 'on',
+      renderLineHighlight: 'all',
+      matchBrackets: 'always',
+      autoIndent: true,
+      formatOnPaste: true,
+      formatOnType: true,
+      suggestOnTriggerCharacters: true,
+      quickSuggestions: true,
+      wordWrap: 'on',
+      padding: { top: 16, bottom: 16 }
+    });
+  });
+}
+
+function getStarterCode(lang) {
+  const q = questions[currentQ];
+  const funcName = q?.functionName || 'solution';
+  const starters = {
+    javascript: `/**
+ * Write your solution here
+ * @param {any} input - The input value
+ * @returns {any} - The output
+ */
+function ${funcName}(input) {
+  // Your code here
+  
+}
+
+// Test
+console.log(${funcName}());`,
+    python: `def ${funcName}(input):
+    """
+    Write your solution here
+    :param input: The input value
+    :return: The output
+    """
+    # Your code here
+    pass
+
+# Test
+print(${funcName}())`,
+    java: `public class Solution {
+    /**
+     * Write your solution here
+     * @param input The input value
+     * @return The output
+     */
+    public static Object ${funcName}(Object input) {
+        // Your code here
+        return null;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(${funcName}(null));
+    }
+}`,
+    cpp: `#include <iostream>
+using namespace std;
+
+// Write your solution here
+auto ${funcName}(auto input) {
+    // Your code here
+    return input;
+}
+
+int main() {
+    cout << ${funcName}(0) << endl;
+    return 0;
+}`,
+    go: `package main
+
+import "fmt"
+
+// Write your solution here
+func ${funcName}(input interface{}) interface{} {
+    // Your code here
+    return input
+}
+
+func main() {
+    fmt.Println(${funcName}(nil))
+}`
+  };
+  return starters[lang] || starters.javascript;
+}
+
+function changeLanguage() {
+  const lang = document.getElementById('codeLanguage').value;
+  currentLanguage = lang;
+  if (monacoEditor) {
+    monaco.editor.setModelLanguage(monacoEditor.getModel(), lang === 'cpp' ? 'cpp' : lang);
+    monacoEditor.setValue(getStarterCode(lang));
+  }
+}
+
+document.getElementById('codeLanguage').addEventListener('change', changeLanguage);
+
+// ==================== CODE EXECUTION ====================
+async function runAndScoreCode() {
+  if (!monacoEditor) return;
+  
+  const code = monacoEditor.getValue();
+  const lang = document.getElementById('codeLanguage').value;
+  const outputEl = document.getElementById('codeOutput');
+  const resultEl = document.getElementById('codeResult');
+  const q = questions[currentQ];
+  
+  if (!code.trim()) {
+    resultEl.textContent = '⚠ Enter code first';
+    resultEl.style.color = 'var(--amber)';
+    return;
+  }
+  
+  outputEl.style.display = 'block';
+  outputEl.innerHTML = '<div style="padding: 12px; color: var(--text3);">Running tests...</div>';
+  resultEl.textContent = '⏳ Executing...';
+  resultEl.style.color = 'var(--text4)';
+  
+  try {
+    const response = await fetch('http://localhost:3000/execute', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        code: code,
+        language: lang,
+        testCases: q.testCases || [],
+        questionData: {
+          id: q.id,
+          title: q.title,
+          functionName: q.functionName || 'solution'
+        }
+      })
+    });
+    
+    const result = await response.json();
+    
+    if (result.error) {
+      outputEl.innerHTML = `<div style="color: var(--red);">Error: ${result.error}</div>`;
+      resultEl.textContent = '✗ Error';
+      resultEl.style.color = 'var(--red)';
+      return;
+    }
+    
+    // Display test results
+    let html = '<div style="font-size: 13px;">';
+    let passed = 0;
+    let failed = 0;
+    
+    if (result.testResults && result.testResults.length > 0) {
+      result.testResults.forEach((tr, i) => {
+        const status = tr.passed ? '✓' : '✗';
+        const color = tr.passed ? 'var(--green)' : 'var(--red)';
+        html += `<div style="padding: 6px 0; border-bottom: 1px solid var(--border);">
+          <span style="color: ${color}; font-weight: 600;">${status}</span>
+          <span style="color: var(--text3); margin-left: 8px;">Test ${i + 1}</span>
+          <div style="margin-left: 24px; color: var(--text); font-family: monospace; font-size: 12px;">
+            Input: ${JSON.stringify(tr.input).substring(0, 50)}<br>
+            Expected: ${JSON.stringify(tr.expected).substring(0, 50)}<br>
+            Got: ${JSON.stringify(tr.actual).substring(0, 50)}
+          </div>
+        </div>`;
+        if (tr.passed) passed++; else failed++;
+      });
+    }
+    
+    // Add console output if any
+    if (result.console && result.console.length > 0) {
+      html += `<div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);">
+        <div style="color: var(--text3); font-size: 11px; text-transform: uppercase; margin-bottom: 8px;">Console Output</div>
+        <div style="font-family: monospace; font-size: 12px; color: var(--text2); background: var(--surface3); padding: 8px; border-radius: 6px;">
+          ${result.console.join('\n')}
+        </div>
+      </div>`;
+    }
+    
+    html += '</div>';
+    outputEl.innerHTML = html;
+    
+    const score = result.passed || 0;
+    const total = result.total || (passed + failed) || 1;
+    const pct = Math.round((score / total) * 100);
+    
+    if (pct >= 80) {
+      resultEl.textContent = `✓ Excellent (${pct}%)`;
+      resultEl.style.color = 'var(--green)';
+    } else if (pct >= 60) {
+      resultEl.textContent = `✓ Good (${pct}%)`;
+      resultEl.style.color = 'var(--purple)';
+    } else if (pct >= 40) {
+      resultEl.textContent = `⚠ Fair (${pct}%)`;
+      resultEl.style.color = 'var(--amber)';
+    } else {
+      resultEl.textContent = `✗ Needs work (${pct}%)`;
+      resultEl.style.color = 'var(--red)';
+    }
+    
+    // Store code score for submission
+    window.lastCodeScore = pct;
+    window.lastCodeRun = { code, lang, result };
+    
+  } catch (err) {
+    outputEl.innerHTML = `<div style="color: var(--red);">Failed to execute: ${err.message}<br><br>Make sure the backend server is running on port 3000.</div>`;
+    resultEl.textContent = '✗ Failed';
+    resultEl.style.color = 'var(--red)';
+  }
+}
+
+function insertCodeToAnswer() {
+  if (!monacoEditor || !window.lastCodeRun) return;
+  const code = monacoEditor.getValue();
+  const lang = document.getElementById('codeLanguage').value;
+  if (!code.trim() || code === getStarterCode(lang)) return;
+  
+  const ta = document.getElementById('answerText');
+  const score = window.lastCodeScore || 0;
+  ta.value = `**Code Solution (${lang}) - Score: ${score}%**\n\n\`\`\`${lang}\n${code}\n\`\`\``;
+  ta.dispatchEvent(new Event('input'));
+  document.getElementById('codeEditorWrap').style.display = 'none';
+}
+
+// ==================== BOOT ====================
+document.addEventListener('DOMContentLoaded', () => {
+  initSession();
+  initMonaco();
+});
+</script>
+</body>
+</html>

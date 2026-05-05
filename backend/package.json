@@ -1,0 +1,23 @@
+{
+  "name": "ai-mock-interview-backend",
+  "version": "1.0.0",
+  "description": "Stateless Express backend for AI mock interview evaluation with Python NLP",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "merge-interview": "node scripts/merge-interview-html.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.6",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^4.21.0",
+    "natural": "^8.1.1",
+    "nodemailer": "^8.0.4",
+    "vm2": "^3.10.5"
+  }
+}

@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aptly — AI Mock Interview System</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg: #050508;
+  --surface: #0d0d14;
+  --surface2: #12121c;
+  --border: rgba(255,255,255,0.07);
+  --text: #f0f0fa;
+  --muted: #6b6b8a;
+  --accent1: #7b5ea7;
+  --accent2: #c45fad;
+  --accent3: #4fc3f7;
+  --glow1: rgba(123,94,167,0.4);
+  --glow2: rgba(196,95,173,0.3);
+  --glow3: rgba(79,195,247,0.2);
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+#cursor {
+  position: fixed;
+  width: 12px; height: 12px;
+  background: var(--accent2);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+  mix-blend-mode: screen;
+}
+#cursor-trail {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(196,95,173,0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: left 0.15s ease, top 0.15s ease, width 0.3s, height 0.3s;
+}
+body:has(a:hover) #cursor, body:has(button:hover) #cursor {
+  width: 20px; height: 20px;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.6;
+}
+
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  animation: blobFloat 12s ease-in-out infinite alternate;
+}
+.blob1 { width:600px; height:600px; background:var(--glow1); top:-200px; left:-150px; animation-duration:14s; }
+.blob2 { width:500px; height:500px; background:var(--glow2); bottom:-200px; right:-100px; animation-duration:10s; }
+.blob3 { width:400px; height:400px; background:var(--glow3); top:40%; left:50%; animation-duration:16s; }
+
+@keyframes blobFloat {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(40px,60px) scale(1.15); }
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  padding: 18px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 500;
+  background: rgba(5,5,8,0.6);
+  backdrop-filter: blur(24px) saturate(1.8);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.25s;
+  letter-spacing: 0.2px;
+}
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.btn-ghost {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 9px 18px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  cursor: none;
+  transition: 0.25s;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  border: none;
+  color: #fff;
+  padding: 9px 22px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: none;
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.15);
+  opacity: 0;
+  transition: 0.3s;
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px var(--glow2); }
+
+
+.hero {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 6% 100px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(123,94,167,0.15);
+  border: 1px solid rgba(123,94,167,0.3);
+  color: #c4a0f5;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 999px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  animation: fadeUp 0.8s ease both;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #c4a0f5;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.5); }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -3px;
+  max-width: 900px;
+  animation: fadeUp 0.9s 0.1s ease both;
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, #c4a0f5, var(--accent2), var(--accent3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  max-width: 540px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 28px auto 44px;
+  font-weight: 300;
+  animation: fadeUp 1s 0.2s ease both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  animation: fadeUp 1s 0.3s ease both;
+}
+.btn-xl {
+  padding: 15px 34px;
+  font-size: 15px;
+  border-radius: 14px;
+}
+
+
+.hero-visual {
+  margin-top: 80px;
+  width: 100%;
+  max-width: 960px;
+  animation: fadeUp 1.2s 0.5s ease both;
+  position: relative;
+}
+.hero-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2px;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 80px rgba(123,94,167,0.15);
+  overflow: hidden;
+  position: relative;
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196,95,173,0.5), transparent);
+}
+.hero-card-inner {
+  background: var(--surface);
+  border-radius: 22px;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+.mock-panel {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: left;
+}
+.mock-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.mock-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+.mock-dot.red   { background: #ff5f57; }
+.mock-dot.yellow{ background: #febc2e; }
+.mock-dot.green { background: #28c840; }
+.mock-panel h4 {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.mock-tag {
+  display: inline-block;
+  background: rgba(123,94,167,0.2);
+  color: #c4a0f5;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.mock-text {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #8888aa;
+}
+.mock-bar-row { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.mock-bar-item { display: flex; flex-direction: column; gap: 4px; }
+.mock-bar-label { font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; }
+.mock-bar-track {
+  height: 5px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.mock-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  animation: barGrow 2s 1.5s ease both;
+  transform-origin: left;
+}
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.mock-score {
+  text-align: center;
+  padding: 20px 0;
+}
+.score-ring {
+  width: 80px; height: 80px;
+  margin: 0 auto 12px;
+  position: relative;
+}
+.score-ring svg { transform: rotate(-90deg); }
+.score-ring-bg { stroke: rgba(255,255,255,0.06); }
+.score-ring-fill {
+  stroke: url(#scoreGrad);
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: ringFill 2s 1.8s ease forwards;
+}
+@keyframes ringFill {
+  to { stroke-dashoffset: 33; }
+}
+.score-val {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+}
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.chip {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.chip.green { background: rgba(16,185,129,0.15); color: #34d399; }
+.chip.blue  { background: rgba(79,195,247,0.15); color: #7dd3fc; }
+.chip.red   { background: rgba(239,68,68,0.15);  color: #f87171; }
+
+
+.float-tag {
+  position: absolute;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: floatTag 4s ease-in-out infinite alternate;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.float-tag.tl { top: -20px; left: 20px; animation-delay: 0s; }
+.float-tag.tr { top: -20px; right: 40px; animation-delay: 1s; }
+.float-tag.bl { bottom: -18px; left: 60px; animation-delay: 0.5s; }
+
+@keyframes floatTag {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-12px); }
+}
+
+section {
+  position: relative;
+  z-index: 10;
+  padding: 120px 6%;
+}
+.section-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 14px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 5vw, 52px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+  max-width: 600px;
+}
+.section-title em {
+  font-style: normal;
+  color: var(--muted);
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-top: 16px;
+}
+
+.capabilities {
+  text-align: center;
+}
+.capabilities .section-title,
+.capabilities .section-sub { margin-left: auto; margin-right: auto; }
+
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 64px;
+}
+
+.cap-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px 30px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s cubic-bezier(0.23,1,0.32,1);
+  opacity: 0;
+  transform: translateY(40px);
+}
+.cap-card.show { opacity: 1; transform: translateY(0); }
+
+.cap-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(123,94,167,0.08), transparent 60%);
+  opacity: 0;
+  transition: 0.4s;
+}
+.cap-card:hover::before { opacity: 1; }
+.cap-card:hover {
+  border-color: rgba(123,94,167,0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3), 0 0 40px rgba(123,94,167,0.1);
+}
+
+.cap-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  margin-bottom: 22px;
+  border: 1px solid var(--border);
+}
+.cap-icon.purple { background: rgba(123,94,167,0.15); }
+.cap-icon.pink   { background: rgba(196,95,173,0.15); }
+.cap-icon.blue   { background: rgba(79,195,247,0.15); }
+.cap-icon.green  { background: rgba(16,185,129,0.15); }
+.cap-icon.orange { background: rgba(245,158,11,0.15); }
+.cap-icon.red    { background: rgba(239,68,68,0.15);  }
+
+.cap-card h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin-bottom: 10px;
+}
+.cap-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+.cap-card-meta {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cap-status {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #34d399;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cap-status::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+}
+.cap-arrow {
+  width: 28px; height: 28px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  color: var(--muted);
+  transition: 0.3s;
+}
+.cap-card:hover .cap-arrow { background: var(--accent1); border-color: var(--accent1); color: #fff; }
+
+.workflow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.workflow-sticky { position: sticky; top: 120px; }
+
+.workflow-steps { display: flex; flex-direction: column; gap: 0; }
+
+.wf-step {
+  display: flex;
+  gap: 24px;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  transform: translateX(30px);
+  transition: 0.5s;
+  cursor: none;
+}
+.wf-step:last-child { border-bottom: none; }
+.wf-step.show { opacity: 1; transform: translateX(0); }
+
+.wf-step-num {
+  flex-shrink: 0;
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--muted);
+  transition: 0.3s;
+}
+.wf-step:hover .wf-step-num {
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  color: white;
+  border-color: transparent;
+}
+.wf-step-content h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 6px;
+  letter-spacing: -0.2px;
+}
+.wf-step-content p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.wf-step-tag {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(123,94,167,0.15);
+  color: #c4a0f5;
+  letter-spacing: 0.3px;
+}
+
+.wf-visual {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 30px;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.wf-visual::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: var(--glow1);
+  border-radius: 50%;
+  filter: blur(60px);
+}
+.wf-visual-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.wf-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+.wf-msg {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  animation: msgIn 0.5s ease both;
+}
+.wf-msg.ai {
+  background: rgba(123,94,167,0.2);
+  border: 1px solid rgba(123,94,167,0.2);
+  border-radius: 14px 14px 14px 4px;
+  color: #ddd6fe;
+  animation-delay: calc(var(--i) * 0.4s + 1s);
+}
+.wf-msg.user {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  align-self: flex-end;
+  border-radius: 14px 14px 4px 14px;
+  color: var(--text);
+  animation-delay: calc(var(--i) * 0.4s + 1.5s);
+}
+.wf-msg-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wf-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: auto;
+}
+.wf-metric {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+}
+.wf-metric-val {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.wf-metric-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+
+
+.cta-section { padding: 80px 6%; }
+.cta-inner {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  padding: 90px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-inner::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 400px; height: 300px;
+  background: radial-gradient(ellipse, rgba(123,94,167,0.25), transparent 70%);
+}
+.cta-inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.cta-inner > * { position: relative; z-index: 1; }
+.cta-inner h2 {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.0;
+  margin-bottom: 20px;
+}
+.cta-inner p { font-size: 17px; color: var(--muted); max-width: 440px; margin: 0 auto 44px; line-height: 1.6; }
+.cta-actions { display: flex; gap: 14px; justify-content: center; }
+
+footer {
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid var(--border);
+  padding: 40px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+footer p { font-size: 13px; color: var(--muted); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(123,94,167,0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent1); }
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin: 0 6%;
+  width: 88%;
+}
+
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-trail"></div>
+
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon" style="width: 34px; height: 34px; background: var(--text); border-radius: 9px; display: grid; place-items: center;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+        <path d="M9 18 L15 18 M9 13 L17 13 M13 8 L19 8"/>
+      </svg>
+    </div>
+    Aptly
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Capabilities</a></li>
+    <li><a href="#">Workflow</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <div class="nav-cta">
+    <button class="btn-ghost">Sign In</button>
+    <button class="btn-primary" onclick="window.location.href='/setup.html'">Start Free →</button>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-badge">✦ Powered by NLP & Generative AI</div>
+  <h1>Prep Smarter.<br><em>Interview Better.</em></h1>
+  <p class="hero-sub">Aptly simulates real interview pressure using AI — so when the real moment comes, you're already ready.</p>
+  <div class="hero-actions">
+    <button class="btn-primary btn-xl" onclick="window.location.href='/setup.html'">Get Started →</button>
+    <button class="btn-ghost btn-xl">Watch Demo</button>
+  </div>
+
+  <div class="hero-visual">
+    <div class="float-tag tl">🎯 <span>Role: SDE II @ Google</span></div>
+    <div class="float-tag tr">⚡ <span>Session Active</span></div>
+    <div class="float-tag bl">🧠 <span>AI Analyzing...</span></div>
+
+    <div class="hero-card">
+      <svg width="0" height="0" style="position:absolute">
+        <defs>
+          <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#7b5ea7"/>
+            <stop offset="100%" style="stop-color:#c45fad"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="hero-card-inner">
+        <div class="mock-panel">
+          <div class="mock-panel-header">
+            <div class="mock-dot red"></div>
+            <div class="mock-dot yellow"></div>
+            <div class="mock-dot green"></div>
+            <h4 style="margin-left:4px">Question Engine</h4>
+          </div>
+          <div class="mock-tag">Data Structures</div>
+          <p class="mock-text">Explain how you would design a distributed cache that handles 1 million requests per second with 99.9% availability...</p>
+          <div class="chip-row" style="margin-top:14px">
+            <span class="chip blue">System Design</span>
+            <span class="chip green">Hard</span>
+          </div>
+        </div>
+
+        
+        <div class="mock-panel" style="text-align:center">
+          <div class="mock-panel-header" style="justify-content:center">
+            <h4>Evaluation</h4>
+          </div>
+          <div class="score-ring">
+            <svg width="80" height="80" viewBox="0 0 80 80">
+              <circle class="score-ring-bg" cx="40" cy="40" r="35" fill="none" stroke-width="5"/>
+              <circle class="score-ring-fill" cx="40" cy="40" r="35" fill="none" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+            <div class="score-val">85</div>
+          </div>
+          <p style="font-size:11px;color:var(--muted)">Overall Score</p>
+          <div class="chip-row" style="justify-content:center">
+            <span class="chip green">Clarity ✓</span>
+            <span class="chip blue">Depth ✓</span>
+            <span class="chip red">Speed ✗</span>
+          </div>
+        </div>
+
+        
+        <div class="mock-panel">
+          <div class="mock-panel-header">
+            <h4>Analysis</h4>
+          </div>
+          <div class="mock-bar-row">
+            <div class="mock-bar-item">
+              <div class="mock-bar-label"><span>Technical Accuracy</span><span>92%</span></div>
+              <div class="mock-bar-track"><div class="mock-bar-fill" style="width:92%"></div></div>
+            </div>
+            <div class="mock-bar-item">
+              <div class="mock-bar-label"><span>Communication</span><span>78%</span></div>
+              <div class="mock-bar-track"><div class="mock-bar-fill" style="width:78%;"></div></div>
+            </div>
+            <div class="mock-bar-item">
+              <div class="mock-bar-label"><span>Problem Solving</span><span>85%</span></div>
+              <div class="mock-bar-track"><div class="mock-bar-fill" style="width:85%;"></div></div>
+            </div>
+            <div class="mock-bar-item">
+              <div class="mock-bar-label"><span>Confidence</span><span>70%</span></div>
+              <div class="mock-bar-track"><div class="mock-bar-fill" style="width:70%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="capabilities">
+  <div class="section-label">Core Capabilities</div>
+  <h2 class="section-title">Everything you need to<br><em>land the offer</em></h2>
+  <p class="section-sub">Intelligent components built to simulate real interviews, evaluate deeply, and guide your growth.</p>
+
+  <div class="cap-grid">
+    <div class="cap-card">
+      <div class="cap-icon purple">⌘</div>
+      <h3>AI Question Engine</h3>
+      <p>Dynamically generates role-specific questions using context-aware models trained on thousands of real interview patterns.</p>
+      <div class="cap-card-meta">
+        <span class="cap-status">Active</span>
+        <div class="cap-arrow">→</div>
+      </div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon pink">∑</div>
+      <h3>NLP Evaluation</h3>
+      <p>Semantic similarity analysis using sentence embeddings compares your answers against ideal responses at a conceptual level.</p>
+      <div class="cap-card-meta">
+        <span class="cap-status">Active</span>
+        <div class="cap-arrow">→</div>
+      </div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon blue">◈</div>
+      <h3>Adaptive Feedback</h3>
+      <p>Personalized feedback loops identify strengths, weak spots, and track improvement trajectories across sessions.</p>
+      <div class="cap-card-meta">
+        <span class="cap-status">Active</span>
+        <div class="cap-arrow">→</div>
+      </div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon green">▲</div>
+      <h3>Role Simulation</h3>
+      <p>Simulate interviews for 50+ job roles including SDE, PM, Data Scientist, Designer, and more with tailored difficulty.</p>
+      <div class="cap-card-meta">
+        <span class="cap-status">Active</span>
+        <div class="cap-arrow">→</div>
+      </div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon orange">◉</div>
+      <h3>Confidence Tracking</h3>
+      <p>Voice-pattern and pacing analysis measures delivery confidence and flags nervous speech patterns in real-time.</p>
+      <div class="cap-card-meta">
+        <span class="cap-status">Active</span>
+        <div class="cap-arrow">→</div>
+      </div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-icon red">⚡</div>
+      <h3>Progress Dashboard</h3>
+      <p>A comprehensive view of your interview readiness score, improvement curves, and session history over time.</p>
+      <div class="cap-card-meta">
+        <span class="cap-status">Active</span>
+        <div class="cap-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section>
+  <div class="workflow">
+    <div class="workflow-sticky">
+      <div class="section-label">System Workflow</div>
+      <h2 class="section-title">How it all<br><em>comes together</em></h2>
+      <p class="section-sub">Six precisely orchestrated stages take you from role selection to actionable feedback.</p>
+
+     
+      <div class="wf-visual" style="margin-top:40px">
+        <div class="wf-visual-title">Live Session Preview</div>
+        <div class="wf-chat">
+          <div class="wf-msg ai" style="--i:0">
+            <div class="wf-msg-label">Aptly</div>
+            Describe how you would implement a rate limiter for a high-traffic API.
+          </div>
+          <div class="wf-msg user" style="--i:1">
+            <div class="wf-msg-label">You</div>
+            I'd use a Token Bucket algorithm — tokens replenish at a fixed rate, and each request consumes one token...
+          </div>
+          <div class="wf-msg ai" style="--i:2">
+            <div class="wf-msg-label">Aptly</div>
+            Good foundation. How would you handle distributed rate limiting across multiple nodes?
+          </div>
+        </div>
+        <div class="wf-metrics">
+          <div class="wf-metric">
+            <div class="wf-metric-val">87%</div>
+            <div class="wf-metric-label">Semantic Match</div>
+          </div>
+          <div class="wf-metric">
+            <div class="wf-metric-val">4.2s</div>
+            <div class="wf-metric-label">Response Time</div>
+          </div>
+          <div class="wf-metric">
+            <div class="wf-metric-val">A−</div>
+            <div class="wf-metric-label">Grade</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="workflow-steps">
+      <div class="wf-step step1">
+        <div class="wf-step-num">01</div>
+        <div class="wf-step-content">
+          <h3>Role & Domain Selection</h3>
+          <p>Choose your target role, company tier, and experience level. The system personalizes the entire session around your goals.</p>
+          <span class="wf-step-tag">User Input</span>
+        </div>
+      </div>
+      <div class="wf-step step2">
+        <div class="wf-step-num">02</div>
+        <div class="wf-step-content">
+          <h3>AI Question Generation</h3>
+          <p>The engine generates contextual, non-repetitive questions dynamically based on your selected role and difficulty level.</p>
+          <span class="wf-step-tag">Generative AI</span>
+        </div>
+      </div>
+      <div class="wf-step step3">
+        <div class="wf-step-num">03</div>
+        <div class="wf-step-content">
+          <h3>Candidate Response</h3>
+          <p>Respond via text or voice. The system captures pacing, filler words, and structural clarity alongside raw content.</p>
+          <span class="wf-step-tag">Input Processing</span>
+        </div>
+      </div>
+      <div class="wf-step step4">
+        <div class="wf-step-num">04</div>
+        <div class="wf-step-content">
+          <h3>NLP Deep Processing</h3>
+          <p>Transformer-based models parse your answer for key concepts, technical accuracy, and conceptual depth in milliseconds.</p>
+          <span class="wf-step-tag">NLP Pipeline</span>
+        </div>
+      </div>
+      <div class="wf-step step5">
+        <div class="wf-step-num">05</div>
+        <div class="wf-step-content">
+          <h3>Similarity Scoring</h3>
+          <p>Cosine similarity against ideal answer embeddings produces a granular score across multiple evaluation dimensions.</p>
+          <span class="wf-step-tag">Embedding Model</span>
+        </div>
+      </div>
+      <div class="wf-step step6">
+        <div class="wf-step-num">06</div>
+        <div class="wf-step-content">
+          <h3>Structured Feedback Report</h3>
+          <p>Receive a full breakdown — what you got right, what to improve, model answers, and a readiness score for your target role.</p>
+          <span class="wf-step-tag">Output Layer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Your next career<br><em style="background:linear-gradient(135deg,#c4a0f5,#c45fad,#4fc3f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:normal">move starts here.</em></h2>
+    <p>Aptly gives you the reps, the feedback, and the confidence to walk into any interview ready.</p>
+    <div class="cta-actions">
+      <button class="btn-primary btn-xl" onclick="window.location.href='/setup.html'">Start Your First Session →</button>
+      <button class="btn-ghost btn-xl">View Demo</button>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-logo">
+    <div style="width:26px;height:26px;flex-shrink:0">
+      <svg width="26" height="26" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <rect width="36" height="36" rx="10" fill="url(#logoGradF)"/>
+        <defs>
+          <linearGradient id="logoGradF" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7b5ea7"/>
+            <stop offset="100%" stop-color="#c45fad"/>
+          </linearGradient>
+        </defs>
+        <path d="M10 18 L18 18 M10 23 L22 23 M18 13 L26 13" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    Aptly
+  </div>
+  <p>Built to help you grow, prepare, and land the role.</p>
+  <p>© 2026 Aptly. All rights reserved.</p>
+</footer>
+
+<script>
+
+const cursor = document.getElementById('cursor');
+const trail = document.getElementById('cursor-trail');
+let mx = 0, my = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+  setTimeout(() => {
+    trail.style.left = mx + 'px';
+    trail.style.top = my + 'px';
+  }, 80);
+});
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('show'), entry.target.dataset.delay || 0);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.cap-card').forEach((el, i) => {
+  el.dataset.delay = i * 100;
+  io.observe(el);
+});
+document.querySelectorAll('.wf-step').forEach((el, i) => {
+  el.dataset.delay = i * 120;
+  io.observe(el);
+});
+
+document.addEventListener('mousemove', e => {
+  const xPct = (e.clientX / window.innerWidth - 0.5) * 30;
+  const yPct = (e.clientY / window.innerHeight - 0.5) * 30;
+  document.querySelector('.blob1').style.transform = `translate(${xPct * 0.5}px,${yPct * 0.5}px)`;
+  document.querySelector('.blob2').style.transform = `translate(${-xPct * 0.3}px,${-yPct * 0.3}px)`;
+});
+</script>
+</body>
+</html>
