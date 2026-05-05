@@ -1,0 +1,490 @@
+[
+  {
+    "question": "What is DBMS?",
+    "answers": [
+      "DBMS is a system used to manage databases",
+      "It helps store and organize data efficiently",
+      "Database management system handles data safely and reliably"
+    ]
+  },
+  {
+    "question": "What is normalization in databases?",
+    "answers": [
+      "Normalization organizes data to reduce redundancy",
+      "It breaks tables into smaller related tables",
+      "It improves data integrity and reduces anomalies"
+    ]
+  },
+  {
+    "question": "Explain REST API.",
+    "answers": [
+      "REST is an architectural style for web services",
+      "It uses HTTP methods like GET, POST, PUT, and DELETE",
+      "Resources are identified by URLs and typically return JSON"
+    ]
+  },
+  {
+    "question": "What is the purpose of indexing in databases?",
+    "answers": [
+      "Indexes speed up queries by reducing scanned rows",
+      "They trade extra storage and write overhead for faster reads",
+      "They help database engines find relevant records efficiently"
+    ]
+  },
+  {
+    "question": "What are ACID properties?",
+    "answers": [
+      "ACID describes how transactions behave reliably",
+      "Atomicity ensures all-or-nothing execution for a transaction",
+      "Consistency, Isolation, and Durability provide correctness and resilience"
+    ]
+  },
+  {
+    "question": "What is a primary key?",
+    "answers": [
+      "A primary key uniquely identifies each row in a table",
+      "It enforces uniqueness and prevents duplicate records",
+      "A table typically has one primary key"
+    ]
+  },
+  {
+    "question": "What is a foreign key?",
+    "answers": [
+      "A foreign key enforces relationships between tables",
+      "It maintains referential integrity between parent and child rows",
+      "It links a record in one table to a record in another table"
+    ]
+  },
+  {
+    "question": "What is a JOIN in SQL?",
+    "answers": [
+      "A JOIN combines rows from two or more tables",
+      "It matches rows based on related columns like keys",
+      "Common joins include INNER JOIN, LEFT JOIN, and RIGHT JOIN"
+    ]
+  },
+  {
+    "question": "What is idempotency?",
+    "answers": [
+      "Idempotency means repeating an operation yields the same result",
+      "It is important for safe retries in distributed systems",
+      "PUT requests are often idempotent while naive POST may not be"
+    ]
+  },
+  {
+    "question": "What is rate limiting?",
+    "answers": [
+      "Rate limiting controls how many requests a client can make",
+      "It helps protect services from abuse and overload",
+      "Common approaches include token bucket and sliding window"
+    ]
+  },
+  {
+    "question": "What is caching?",
+    "answers": [
+      "Caching stores copies of data closer to users for faster access",
+      "It reduces latency and load on origin systems",
+      "Cache invalidation and TTL help keep data reasonably fresh"
+    ]
+  },
+  {
+    "question": "What is load balancing?",
+    "answers": [
+      "Load balancing distributes traffic across multiple servers",
+      "It improves availability and throughput",
+      "Algorithms include round robin and least connections"
+    ]
+  },
+  {
+    "question": "What is DNS?",
+    "answers": [
+      "DNS maps human-readable names to IP addresses",
+      "Resolvers query authoritative servers for DNS records",
+      "Caching improves performance and reduces repeated lookups"
+    ]
+  },
+  {
+    "question": "What is HTTPS?",
+    "answers": [
+      "HTTPS is HTTP secured with TLS encryption",
+      "It protects data in transit from eavesdropping",
+      "It uses certificates to verify the server identity"
+    ]
+  },
+  {
+    "question": "Describe the TLS handshake at a high level.",
+    "answers": [
+      "The client and server negotiate TLS protocol version and cipher suite",
+      "They establish a shared session key using asymmetric crypto",
+      "Certificate verification helps prevent man-in-the-middle attacks"
+    ]
+  },
+  {
+    "question": "What is SQL injection?",
+    "answers": [
+      "SQL injection inserts malicious SQL through untrusted input",
+      "It can leak or modify data if queries are built unsafely",
+      "Parameterized queries reduce this vulnerability significantly"
+    ]
+  },
+  {
+    "question": "What is XSS?",
+    "answers": [
+      "XSS is cross-site scripting where scripts are injected into pages",
+      "It can steal sessions or manipulate what users see",
+      "Proper output escaping and content security policies mitigate it"
+    ]
+  },
+  {
+    "question": "What is CSRF?",
+    "answers": [
+      "CSRF tricks a browser into sending authenticated requests",
+      "It exploits cookies and the browser's automatic credential behavior",
+      "Anti-CSRF tokens and SameSite cookies reduce exposure"
+    ]
+  },
+  {
+    "question": "What is CAP theorem?",
+    "answers": [
+      "CAP describes trade-offs among consistency, availability, and partition tolerance",
+      "During network partitions, you cannot maximize all three at once",
+      "Systems typically choose between CP and AP behaviors"
+    ]
+  },
+  {
+    "question": "What is eventual consistency?",
+    "answers": [
+      "Eventual consistency allows replicas to converge over time",
+      "It provides weaker immediate guarantees but improves availability",
+      "Applications must tolerate temporary stale reads"
+    ]
+  },
+  {
+    "question": "What is strong consistency?",
+    "answers": [
+      "Strong consistency means reads reflect the latest successful write",
+      "It simplifies correctness but can reduce availability under partitions",
+      "It often requires coordination across replicas"
+    ]
+  },
+  {
+    "question": "What is replication?",
+    "answers": [
+      "Replication copies data across multiple nodes",
+      "It supports durability and can improve read scalability",
+      "Consistency depends on the system's replication and coordination model"
+    ]
+  },
+  {
+    "question": "What is sharding?",
+    "answers": [
+      "Sharding splits data across multiple partitions or databases",
+      "It scales storage and writes horizontally using a sharding key",
+      "Cross-shard queries can be more complex to optimize"
+    ]
+  },
+  {
+    "question": "What is distributed consensus?",
+    "answers": [
+      "Consensus is agreement among distributed nodes despite failures",
+      "Protocols like Raft and Paxos implement consensus",
+      "It helps systems maintain consistent state in a cluster"
+    ]
+  },
+  {
+    "question": "What is a process?",
+    "answers": [
+      "A process is an instance of a running program",
+      "It has its own address space and resources",
+      "The OS schedules processes for execution"
+    ]
+  },
+  {
+    "question": "What is a thread?",
+    "answers": [
+      "A thread is a unit of execution within a process",
+      "Threads share the process memory but have separate stacks",
+      "Concurrency can improve throughput on multi-core CPUs"
+    ]
+  },
+  {
+    "question": "What is deadlock?",
+    "answers": [
+      "Deadlock is when tasks wait for each other indefinitely",
+      "It often involves circular waits for resources",
+      "Prevent it using lock ordering, timeouts, or deadlock detection"
+    ]
+  },
+  {
+    "question": "What is a race condition?",
+    "answers": [
+      "A race condition is incorrect behavior due to timing of concurrent operations",
+      "It occurs when shared state is accessed without proper synchronization",
+      "Locks, atomics, or immutability help prevent races"
+    ]
+  },
+  {
+    "question": "What is a mutex?",
+    "answers": [
+      "A mutex is a mutual exclusion lock for a critical section",
+      "It ensures only one thread enters the protected region at a time",
+      "Mutexes prevent data races on shared resources"
+    ]
+  },
+  {
+    "question": "What is a semaphore?",
+    "answers": [
+      "A semaphore is a counter controlling access to a limited resource pool",
+      "It can coordinate between threads or processes",
+      "Binary semaphores can behave like mutexes"
+    ]
+  },
+  {
+    "question": "TCP vs UDP: what is the difference?",
+    "answers": [
+      "TCP is connection-oriented and provides reliable delivery",
+      "UDP is connectionless and does not guarantee ordering or delivery",
+      "TCP provides retransmission and flow control"
+    ]
+  },
+  {
+    "question": "What is breadth-first search (BFS)?",
+    "answers": [
+      "BFS explores a graph level by level",
+      "It uses a queue to visit neighbors in breadth order",
+      "BFS finds shortest paths in unweighted graphs"
+    ]
+  },
+  {
+    "question": "What is depth-first search (DFS)?",
+    "answers": [
+      "DFS explores as far as possible before backtracking",
+      "It can use recursion or an explicit stack",
+      "DFS helps with connectivity and topological ordering"
+    ]
+  },
+  {
+    "question": "What is recursion?",
+    "answers": [
+      "Recursion solves problems by calling a function from within itself",
+      "A base case is required to stop the recursion",
+      "It reduces a problem into smaller subproblems"
+    ]
+  },
+  {
+    "question": "What is dynamic programming (DP)?",
+    "answers": [
+      "DP solves problems by reusing results of overlapping subproblems",
+      "It often uses memoization or tabulation",
+      "It improves performance by avoiding recomputation"
+    ]
+  },
+  {
+    "question": "What is a greedy algorithm?",
+    "answers": [
+      "A greedy algorithm makes locally optimal choices at each step",
+      "It aims to reach a global optimum based on a greedy-choice property",
+      "Greedy algorithms may fail if the problem does not satisfy required properties"
+    ]
+  },
+  {
+    "question": "Explain Big O notation.",
+    "answers": [
+      "Big O describes how runtime or space grows with input size",
+      "It focuses on dominant terms and worst-case behavior",
+      "It abstracts away constant factors for simpler comparisons"
+    ]
+  },
+  {
+    "question": "What is an LRU cache?",
+    "answers": [
+      "LRU evicts the least recently used item when capacity is exceeded",
+      "It keeps frequently accessed data available",
+      "Implementations typically use a map plus a doubly linked list"
+    ]
+  },
+  {
+    "question": "How would you implement an LRU cache?",
+    "answers": [
+      "Use a hash map for O(1) lookup and a doubly linked list for order",
+      "On get/put, move the accessed item to the front as most-recently used",
+      "On eviction, remove from the tail as the least-recently used"
+    ]
+  },
+  {
+    "question": "What is a binary heap?",
+    "answers": [
+      "A binary heap is a tree-based structure with heap property",
+      "A min-heap keeps the smallest element at the root",
+      "Heaps support efficient priority-queue operations"
+    ]
+  },
+  {
+    "question": "What is merge sort?",
+    "answers": [
+      "Merge sort is a divide-and-conquer sorting algorithm",
+      "It splits the array, sorts halves, and merges them",
+      "It runs in O(n log n) time"
+    ]
+  },
+  {
+    "question": "What is quicksort and why is it fast on average?",
+    "answers": [
+      "Quicksort partitions around a pivot and sorts subarrays recursively",
+      "With good pivots, it typically achieves O(n log n) average time",
+      "Worst-case can be O(n^2) without good pivot selection"
+    ]
+  },
+  {
+    "question": "What is a hash table?",
+    "answers": [
+      "A hash table maps keys to values using a hash function",
+      "It provides fast average-case lookup and insertion",
+      "Collisions are handled with chaining or open addressing"
+    ]
+  },
+  {
+    "question": "What is collision resolution in hash tables?",
+    "answers": [
+      "Collision resolution handles when two keys map to the same hash bucket",
+      "Chaining stores multiple items in the same bucket",
+      "Open addressing finds another slot for the new item"
+    ]
+  },
+  {
+    "question": "What are stacks and queues?",
+    "answers": [
+      "A stack is LIFO: last in, first out",
+      "A queue is FIFO: first in, first out",
+      "They are commonly used for parsing, traversal, and buffering"
+    ]
+  },
+  {
+    "question": "What is dependency injection?",
+    "answers": [
+      "Dependency injection provides dependencies from outside rather than constructing inside",
+      "It improves testability and reduces tight coupling",
+      "Frameworks often manage wiring through a container"
+    ]
+  },
+  {
+    "question": "What is TDD (Test-Driven Development)?",
+    "answers": [
+      "TDD writes tests before implementing functionality",
+      "It helps guide design and reduces regressions",
+      "A common cycle is red-green-refactor"
+    ]
+  },
+  {
+    "question": "What is unit testing?",
+    "answers": [
+      "Unit tests verify small pieces of code in isolation",
+      "They catch bugs early and document expected behavior",
+      "Mocks help isolate dependencies"
+    ]
+  },
+  {
+    "question": "What is integration testing?",
+    "answers": [
+      "Integration tests verify interactions between components or services",
+      "They check that interfaces and data flow work end-to-end",
+      "They often catch wiring and contract issues missed by unit tests"
+    ]
+  },
+  {
+    "question": "What is CI/CD?",
+    "answers": [
+      "CI runs automated tests on each change and builds artifacts",
+      "CD automates deployment and release processes",
+      "Together they reduce manual steps and speed feedback"
+    ]
+  },
+  {
+    "question": "What is observability?",
+    "answers": [
+      "Observability means understanding a system's internal state from outputs",
+      "It uses logs, metrics, and traces to debug and optimize",
+      "It helps detect and diagnose incidents faster"
+    ]
+  },
+  {
+    "question": "What is SLI, SLO, and SLA?",
+    "answers": [
+      "SLI is a measurable indicator of service performance",
+      "SLO is a target for the SLI over a time period",
+      "SLA is a contractual commitment often tied to SLOs"
+    ]
+  },
+  {
+    "round": "hr",
+    "question": "Tell me about a time you had to make a difficult technical decision with limited information. What was your process?",
+    "answers": [
+      "I clarified the goal and constraints, then identified the key risks of each option. I ran quick checks or prototypes to validate assumptions and chose the approach with the best expected trade-off.",
+      "I aligned with relevant stakeholders early, documented the decision criteria, and communicated why the chosen path reduced risk. After shipping, I measured outcomes and iterated based on what I learned.",
+      "I made a plan for uncertainty: I selected the safest option first, defined success metrics, and set checkpoints to revisit the decision if evidence changed."
+    ]
+  },
+  {
+    "round": "hr",
+    "question": "Describe a time you had to handle conflict between teammates. What did you do?",
+    "answers": [
+      "I listened to both sides to understand the underlying concerns and goals. I then facilitated a discussion to align on shared objectives and clarified roles and responsibilities.",
+      "I documented agreements, tracked action items, and followed up to ensure both sides felt heard. When needed, I escalated with evidence instead of opinions.",
+      "I focused on facts and impact: we defined what success looked like, made a decision collaboratively, and set a short feedback loop so we could adjust quickly."
+    ]
+  },
+  {
+    "round": "hr",
+    "question": "Tell me about a time you received critical feedback. How did you respond?",
+    "answers": [
+      "I asked clarifying questions to understand the feedback, then reflected on whether it matched the outcome I wanted. I turned the feedback into concrete changes to my approach.",
+      "I communicated my plan to improve, picked one or two high-leverage adjustments, and delivered an update quickly. I also followed up to confirm the feedback was addressed.",
+      "I stayed open-minded, separated feedback from identity, and used it to strengthen quality. Later I shared the improved results and what I learned."
+    ]
+  },
+  {
+    "round": "hr",
+    "question": "Give an example of a time you influenced a decision without authority.",
+    "answers": [
+      "I gathered evidence from data and user feedback, and then built a clear narrative for the trade-offs. I aligned stakeholders by focusing on goals and measurable outcomes.",
+      "I proposed an option with a low-risk rollout, defined success metrics, and asked for agreement on criteria rather than control. This allowed others to support the decision.",
+      "I collaborated across teams, identified dependencies, and created a shared plan. Even without direct authority, I earned buy-in through clarity and follow-through."
+    ]
+  },
+  {
+    "round": "hr",
+    "question": "Tell me about a time you learned something quickly to deliver impact.",
+    "answers": [
+      "I broke the topic into fundamentals, created a small learning plan, and practiced on a mini project. I sought feedback early to avoid going down the wrong path.",
+      "I learned by building: I implemented the smallest useful version, compared results to expectations, and iterated. I documented the key takeaways so the team could move faster.",
+      "I found the most relevant references for my immediate goal, asked targeted questions, and applied the learning quickly. I tracked outcomes and used metrics to confirm impact."
+    ]
+  },
+  {
+    "round": "hr",
+    "question": "Tell me about a time you improved a process. What was the result?",
+    "answers": [
+      "I observed where we had bottlenecks, collected data, and proposed a targeted improvement with clear before/after expectations. I piloted the change with the smallest surface area.",
+      "I communicated the why and how to stakeholders, defined new steps and ownership, and trained the team. Then I measured impact and adjusted based on results.",
+      "I replaced ad-hoc work with a repeatable workflow, reduced cycle time, and improved reliability. I kept the process documented so it remained consistent over time."
+    ]
+  },
+  {
+    "round": "hr",
+    "question": "Tell me about a time you missed a deadline. What did you do next?",
+    "answers": [
+      "I recognized the risk early, communicated it with a revised plan, and negotiated trade-offs on scope and timeline. I focused on delivering the highest-value parts first.",
+      "I owned the delay, documented what caused it, and put safeguards in place (better estimation, smaller milestones, and earlier reviews) to prevent repeats.",
+      "I used transparent status updates to keep stakeholders aligned and ensured the work didn’t stall. After delivery, I reviewed the timeline assumptions and improved the process."
+    ]
+  },
+  {
+    "round": "hr",
+    "question": "Tell me about a time you worked with a difficult stakeholder. What was your approach?",
+    "answers": [
+      "I aligned on objectives and what success meant, then clarified constraints and trade-offs. I listened carefully to concerns and reframed proposals around shared goals.",
+      "I communicated frequently with status and evidence, documented decisions, and set expectations for next steps. When priorities changed, I renegotiated scope transparently.",
+      "I built trust by delivering incremental value, involving stakeholders at the right moments, and escalating only with clear context and options."
+    ]
+  }
+]

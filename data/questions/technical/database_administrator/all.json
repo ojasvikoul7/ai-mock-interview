@@ -1,0 +1,473 @@
+[
+  {
+    "id": "tech_database_administrator_001",
+    "text": "Design a data structure that supports adding numbers and finding the median of all numbers.",
+    "answer": "Two heaps - max heap for lower half, min heap for upper half. Time: O(log n) add, O(1) median.",
+    "difficulty": "hard",
+    "keywords": [
+      "heap",
+      "median",
+      "two heaps",
+      "O(log n)"
+    ],
+    "rubric": {
+      "points": [
+        "Two heap approach",
+        "Balance maintenance",
+        "Complexity analysis"
+      ],
+      "code_required": true
+    },
+    "time_limit": 600,
+    "type": "coding",
+    "category": "median_finder"
+  },
+  {
+    "id": "tech_database_administrator_002",
+    "text": "Compare and contrast Binary Search Tree and Binary Heap. When would you use each?",
+    "answer": "BST: Left < Parent < Right, not necessarily balanced, O(log n) avg for search/insert/delete, O(n) worst. Used for ordered data, range queries. Heap: Complete binary tree, Parent > Children (max-heap), O(1) peek, O(log n) insert/extract. Used for priority queues, scheduling.",
+    "difficulty": "medium",
+    "keywords": [
+      "BST",
+      "heap",
+      "binary tree",
+      "priority queue",
+      "O(log n)"
+    ],
+    "rubric": {
+      "points": [
+        "Structure differences",
+        "Use cases",
+        "Complexity comparison"
+      ],
+      "code_required": false
+    },
+    "time_limit": 300,
+    "type": "theory",
+    "category": "bst_vs_heap"
+  },
+  {
+    "id": "tech_database_administrator_003",
+    "text": "Explain how the event loop works in Node.js or browser JavaScript.",
+    "answer": "Event loop enables single-threaded async execution. Components: Call Stack (sync code), Web APIs (async operations), Callback Queue (microtasks - Promises, macrotasks - setTimeout). Execution: Run sync code \u2192 Process microtasks \u2192 Render \u2192 Process macrotask \u2192 Repeat. Microtasks have priority over macrotasks. This allows non-blocking I/O despite single thread. setTimeout(fn, 0) defers to next tick.",
+    "difficulty": "medium",
+    "keywords": [
+      "event loop",
+      "async",
+      "microtask",
+      "macrotask",
+      "single threaded"
+    ],
+    "rubric": {
+      "points": [
+        "Call stack",
+        "Task queues",
+        "Execution order"
+      ],
+      "code_required": false
+    },
+    "time_limit": 300,
+    "type": "theory",
+    "category": "event_loop"
+  },
+  {
+    "id": "tech_database_administrator_004",
+    "text": "Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+    "answer": "Use stack. Push opening, pop and match closing. Time: O(n), Space: O(n).",
+    "difficulty": "easy",
+    "keywords": [
+      "stack",
+      "parentheses",
+      "matching",
+      "O(n)"
+    ],
+    "rubric": {
+      "points": [
+        "Stack approach",
+        "Matching logic",
+        "Edge cases"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "valid_parentheses"
+  },
+  {
+    "id": "tech_database_administrator_005",
+    "text": "Implement in-order, pre-order, and post-order traversal of a binary tree iteratively.",
+    "answer": "Use stack for iterative. Time: O(n), Space: O(h) where h is height.",
+    "difficulty": "medium",
+    "keywords": [
+      "binary tree",
+      "traversal",
+      "stack",
+      "iterative",
+      "O(n)"
+    ],
+    "rubric": {
+      "points": [
+        "All three traversals",
+        "Iterative approach",
+        "Stack usage"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "binary_tree_traversal"
+  },
+  {
+    "id": "tech_database_administrator_006",
+    "text": "Given n non-negative integers representing an elevation map, compute how much water it can trap after raining.",
+    "answer": "Two pointers or precompute max left/right. Time: O(n), Space: O(1) or O(n).",
+    "difficulty": "hard",
+    "keywords": [
+      "two pointers",
+      "array",
+      "water trapping",
+      "O(n)"
+    ],
+    "rubric": {
+      "points": [
+        "Two pointer approach",
+        "Precomputation approach",
+        "Space optimization"
+      ],
+      "code_required": true
+    },
+    "time_limit": 600,
+    "type": "coding",
+    "category": "trapping_rain_water"
+  },
+  {
+    "id": "tech_database_administrator_007",
+    "text": "How do database indexes work internally? Compare B-Tree vs Hash indexes.",
+    "answer": "B-Tree: Balanced tree, supports range queries and equality, O(log n) operations. Used in most DBs. Hash: O(1) equality lookup, no range support, hash collisions handled. B-Tree better for range queries, sorting. Hash better for exact match. Clustered index stores data in order, non-clustered stores pointers.",
+    "difficulty": "hard",
+    "keywords": [
+      "index",
+      "B-Tree",
+      "hash index",
+      "clustered",
+      "O(log n)"
+    ],
+    "rubric": {
+      "points": [
+        "B-Tree explained",
+        "Hash index explained",
+        "When to use each"
+      ],
+      "code_required": false
+    },
+    "time_limit": 600,
+    "type": "theory",
+    "category": "database_indexing"
+  },
+  {
+    "id": "tech_database_administrator_008",
+    "text": "Explain the CAP theorem. What are CP and AP systems with examples?",
+    "answer": "CAP: Consistency (all nodes see same data), Availability (every request gets response), Partition Tolerance (system works despite network partitions). In distributed systems, you can only guarantee 2 of 3. CP (Consistency + Partition Tolerance): MongoDB, HBase, Zookeeper - consistent during partitions. AP (Availability + Partition Tolerance): Cassandra, DynamoDB, CouchDB - available but may return stale data. No distributed system can be CA.",
+    "difficulty": "hard",
+    "keywords": [
+      "CAP theorem",
+      "consistency",
+      "availability",
+      "partition tolerance",
+      "distributed"
+    ],
+    "rubric": {
+      "points": [
+        "All three properties",
+        "CP vs AP examples",
+        "Trade-offs explained"
+      ],
+      "code_required": false
+    },
+    "time_limit": 600,
+    "type": "theory",
+    "category": "cap_theorem"
+  },
+  {
+    "id": "tech_database_administrator_009",
+    "text": "There are courses labeled 0 to n-1. Some courses have prerequisites. Determine if you can finish all courses.",
+    "answer": "Topological sort using Kahn's algorithm or DFS cycle detection. Time: O(V+E).",
+    "difficulty": "medium",
+    "keywords": [
+      "topological sort",
+      "graph",
+      "cycle detection",
+      "DFS",
+      "BFS"
+    ],
+    "rubric": {
+      "points": [
+        "Graph modeling",
+        "Cycle detection",
+        "Topological sort"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "course_schedule"
+  },
+  {
+    "id": "tech_database_administrator_010",
+    "text": "Given two strings, find the minimum number of operations (insert, delete, replace) to convert one to another.",
+    "answer": "Dynamic programming with 2D table. dp[i][j] = min operations. Time: O(m*n), Space: O(min(m,n)) optimized.",
+    "difficulty": "hard",
+    "keywords": [
+      "dynamic programming",
+      "edit distance",
+      "Levenshtein",
+      "O(m*n)"
+    ],
+    "rubric": {
+      "points": [
+        "DP table definition",
+        "Recurrence relation",
+        "Space optimization"
+      ],
+      "code_required": true
+    },
+    "time_limit": 600,
+    "type": "coding",
+    "category": "edit_distance"
+  },
+  {
+    "id": "tech_database_administrator_011",
+    "text": "Find the length of the longest substring without repeating characters.",
+    "answer": "Sliding window with hash set. Time: O(n), Space: O(min(m,n)).",
+    "difficulty": "medium",
+    "keywords": [
+      "sliding window",
+      "hash set",
+      "O(n)",
+      "two pointers"
+    ],
+    "rubric": {
+      "points": [
+        "Sliding window approach",
+        "Window expansion/shrink",
+        "Complexity"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "longest_substring"
+  },
+  {
+    "id": "tech_database_administrator_012",
+    "text": "Given an array of integers and a target sum, find two numbers that add up to the target. Return their indices.",
+    "answer": "Use hash map to store complement. Time: O(n), Space: O(n).",
+    "difficulty": "easy",
+    "keywords": [
+      "hash map",
+      "complement",
+      "O(n)",
+      "array"
+    ],
+    "rubric": {
+      "points": [
+        "Hash map approach",
+        "O(n) time complexity",
+        "O(n) space explained"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "two_sum"
+  },
+  {
+    "id": "tech_database_administrator_013",
+    "text": "Explain ACID properties in databases. How do they ensure data integrity?",
+    "answer": "Atomicity: All or nothing - transactions complete fully or rollback. Consistency: Database moves from valid state to valid state. Isolation: Concurrent transactions don't interfere (levels: Read Uncommitted, Read Committed, Repeatable Read, Serializable). Durability: Committed data survives failures (via WAL/redo logs).",
+    "difficulty": "medium",
+    "keywords": [
+      "ACID",
+      "atomicity",
+      "consistency",
+      "isolation",
+      "durability",
+      "transaction"
+    ],
+    "rubric": {
+      "points": [
+        "All four properties",
+        "Isolation levels",
+        "Durability mechanism"
+      ],
+      "code_required": false
+    },
+    "time_limit": 300,
+    "type": "theory",
+    "category": "acid_properties"
+  },
+  {
+    "id": "tech_database_administrator_014",
+    "text": "Given a collection of intervals, merge all overlapping intervals.",
+    "answer": "Sort by start time, then merge. Time: O(n log n), Space: O(n).",
+    "difficulty": "medium",
+    "keywords": [
+      "sorting",
+      "intervals",
+      "O(n log n)",
+      "merge"
+    ],
+    "rubric": {
+      "points": [
+        "Sorting approach",
+        "Merge logic",
+        "Complexity analysis"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "merge_intervals"
+  },
+  {
+    "id": "tech_database_administrator_015",
+    "text": "Explain consistent hashing and why it's used in distributed systems.",
+    "answer": "Consistent hashing maps both nodes and keys to a ring. When a node is added/removed, only keys near that node need remapping (K/n keys on average). Used in load balancing, distributed caching (memcached), and databases (Cassandra, DynamoDB). Benefits: Minimal reorganization, scalability, fault tolerance.",
+    "difficulty": "hard",
+    "keywords": [
+      "consistent hashing",
+      "distributed systems",
+      "ring",
+      "scalability",
+      "DynamoDB"
+    ],
+    "rubric": {
+      "points": [
+        "Ring concept",
+        "Benefits explained",
+        "Use cases"
+      ],
+      "code_required": false
+    },
+    "time_limit": 600,
+    "type": "theory",
+    "category": "consistent_hashing"
+  },
+  {
+    "id": "tech_database_administrator_016",
+    "text": "Design and implement an LRU (Least Recently Used) Cache with get and put operations in O(1) time.",
+    "answer": "Hash map + Doubly Linked List. Both operations O(1).",
+    "difficulty": "medium",
+    "keywords": [
+      "LRU",
+      "hash map",
+      "linked list",
+      "O(1)",
+      "design"
+    ],
+    "rubric": {
+      "points": [
+        "Data structures correct",
+        "O(1) operations",
+        "Eviction logic"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "lru_cache"
+  },
+  {
+    "id": "tech_database_administrator_017",
+    "text": "Find the kth largest element in an unsorted array.",
+    "answer": "Min-heap of size k or quickselect. Time: O(n log k) or O(n) avg.",
+    "difficulty": "medium",
+    "keywords": [
+      "heap",
+      "quickselect",
+      "partition",
+      "O(n log k)"
+    ],
+    "rubric": {
+      "points": [
+        "Heap approach",
+        "Quickselect option",
+        "Complexity analysis"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "kth_largest"
+  },
+  {
+    "id": "tech_database_administrator_018",
+    "text": "Given a string and a dictionary of words, determine if the string can be segmented into space-separated dictionary words.",
+    "answer": "Dynamic programming. dp[i] = True if s[0:i] can be segmented. Time: O(n^2), Space: O(n).",
+    "difficulty": "medium",
+    "keywords": [
+      "dynamic programming",
+      "string",
+      "segmentation",
+      "O(n^2)"
+    ],
+    "rubric": {
+      "points": [
+        "DP approach",
+        "State definition",
+        "Transition logic"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "word_break"
+  },
+  {
+    "id": "tech_database_administrator_019",
+    "text": "What is the time and space complexity of merge sort? Explain the recurrence relation.",
+    "answer": "Time: O(n log n). Space: O(n). Recurrence: T(n) = 2T(n/2) + O(n). Using Master Theorem: Case 2, so O(n log n). Merge step takes O(n) and we have log n levels.",
+    "difficulty": "easy",
+    "keywords": [
+      "O(n log n)",
+      "recurrence",
+      "master theorem",
+      "space complexity"
+    ],
+    "rubric": {
+      "points": [
+        "Time complexity correct",
+        "Space complexity correct",
+        "Recurrence explained"
+      ],
+      "code_required": false
+    },
+    "time_limit": 300,
+    "type": "theory",
+    "category": "time_complexity"
+  },
+  {
+    "id": "tech_database_administrator_020",
+    "text": "How do hash tables handle collisions? Explain separate chaining vs open addressing with trade-offs.",
+    "answer": "Chaining: Each bucket is a linked list. Simple, handles any load factor, but uses extra space. Open addressing: Find next slot via probing (linear, quadratic, double hash). Better cache locality, but suffers from clustering, needs lower load factor (< 0.75).",
+    "difficulty": "medium",
+    "keywords": [
+      "hash table",
+      "collision",
+      "chaining",
+      "open addressing",
+      "probing"
+    ],
+    "rubric": {
+      "points": [
+        "Both methods explained",
+        "Trade-offs discussed",
+        "Load factor mentioned"
+      ],
+      "code_required": false
+    },
+    "time_limit": 300,
+    "type": "theory",
+    "category": "hash_collision"
+  }
+]

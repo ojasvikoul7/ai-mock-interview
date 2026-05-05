@@ -1,0 +1,117 @@
+[
+  {
+    "id": "sess_1712041200000",
+    "userId": "user_1775048549495",
+    "role": "SDE Intern",
+    "round": "aptitude",
+    "answers": [
+      { "questionId": "apt_1", "question": "What is 25% of 200?", "score": 85 },
+      { "questionId": "apt_2", "question": "Find the next number in series: 2, 6, 12, 20...", "score": 70 }
+    ],
+    "scores": [85, 70],
+    "totalScore": 78,
+    "status": "completed",
+    "timestamp": "2025-04-01T10:00:00.000Z"
+  },
+  {
+    "id": "sess_1712127600000",
+    "userId": "user_1775048549495",
+    "role": "SDE Intern",
+    "round": "technical",
+    "answers": [
+      { "questionId": "tech_1", "question": "Explain REST API principles", "score": 82 },
+      { "questionId": "tech_2", "question": "What is the time complexity of binary search?", "score": 90 },
+      { "questionId": "tech_3", "question": "Explain database indexing", "score": 65 }
+    ],
+    "scores": [82, 90, 65],
+    "totalScore": 79,
+    "status": "completed",
+    "timestamp": "2025-04-02T14:30:00.000Z"
+  },
+  {
+    "id": "sess_1712214000000",
+    "userId": "user_1775048549495",
+    "role": "SDE-1",
+    "round": "hr",
+    "answers": [
+      { "questionId": "hr_1", "question": "Tell me about yourself", "score": 88 },
+      { "questionId": "hr_2", "question": "Why do you want this role?", "score": 75 },
+      { "questionId": "hr_3", "question": "Describe a challenge you overcame", "score": 92 }
+    ],
+    "scores": [88, 75, 92],
+    "totalScore": 85,
+    "status": "completed",
+    "timestamp": "2025-04-03T09:15:00.000Z"
+  },
+  {
+    "id": "sess_1712300400000",
+    "userId": "user_1775048549495",
+    "role": "SDE-1",
+    "round": "aptitude",
+    "answers": [
+      { "questionId": "apt_3", "question": "Work rate problem: A can complete work in 10 days...", "score": 72 },
+      { "questionId": "apt_4", "question": "Probability of drawing a red card", "score": 68 }
+    ],
+    "scores": [72, 68],
+    "totalScore": 70,
+    "status": "completed",
+    "timestamp": "2025-04-04T11:00:00.000Z"
+  },
+  {
+    "id": "sess_1712386800000",
+    "userId": "user_1775048549495",
+    "role": "Product Manager",
+    "round": "technical",
+    "answers": [
+      { "questionId": "tech_4", "question": "System Design: Design a URL shortener", "score": 76 },
+      { "questionId": "tech_5", "question": "Explain microservices architecture", "score": 84 }
+    ],
+    "scores": [76, 84],
+    "totalScore": 80,
+    "status": "completed",
+    "timestamp": "2025-04-05T16:45:00.000Z"
+  },
+  {
+    "id": "sess_1712559600000",
+    "userId": "user_1775048549495",
+    "role": "Data Analyst",
+    "round": "hr",
+    "answers": [
+      { "questionId": "hr_4", "question": "Where do you see yourself in 5 years?", "score": 80 },
+      { "questionId": "hr_5", "question": "What are your strengths?", "score": 87 }
+    ],
+    "scores": [80, 87],
+    "totalScore": 84,
+    "status": "completed",
+    "timestamp": "2025-04-07T13:20:00.000Z"
+  },
+  {
+    "id": "sess_1712646000000",
+    "userId": "user_1775048549495",
+    "role": "SDE-2",
+    "round": "aptitude",
+    "answers": [
+      { "questionId": "apt_5", "question": "Logical reasoning puzzle", "score": 95 },
+      { "questionId": "apt_6", "question": "Data interpretation", "score": 88 }
+    ],
+    "scores": [95, 88],
+    "totalScore": 92,
+    "status": "completed",
+    "timestamp": "2025-04-08T10:30:00.000Z"
+  },
+  {
+    "id": "sess_1712732400000",
+    "userId": "user_1775048549495",
+    "role": "SDE-2",
+    "round": "technical",
+    "answers": [
+      { "questionId": "tech_6", "question": "Implement LRU Cache", "score": 78 },
+      { "questionId": "tech_7", "question": "Explain event loop in JavaScript", "score": 85 },
+      { "questionId": "tech_8", "question": "Database normalization", "score": 72 }
+    ],
+    "scores": [78, 85, 72],
+    "totalScore": 78,
+    "status": "completed",
+    "timestamp": "2025-04-09T15:00:00.000Z"
+  }
+]

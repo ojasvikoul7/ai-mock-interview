@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aptly — Interview Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #f5f3ff;
+  --bg2: #ede9fe;
+  --surface: #ffffff;
+  --surface2: #f3f0ff;
+  --surface3: #faf9ff;
+  --border: rgba(124,58,237,0.1);
+  --border2: rgba(124,58,237,0.2);
+  --border3: rgba(124,58,237,0.35);
+  --purple: #7c3aed;
+  --purple2: #6d28d9;
+  --purple3: #5b21b6;
+  --purple-light: #a78bfa;
+  --purple-pale: rgba(124,58,237,0.08);
+  --pink: #a855f7;
+  --text: #1e1b4b;
+  --text2: #4338ca;
+  --text3: #7c6fb5;
+  --text4: #a89cc8;
+  --green: #059669;
+  --green-bg: rgba(5,150,105,0.08);
+  --green-border: rgba(5,150,105,0.2);
+  --green-light: #10b981;
+  --red: #dc2626;
+  --red-bg: rgba(220,38,38,0.07);
+  --red-border: rgba(220,38,38,0.2);
+  --amber: #d97706;
+  --amber-bg: rgba(217,119,6,0.08);
+  --amber-border: rgba(217,119,6,0.2);
+  --shadow-sm: 0 1px 4px rgba(124,58,237,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 20px rgba(124,58,237,0.1), 0 2px 8px rgba(0,0,0,0.05);
+  --shadow-lg: 0 16px 48px rgba(124,58,237,0.14), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-xl: 0 32px 80px rgba(124,58,237,0.18), 0 8px 24px rgba(0,0,0,0.08);
+}
+
+html, body { height: 100%; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 10px 24px;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: 999px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.navbar-links a {
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  color: var(--text3);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.navbar-links a:hover, .navbar-links a.active {
+  color: var(--purple);
+  background: rgba(124,58,237,0.1);
+}
+
+.report-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.report-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+
+.report-subtitle {
+  color: var(--text3);
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+.report-meta {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.meta-label {
+  color: var(--text4);
+  font-size: 13px;
+}
+
+.meta-value {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.verdict-card {
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color: white;
+  border-radius: 24px;
+  padding: 32px;
+  text-align: center;
+}
+
+.verdict-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.verdict-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.verdict-text {
+  font-size: 16px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.section-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--purple-pale);
+  border-radius: 12px;
+  font-size: 24px;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.answers-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 800px) {
+  .answers-compare { grid-template-columns: 1fr; }
+}
+
+.answer-box {
+  background: var(--surface2);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.answer-box.expected {
+  background: linear-gradient(135deg, rgba(5,150,105,0.08), rgba(5,150,105,0.04));
+  border: 1px solid var(--green-border);
+}
+
+.answer-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text2);
+}
+
+.answer-label.expected {
+  color: var(--green);
+}
+
+.answer-content {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.answer-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.answer-content li {
+  padding: 6px 0;
+  padding-left: 24px;
+  position: relative;
+}
+
+.answer-content li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 600;
+}
+
+.vocab-section {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 48px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 800px) {
+  .vocab-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.vocab-item {
+  text-align: center;
+  padding: 20px;
+  background: var(--surface2);
+  border-radius: 12px;
+}
+
+.vocab-number {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--purple);
+  margin-bottom: 4px;
+}
+
+.vocab-label {
+  font-size: 13px;
+  color: var(--text3);
+}
+
+.vocab-suggestions {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.vocab-suggestions-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--amber);
+  margin-bottom: 12px;
+}
+
+.vocab-suggestions-list {
+  list-style: none;
+  padding: 0;
+}
+
+.vocab-suggestions-list li {
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--text);
+  padding-left: 24px;
+  position: relative;
+}
+
+.vocab-suggestions-list li::before {
+  content: '💡';
+  position: absolute;
+  left: 0;
+}
+
+.report-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color: white;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(124,58,237,0.4);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--purple);
+  border: 1px solid var(--border2);
+}
+
+.btn-secondary:hover {
+  background: var(--surface2);
+  border-color: var(--purple);
+}
+
+.no-data {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--surface);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.no-data-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.no-data-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.no-data-text {
+  color: var(--text3);
+  margin-bottom: 24px;
+}
+
+.your-answer-box {
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.your-answer-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+  white-space: pre-wrap;
+}
+</style>
+<script src="/assets/js/navbar.js" defer></script>
+</head>
+<body>
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="bg-layer">
+  <div class="bg-mesh"></div>
+  <div class="bg-grid"></div>
+</div>
+
+<div class="container">
+  <div id="noDataState" class="no-data" style="display:none;">
+    <div class="no-data-icon">📋</div>
+    <div class="no-data-title">No Interview Data</div>
+    <div class="no-data-text">Complete an interview session to see your detailed report.</div>
+    <a href="/setup.html" class="btn btn-primary">Start Interview →</a>
+  </div>
+
+    <div class="report-header">
+      <h1 class="report-title">Interview Report</h1>
+      <p class="report-subtitle">Comprehensive analysis of your interview performance</p>
+      <div class="report-meta">
+        <div class="meta-item">
+          <span class="meta-label">Role:</span>
+          <span class="meta-value" id="roleValue">Software Engineer</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Round:</span>
+          <span class="meta-value" id="roundValue">Technical</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Date:</span>
+          <span class="meta-value" id="dateValue">-</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Questions:</span>
+          <span class="meta-value" id="questionsCount">0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-value" id="statAnswered">0</div>
+        <div class="stat-label">Questions Answered</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="statAverage">0</div>
+        <div class="stat-label">Average Score</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="statBest">0</div>
+        <div class="stat-label">Best Score</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="statTime">0m</div>
+        <div class="stat-label">Total Time</div>
+      </div>
+    </div>
+
+      </div>
+      <div class="vocab-suggestions" id="vocabSuggestionsMain" style="display:none;">
+        <div class="vocab-suggestions-title">💡 Vocabulary Improvement Suggestions</div>
+        <ul class="vocab-suggestions-list" id="vocabSuggestionsList">
+    <div class="questions-section">
+      <div class="section-header">
+        <div class="section-icon">📊</div>
+        <h2 class="section-title">Question-by-Question Analysis</h2>
+      </div>
+      <div id="questionsList">
+    <div class="recommendations" id="recommendationsSection" style="display:none;">
+      <div class="section-header">
+        <div class="section-icon">🎯</div>
+        <h2 class="section-title">Personalized Recommendations</h2>
+      </div>
+      <ul class="rec-list" id="recommendationsList">
+    <div class="report-actions">
+      <a href="/setup.html" class="btn btn-primary">Start New Interview →</a>
+      <a href="/progress.html" class="btn btn-secondary">View Progress</a>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  loadReportData();
+});
+
+function loadReportData() {
+  const sessionData = JSON.parse(localStorage.getItem('lastInterviewSession') || '{}');
+  const questions = JSON.parse(localStorage.getItem('currentQuestions') || '[]');
+  const answers = JSON.parse(localStorage.getItem('currentAnswers') || '{}');
+  
+  if (!sessionData || !questions.length) {
+    document.getElementById('loadingState').style.display = 'none';
+    document.getElementById('noDataState').style.display = 'block';
+    return;
+  }
+  
+  document.getElementById('loadingState').style.display = 'none';
+  document.getElementById('reportContent').style.display = 'block';
+  
+  document.getElementById('roleValue').textContent = sessionData.role || 'Software Engineer';
+  document.getElementById('roundValue').textContent = sessionData.round || 'Technical';
+  document.getElementById('dateValue').textContent = new Date().toLocaleDateString();
+  document.getElementById('questionsCount').textContent = questions.length;
+  
+  const answeredQuestions = questions.filter(q => answers[q.id || q.num]);
+  const scores = answeredQuestions.map(q => {
+    const ans = answers[q.id || q.num];
+    return ans.score || ans.lastScore || 0;
+  });
+  
+  const averageScore = scores.length > 0 ? Math.round(scores.reduce((a,b) => a+b, 0) / scores.length) : 0;
+  const bestScore = scores.length > 0 ? Math.max(...scores) : 0;
+  
+  updateOverallScore(averageScore);
+  
+  document.getElementById('statAnswered').textContent = answeredQuestions.length;
+  document.getElementById('statAverage').textContent = averageScore;
+  document.getElementById('statBest').textContent = bestScore;
+  
+  const totalTime = answeredQuestions.reduce((sum, q) => {
+    const ans = answers[q.id || q.num];
+    return sum + (ans.timeSpent || 0);
+  }, 0);
+  document.getElementById('statTime').textContent = formatTime(totalTime);
+  
+  updateVerdict(averageScore, answeredQuestions, answers);
+  
+  renderVocabularyAnalysis(answeredQuestions, answers);
+  
+  renderQuestions(questions, answers);
+  
+  renderRecommendations(averageScore, answeredQuestions, answers);
+}
+
+function updateOverallScore(score) {
+  document.getElementById('overallScore').textContent = score;
+  
+  const circle = document.getElementById('overallScoreCircle');
+  const circumference = 440;
+  const offset = circumference - (score / 100) * circumference;
+  setTimeout(() => {
+    circle.style.strokeDashoffset = offset;
+  }, 100);
+  
+  let label, desc, icon;
+  if (score >= 90) {
+    label = 'Outstanding 🌟';
+    desc = 'Exceptional performance! You demonstrated deep expertise.';
+    icon = '🏆';
+  } else if (score >= 80) {
+    label = 'Excellent';
+    desc = 'Great job! Strong technical knowledge and communication.';
+    icon = '⭐';
+  } else if (score >= 70) {
+    label = 'Good';
+    desc = 'Solid performance with room for refinement.';
+    icon = '👍';
+  } else if (score >= 60) {
+    label = 'Fair';
+    desc = 'Decent understanding. Focus on strengthening fundamentals.';
+    icon = '📚';
+  } else if (score >= 40) {
+    label = 'Needs Work';
+    desc = 'Basic understanding present. Significant improvement needed.';
+    icon = '💪';
+  } else {
+    label = 'Requires Study';
+    desc = 'Consider reviewing core concepts before next interview.';
+    icon = '📖';
+  }
+  
+  document.getElementById('scoreLabel').textContent = label;
+  document.getElementById('scoreDesc').textContent = desc;
+}
+
+function updateVerdict(averageScore, questions, answers) {
+  let verdict;
+  if (averageScore >= 80) {
+    verdict = 'Strong Hire — This candidate demonstrates excellent technical depth, clear communication, and systematic problem-solving approach. Would be a valuable addition to the team.';
+  } else if (averageScore >= 70) {
+    verdict = 'Hire — Solid technical foundation with good communication skills. Some areas need development but shows growth potential.';
+  } else if (averageScore >= 60) {
+    verdict = 'Hire with Reservations — Basic competency demonstrated. Would benefit from mentorship and has room for growth.';
+  } else if (averageScore >= 45) {
+    verdict = 'Consider for Junior Role — Knowledge gaps identified. May be suitable for entry-level positions with training.';
+  } else {
+    verdict = 'Not Recommended — Significant knowledge gaps and communication issues. Needs substantial preparation before interviewing.';
+  }
+  
+  document.getElementById('verdictText').textContent = verdict;
+}
+
+function renderVocabularyAnalysis(questions, answers) {
+  let totalWords = 0;
+  let totalUnique = 0;
+  let allSuggestions = [];
+  
+  questions.forEach(q => {
+    const ans = answers[q.id || q.num];
+    if (ans && ans.evaluationData && ans.evaluationData.vocabulary_analysis) {
+      const vocab = ans.evaluationData.vocabulary_analysis;
+      totalWords += vocab.word_count || 0;
+      totalUnique += vocab.unique_words || 0;
+      if (vocab.suggestions) {
+        allSuggestions.push(...vocab.suggestions);
+      }
+    }
+  });
+  
+  if (totalWords === 0) {
+    document.getElementById('vocabSection').style.display = 'none';
+    return;
+  }
+  
+  document.getElementById('vocabSection').style.display = 'block';
+  
+  const diversityScore = totalWords > 0 ? Math.round((totalUnique / totalWords) * 100) : 0;
+  
+  document.getElementById('vocabGrid').innerHTML = `
+    <div class="vocab-item">
+      <div class="vocab-number">${totalWords}</div>
+      <div class="vocab-label">Total Words</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-number">${totalUnique}</div>
+      <div class="vocab-label">Unique Words</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-number">${diversityScore}%</div>
+      <div class="vocab-label">Vocabulary Diversity</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-number">${Math.round(totalWords / Math.max(questions.length, 1))}</div>
+      <div class="vocab-label">Avg Words/Answer</div>
+    </div>
+  `;
+  
+  const uniqueSuggestions = [...new Set(allSuggestions)].slice(0, 5);
+  
+  if (uniqueSuggestions.length > 0) {
+    document.getElementById('vocabSuggestionsMain').style.display = 'block';
+    document.getElementById('vocabSuggestionsList').innerHTML = uniqueSuggestions
+      .map(s => `<li>${s}</li>`).join('');
+  }
+}
+
+function renderQuestions(questions, answers) {
+  const container = document.getElementById('questionsList');
+  
+  container.innerHTML = questions.map((q, idx) => {
+    const ans = answers[q.id || q.num];
+    const score = ans ? (ans.score || ans.lastScore || 0) : 0;
+    const hasAnswer = !!ans;
+    
+    let badgeClass = score >= 80 ? 'excellent' : score >= 65 ? 'good' : score >= 50 ? 'average' : 'poor';
+    let badgeText = score >= 80 ? 'Excellent' : score >= 65 ? 'Good' : score >= 50 ? 'Average' : 'Needs Work';
+    
+    if (!hasAnswer) {
+      badgeClass = 'poor';
+      badgeText = 'Skipped';
+    }
+    
+    let expectedPointsHtml = '';
+    if (q.expectedPoints && q.expectedPoints.length > 0) {
+      expectedPointsHtml = `
+        <div class="answer-box expected">
+          <div class="answer-label expected">
+            <span>✓</span> Expected Answer Points
+          </div>
+          <div class="answer-content">
+            <ul>
+              ${q.expectedPoints.map(p => `<li>${p}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      `;
+    }
+    
+    let analysisHtml = '';
+    if (ans && ans.evaluationData && ans.evaluationData.detailed_analysis) {
+      const analysis = ans.evaluationData.detailed_analysis;
+      analysisHtml = `
+        <div class="analysis-section">
+          <div class="analysis-grid">
+            ${analysis.strengths && analysis.strengths.length > 0 ? `
+              <div class="analysis-block strengths">
+                <div class="analysis-block-title">✅ Strengths</div>
+                <ul class="analysis-list">
+                  ${analysis.strengths.map(s => `<li>${s}</li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+            ${analysis.improvements && analysis.improvements.length > 0 ? `
+              <div class="analysis-block improvements">
+                <div class="analysis-block-title">📈 Areas for Improvement</div>
+                <ul class="analysis-list">
+                  ${analysis.improvements.map(i => `<li>${i}</li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+            ${analysis.approach_assessment ? `
+              <div class="analysis-block verdict">
+                <div class="analysis-block-title">🎯 Approach Assessment</div>
+                <div style="font-size:14px;color:var(--text);">${analysis.approach_assessment}</div>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    }
+    
+    let yourAnswerHtml = '';
+    if (hasAnswer && ans.answer) {
+      yourAnswerHtml = `
+        <div class="answer-box">
+          <div class="answer-label">
+            <span>📝</span> Your Answer
+          </div>
+          <div class="your-answer-box">
+            <div class="your-answer-text">${escapeHtml(ans.answer.substring(0, 500))}${ans.answer.length > 500 ? '...' : ''}</div>
+          </div>
+        </div>
+      `;
+    }
+    
+    let approachHtml = '';
+    if (q.solutionApproach) {
+      approachHtml = `
+        <div class="approach-box">
+          <div class="approach-label">💡 Suggested Approach</div>
+          <div class="approach-text">${escapeHtml(q.solutionApproach)}</div>
+        </div>
+      `;
+    }
+    
+    return `
+      <div class="question-card">
+        <div class="question-header">
+          <div class="question-num">
+            <div class="question-num-badge">${String(idx + 1).padStart(2, '0')}</div>
+            <div class="question-topic">${q.topic || 'General'}</div>
+          </div>
+          <div class="question-score">
+            <span class="score-badge ${badgeClass}">${badgeText}</span>
+            ${hasAnswer ? `<span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--purple);">${score}/100</span>` : ''}
+          </div>
+        </div>
+        <div class="question-text">${escapeHtml(q.text || q.question || '')}</div>
+        <div class="answers-compare">
+          ${yourAnswerHtml}
+          ${expectedPointsHtml}
+        </div>
+        ${approachHtml}
+        ${analysisHtml}
+      </div>
+    `;
+  }).join('');
+}
+
+function renderRecommendations(averageScore, questions, answers) {
+  const recommendations = [];
+  
+  if (averageScore < 60) {
+    recommendations.push({
+      icon: '📚',
+      title: 'Strengthen Fundamentals',
+      desc: 'Focus on core computer science concepts: DSA, OS, DBMS, and Networks. Consider structured courses.'
+    });
+  }
+  
+  if (averageScore < 80) {
+    recommendations.push({
+      icon: '🎯',
+      title: 'Practice Problem-Solving',
+      desc: 'Regular practice on LeetCode, HackerRank, or similar platforms. Aim for consistent daily practice.'
+    });
+  }
+  
+  let hasWeakVocab = false;
+  questions.forEach(q => {
+    const ans = answers[q.id || q.num];
+    if (ans && ans.evaluationData && ans.evaluationData.vocabulary_analysis) {
+      const vocab = ans.evaluationData.vocabulary_analysis;
+      if (vocab.diversity_score < 40 || vocab.suggestions.length > 0) {
+        hasWeakVocab = true;
+      }
+    }
+  });
+  
+  if (hasWeakVocab) {
+    recommendations.push({
+      icon: '📝',
+      title: 'Improve Communication',
+      desc: 'Work on articulating technical concepts clearly. Use precise terminology and avoid vague language.'
+    });
+  }
+  
+  recommendations.push({
+    icon: '🎤',
+    title: 'Mock Interviews',
+    desc: 'Practice with peers or use platforms like Pramp. Record yourself and review your answers.'
+  });
+  
+  recommendations.push({
+    icon: '⏱️',
+    title: 'Time Management',
+    desc: 'Practice answering within time constraints. Use the STAR method for behavioral questions.'
+  });
+  
+  if (recommendations.length > 0) {
+    document.getElementById('recommendationsSection').style.display = 'block';
+    document.getElementById('recommendationsList').innerHTML = recommendations.map(rec => `
+      <li class="rec-item">
+        <div class="rec-icon">${rec.icon}</div>
+        <div class="rec-content">
+          <div class="rec-title">${rec.title}</div>
+          <div class="rec-desc">${rec.desc}</div>
+        </div>
+      </li>
+    `).join('');
+  }
+}
+
+function formatTime(seconds) {
+  if (!seconds) return '0m';
+  const mins = Math.floor(seconds / 60);
+  const hours = Math.floor(mins / 60);
+  if (hours > 0) {
+    return `${hours}h ${mins % 60}m`;
+  }
+  return `${mins}m`;
+}
+
+function escapeHtml(text) {
+  if (!text) return '';
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,734 @@
+[
+  {
+    "id": "hr_software_engineer_001",
+    "text": "Tell me about a time you led a Software Engineer initiative that had significant impact.",
+    "answer": "Use STAR method. Situation: Team faced scaling challenges. Task: Lead architecture redesign. Action: Researched solutions, built prototype, got buy-in, executed with team. Result: 50% performance improvement, reduced costs. Learned: Communication is key, data drives decisions.",
+    "difficulty": "medium",
+    "keywords": [
+      "led",
+      "initiative",
+      "STAR",
+      "impact",
+      "results"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Leadership shown",
+        "Specific metrics",
+        "Reflection included"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_002",
+    "text": "Describe a situation where you had a conflict with a teammate. How did you resolve it?",
+    "answer": "Situation: Disagreement on technical approach. Task: Find best solution for project. Action: Listened to their view, presented data from prototypes, found compromise combining both approaches. Result: Better solution, maintained relationship. Learned: Data helps, ego hurts.",
+    "difficulty": "medium",
+    "keywords": [
+      "conflict",
+      "disagreement",
+      "compromise",
+      "data-driven",
+      "relationship"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Professional handling",
+        "Data used",
+        "Resolution focused"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_003",
+    "text": "Why do you want this Software Engineer position?",
+    "answer": "I'm excited about this role because it aligns with my skills in software engineer and offers growth opportunities. I've researched your company's products and mission, and I'm passionate about the problem you're solving. I believe I can contribute immediately while learning from the talented team here.",
+    "difficulty": "easy",
+    "keywords": [
+      "motivation",
+      "alignment",
+      "research",
+      "growth",
+      "contribution"
+    ],
+    "rubric": {
+      "points": [
+        "Specific reasons",
+        "Company research",
+        "Mutual benefit"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_004",
+    "text": "What are your greatest strengths and how do they apply to this role?",
+    "answer": "My strengths: 1) Analytical thinking - break down complex problems. 2) Communication - explain technical concepts to non-technical stakeholders. 3) Adaptability - quickly learn new technologies. 4) Attention to detail - catch issues early. Examples: [Provide specific instances where each strength added value].",
+    "difficulty": "easy",
+    "keywords": [
+      "strengths",
+      "analytical",
+      "communication",
+      "adaptability",
+      "examples"
+    ],
+    "rubric": {
+      "points": [
+        "Specific strengths",
+        "Relevance to role",
+        "Evidence provided"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_005",
+    "text": "Tell me about a time you failed and what you learned from it.",
+    "answer": "Situation: Project I led missed deadline. Task: Deliver feature for Q2. Action: Took ownership, analyzed what went wrong (underestimated dependencies). Result: Delivered late but with lessons. Applied learnings to next project - added buffer time, better risk assessment. Learned: Estimation is hard, communication prevents surprises.",
+    "difficulty": "medium",
+    "keywords": [
+      "failure",
+      "ownership",
+      "learning",
+      "improvement",
+      "resilience"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Honest admission",
+        "Responsibility taken",
+        "Growth shown"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_006",
+    "text": "How do you handle tight deadlines and pressure?",
+    "answer": "1) Prioritize ruthlessly - focus on MVP. 2) Communicate early about risks. 3) Break work into daily goals. 4) Remove distractions during focus time. 5) Ask for help when blocked. 6) Maintain work-life balance to sustain performance. Example: [Specific high-pressure situation and how I managed it].",
+    "difficulty": "easy",
+    "keywords": [
+      "prioritization",
+      "communication",
+      "time management",
+      "focus",
+      "balance"
+    ],
+    "rubric": {
+      "points": [
+        "Strategies listed",
+        "Process-oriented",
+        "Sustainability mentioned"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_007",
+    "text": "Describe your ideal work environment.",
+    "answer": "I thrive in environments with: 1) Psychological safety - can ask questions, take risks. 2) Clear goals but autonomy in how to achieve them. 3) Collaborative culture - knowledge sharing. 4) Feedback-rich - regular 1:1s, constructive criticism. 5) Growth mindset - learning opportunities. 6) Work-life balance respected.",
+    "difficulty": "easy",
+    "keywords": [
+      "culture",
+      "collaboration",
+      "autonomy",
+      "feedback",
+      "growth",
+      "balance"
+    ],
+    "rubric": {
+      "points": [
+        "Specific elements",
+        "Values aligned",
+        "Self-awareness"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_008",
+    "text": "Tell me about a time you had to learn something quickly for a project.",
+    "answer": "Situation: Project required technology I didn't know. Task: Deliver feature using new tech within 2 weeks. Action: Intensive learning plan - documentation, tutorials, small experiments, mentorship from expert. Result: Delivered on time with working solution. Learned: Just-in-time learning works, community is valuable.",
+    "difficulty": "medium",
+    "keywords": [
+      "learning",
+      "adaptability",
+      "proactiveness",
+      "resourcefulness",
+      "delivery"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Learning approach",
+        "Time pressure",
+        "Results delivered"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_009",
+    "text": "Where do you see yourself in 5 years?",
+    "answer": "I see myself as a senior expert in my field, contributing to architectural decisions and mentoring junior team members. I want to deepen my technical expertise while developing leadership skills. I'm also interested in [specific area relevant to company]. Long-term, I want to have significant impact on products users love.",
+    "difficulty": "easy",
+    "keywords": [
+      "growth",
+      "leadership",
+      "expertise",
+      "mentoring",
+      "impact"
+    ],
+    "rubric": {
+      "points": [
+        "Ambition shown",
+        "Realistic timeline",
+        "Alignment with role"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_010",
+    "text": "How do you handle feedback, especially critical feedback?",
+    "answer": "I welcome feedback as a growth opportunity. Process: 1) Listen actively without defending. 2) Ask clarifying questions. 3) Reflect on validity. 4) Create action plan. 5) Follow up on progress. Example: [Specific instance where critical feedback led to improvement]. I seek feedback proactively to improve continuously.",
+    "difficulty": "easy",
+    "keywords": [
+      "feedback",
+      "growth mindset",
+      "active listening",
+      "action plan",
+      "improvement"
+    ],
+    "rubric": {
+      "points": [
+        "Positive attitude",
+        "Process described",
+        "Proactive approach"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_011",
+    "text": "Tell me about a time you led a Software Engineer initiative that had significant impact.",
+    "answer": "Use STAR method. Situation: Team faced scaling challenges. Task: Lead architecture redesign. Action: Researched solutions, built prototype, got buy-in, executed with team. Result: 50% performance improvement, reduced costs. Learned: Communication is key, data drives decisions.",
+    "difficulty": "medium",
+    "keywords": [
+      "led",
+      "initiative",
+      "STAR",
+      "impact",
+      "results"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Leadership shown",
+        "Specific metrics",
+        "Reflection included"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_012",
+    "text": "Describe a situation where you had a conflict with a teammate. How did you resolve it?",
+    "answer": "Situation: Disagreement on technical approach. Task: Find best solution for project. Action: Listened to their view, presented data from prototypes, found compromise combining both approaches. Result: Better solution, maintained relationship. Learned: Data helps, ego hurts.",
+    "difficulty": "medium",
+    "keywords": [
+      "conflict",
+      "disagreement",
+      "compromise",
+      "data-driven",
+      "relationship"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Professional handling",
+        "Data used",
+        "Resolution focused"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_013",
+    "text": "Why do you want this Software Engineer position?",
+    "answer": "I'm excited about this role because it aligns with my skills in software engineer and offers growth opportunities. I've researched your company's products and mission, and I'm passionate about the problem you're solving. I believe I can contribute immediately while learning from the talented team here.",
+    "difficulty": "easy",
+    "keywords": [
+      "motivation",
+      "alignment",
+      "research",
+      "growth",
+      "contribution"
+    ],
+    "rubric": {
+      "points": [
+        "Specific reasons",
+        "Company research",
+        "Mutual benefit"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_014",
+    "text": "What are your greatest strengths and how do they apply to this role?",
+    "answer": "My strengths: 1) Analytical thinking - break down complex problems. 2) Communication - explain technical concepts to non-technical stakeholders. 3) Adaptability - quickly learn new technologies. 4) Attention to detail - catch issues early. Examples: [Provide specific instances where each strength added value].",
+    "difficulty": "easy",
+    "keywords": [
+      "strengths",
+      "analytical",
+      "communication",
+      "adaptability",
+      "examples"
+    ],
+    "rubric": {
+      "points": [
+        "Specific strengths",
+        "Relevance to role",
+        "Evidence provided"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_015",
+    "text": "Tell me about a time you failed and what you learned from it.",
+    "answer": "Situation: Project I led missed deadline. Task: Deliver feature for Q2. Action: Took ownership, analyzed what went wrong (underestimated dependencies). Result: Delivered late but with lessons. Applied learnings to next project - added buffer time, better risk assessment. Learned: Estimation is hard, communication prevents surprises.",
+    "difficulty": "medium",
+    "keywords": [
+      "failure",
+      "ownership",
+      "learning",
+      "improvement",
+      "resilience"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Honest admission",
+        "Responsibility taken",
+        "Growth shown"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_016",
+    "text": "How do you handle tight deadlines and pressure?",
+    "answer": "1) Prioritize ruthlessly - focus on MVP. 2) Communicate early about risks. 3) Break work into daily goals. 4) Remove distractions during focus time. 5) Ask for help when blocked. 6) Maintain work-life balance to sustain performance. Example: [Specific high-pressure situation and how I managed it].",
+    "difficulty": "easy",
+    "keywords": [
+      "prioritization",
+      "communication",
+      "time management",
+      "focus",
+      "balance"
+    ],
+    "rubric": {
+      "points": [
+        "Strategies listed",
+        "Process-oriented",
+        "Sustainability mentioned"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_017",
+    "text": "Describe your ideal work environment.",
+    "answer": "I thrive in environments with: 1) Psychological safety - can ask questions, take risks. 2) Clear goals but autonomy in how to achieve them. 3) Collaborative culture - knowledge sharing. 4) Feedback-rich - regular 1:1s, constructive criticism. 5) Growth mindset - learning opportunities. 6) Work-life balance respected.",
+    "difficulty": "easy",
+    "keywords": [
+      "culture",
+      "collaboration",
+      "autonomy",
+      "feedback",
+      "growth",
+      "balance"
+    ],
+    "rubric": {
+      "points": [
+        "Specific elements",
+        "Values aligned",
+        "Self-awareness"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_018",
+    "text": "Tell me about a time you had to learn something quickly for a project.",
+    "answer": "Situation: Project required technology I didn't know. Task: Deliver feature using new tech within 2 weeks. Action: Intensive learning plan - documentation, tutorials, small experiments, mentorship from expert. Result: Delivered on time with working solution. Learned: Just-in-time learning works, community is valuable.",
+    "difficulty": "medium",
+    "keywords": [
+      "learning",
+      "adaptability",
+      "proactiveness",
+      "resourcefulness",
+      "delivery"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Learning approach",
+        "Time pressure",
+        "Results delivered"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_019",
+    "text": "Where do you see yourself in 5 years?",
+    "answer": "I see myself as a senior expert in my field, contributing to architectural decisions and mentoring junior team members. I want to deepen my technical expertise while developing leadership skills. I'm also interested in [specific area relevant to company]. Long-term, I want to have significant impact on products users love.",
+    "difficulty": "easy",
+    "keywords": [
+      "growth",
+      "leadership",
+      "expertise",
+      "mentoring",
+      "impact"
+    ],
+    "rubric": {
+      "points": [
+        "Ambition shown",
+        "Realistic timeline",
+        "Alignment with role"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_020",
+    "text": "How do you handle feedback, especially critical feedback?",
+    "answer": "I welcome feedback as a growth opportunity. Process: 1) Listen actively without defending. 2) Ask clarifying questions. 3) Reflect on validity. 4) Create action plan. 5) Follow up on progress. Example: [Specific instance where critical feedback led to improvement]. I seek feedback proactively to improve continuously.",
+    "difficulty": "easy",
+    "keywords": [
+      "feedback",
+      "growth mindset",
+      "active listening",
+      "action plan",
+      "improvement"
+    ],
+    "rubric": {
+      "points": [
+        "Positive attitude",
+        "Process described",
+        "Proactive approach"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_021",
+    "text": "Tell me about a time you led a Software Engineer initiative that had significant impact.",
+    "answer": "Use STAR method. Situation: Team faced scaling challenges. Task: Lead architecture redesign. Action: Researched solutions, built prototype, got buy-in, executed with team. Result: 50% performance improvement, reduced costs. Learned: Communication is key, data drives decisions.",
+    "difficulty": "medium",
+    "keywords": [
+      "led",
+      "initiative",
+      "STAR",
+      "impact",
+      "results"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Leadership shown",
+        "Specific metrics",
+        "Reflection included"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_022",
+    "text": "Describe a situation where you had a conflict with a teammate. How did you resolve it?",
+    "answer": "Situation: Disagreement on technical approach. Task: Find best solution for project. Action: Listened to their view, presented data from prototypes, found compromise combining both approaches. Result: Better solution, maintained relationship. Learned: Data helps, ego hurts.",
+    "difficulty": "medium",
+    "keywords": [
+      "conflict",
+      "disagreement",
+      "compromise",
+      "data-driven",
+      "relationship"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Professional handling",
+        "Data used",
+        "Resolution focused"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_023",
+    "text": "Why do you want this Software Engineer position?",
+    "answer": "I'm excited about this role because it aligns with my skills in software engineer and offers growth opportunities. I've researched your company's products and mission, and I'm passionate about the problem you're solving. I believe I can contribute immediately while learning from the talented team here.",
+    "difficulty": "easy",
+    "keywords": [
+      "motivation",
+      "alignment",
+      "research",
+      "growth",
+      "contribution"
+    ],
+    "rubric": {
+      "points": [
+        "Specific reasons",
+        "Company research",
+        "Mutual benefit"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_024",
+    "text": "What are your greatest strengths and how do they apply to this role?",
+    "answer": "My strengths: 1) Analytical thinking - break down complex problems. 2) Communication - explain technical concepts to non-technical stakeholders. 3) Adaptability - quickly learn new technologies. 4) Attention to detail - catch issues early. Examples: [Provide specific instances where each strength added value].",
+    "difficulty": "easy",
+    "keywords": [
+      "strengths",
+      "analytical",
+      "communication",
+      "adaptability",
+      "examples"
+    ],
+    "rubric": {
+      "points": [
+        "Specific strengths",
+        "Relevance to role",
+        "Evidence provided"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_026",
+    "text": "Tell me about a time you had to deal with a difficult stakeholder or client. How did you handle it?",
+    "answer": "Situation: Client was unhappy with sprint deliverables and threatened to escalate. Task: Resolve concerns while maintaining project timeline. Action: Scheduled immediate meeting to listen to concerns, acknowledged gaps, proposed mitigation plan with clear dates. Result: Client felt heard, accepted revised plan, and relationship improved. Learned: Proactive communication prevents escalation.",
+    "difficulty": "medium",
+    "keywords": [
+      "stakeholder management",
+      "conflict resolution",
+      "communication",
+      "escalation",
+      "client relations"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Situation described clearly",
+        "Proactive approach shown",
+        "Outcome and learning stated"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_027",
+    "text": "How do you prioritize multiple competing tasks when everything seems urgent?",
+    "answer": "Framework: 1) Assess business impact - revenue vs. technical debt. 2) Check dependencies - what blocks others. 3) Estimate effort vs. value. 4) Communicate with stakeholders on realistic timelines. 5) Re-evaluate daily. Example: [Specific scenario with multiple urgent bugs and features].",
+    "difficulty": "medium",
+    "keywords": [
+      "prioritization",
+      "time management",
+      "business impact",
+      "communication",
+      "dependencies"
+    ],
+    "rubric": {
+      "points": [
+        "Framework provided",
+        "Business context considered",
+        "Communication mentioned"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_028",
+    "text": "Tell me about a time when you had to make a decision without having all the information you needed.",
+    "answer": "Situation: Production outage, incomplete logs, team waiting for decision. Task: Restore service quickly. Action: Made educated guess based on patterns, implemented fix with rollback plan, monitored closely. Result: System restored in 15 minutes. Learned: Bias for action, prepare for rollback, gather better monitoring.",
+    "difficulty": "hard",
+    "keywords": [
+      "decision making",
+      "ambiguity",
+      "bias for action",
+      "risk assessment",
+      "production"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Uncertain situation described",
+        "Decision process explained",
+        "Risk mitigation shown"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_029",
+    "text": "Describe a time when you went above and beyond your job responsibilities.",
+    "answer": "Context: On-call weekend, noticed unrelated security vulnerability. Action: Despite not being security team, investigated scope, created proof of concept, wrote detailed report, presented to security team Monday. Result: Vulnerability patched before exploitation, process changed to include security scans in CI. Learned: Ownership mindset creates systemic improvements.",
+    "difficulty": "medium",
+    "keywords": [
+      "ownership",
+      "initiative",
+      "security",
+      "above and beyond",
+      "impact"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Initiative shown",
+        "Impact demonstrated",
+        "Beyond scope explained"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_030",
+    "text": "How do you stay current with technology trends and continue learning?",
+    "answer": "Continuous learning habits: 1) Subscribe to engineering blogs (Netflix Tech, Uber Eng) and newsletters. 2) Side projects to experiment with new tech. 3) Attend/present at meetups and conferences. 4) Internal tech talks and brown bags. 5) Pair programming with experts. Example: [Specific new technology learned recently and applied].",
+    "difficulty": "easy",
+    "keywords": [
+      "learning",
+      "growth mindset",
+      "technology trends",
+      "self-improvement",
+      "knowledge sharing"
+    ],
+    "rubric": {
+      "points": [
+        "Specific habits listed",
+        "Recent example provided",
+        "Application to role shown"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_031",
+    "text": "Tell me about a time when you had to give someone difficult feedback.",
+    "answer": "Situation: Junior engineer not meeting code quality standards. Task: Help them improve without demotivating. Action: Private 1:1, specific examples from PRs, asked about challenges, created 30-day improvement plan with weekly check-ins, paired on code reviews. Result: Significant improvement, became team mentor later. Learned: Feedback with support enables growth.",
+    "difficulty": "medium",
+    "keywords": [
+      "feedback",
+      "mentoring",
+      "difficult conversations",
+      "growth",
+      "leadership"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Specific situation",
+        "Empathetic approach",
+        "Positive outcome"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_032",
+    "text": "Why should we hire you over other qualified candidates?",
+    "answer": "Unique combination: 1) Technical depth in [specific area] from [experience]. 2) Cross-functional collaboration experience with product/design. 3) Track record of [specific measurable impact]. 4) Cultural alignment with [company values]. 5) Passion for [company's specific mission/problem]. I'm not just looking for any job - I'm excited about THIS company's mission.",
+    "difficulty": "medium",
+    "keywords": [
+      "differentiation",
+      "value proposition",
+      "cultural fit",
+      "passion",
+      "unique strengths"
+    ],
+    "rubric": {
+      "points": [
+        "Specific differentiators",
+        "Company research shown",
+        "Confidence without arrogance"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_033",
+    "text": "Tell me about a time you disagreed with your manager's technical decision.",
+    "answer": "Situation: Manager wanted monolith, I advocated for microservices. Task: Make best architectural decision for scale. Action: Created proof of concept, benchmark data, cost analysis, presented trade-offs objectively, deferred to manager after discussion with full context. Result: Manager chose microservices with phased migration. Learned: Data + respectful disagreement enables better decisions.",
+    "difficulty": "hard",
+    "keywords": [
+      "disagreement",
+      "influence",
+      "data-driven",
+      "architecture",
+      "respect"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Respectful dissent shown",
+        "Data used",
+        "Outcome and learning"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_034",
+    "text": "How do you handle working with a team member who is not pulling their weight?",
+    "answer": "Approach: 1) Assume positive intent - check if they have blockers or personal issues. 2) Offer help directly - 'How can I support you?'. 3) If continues, have direct conversation about impact on team. 4) Escalate to manager only if affecting deliverables. Example: [Specific situation where team member had family emergency].",
+    "difficulty": "medium",
+    "keywords": [
+      "team dynamics",
+      "difficult conversations",
+      "empathy",
+      "accountability",
+      "support"
+    ],
+    "rubric": {
+      "points": [
+        "Empathy shown",
+        "Progressive approach",
+        "Team impact considered"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_software_engineer_035",
+    "text": "Describe a time when you had to learn a new technology or language quickly for a project.",
+    "answer": "Situation: Project needed Rust for performance-critical service, team had no experience. Task: Become proficient in 2 weeks to lead development. Action: Intensive learning: docs, small CLI projects, paired with Rust expert from another team, built prototype first. Result: Delivered service with 40% latency improvement. Learned: Just-in-time learning is powerful with right support.",
+    "difficulty": "medium",
+    "keywords": [
+      "learning agility",
+      "new technology",
+      "rust",
+      "prototyping",
+      "mentorship"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Learning approach detailed",
+        "Time pressure handled",
+        "Results achieved"
+      ]
+    },
+    "time_limit": 180
+  }
+]

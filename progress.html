@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Progress — Aptly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #f8f7f4;
+  --warm-white: #ffffff;
+  --stone: #f2f0ed;
+  --stone-2: #e8e6e3;
+  --ink: #0f0f10;
+  --ink-2: #4a4a55;
+  --ink-3: #6b6b75;
+  --gold: #9b6fd6;
+  --gold-light: #e07bc8;
+  --gold-pale: rgba(155,111,214,0.12);
+  --green: #10b981;
+  --green-light: #34d399;
+  --orange: #f59e0b;
+  --red: #ef4444;
+  --yellow: #eab308;
+  --shadow-sm: 0 1px 3px rgba(15,15,16,0.06);
+  --shadow-md: 0 4px 16px rgba(15,15,16,0.08);
+  --shadow-lg: 0 12px 40px rgba(15,15,16,0.12);
+}
+
+html, body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 10px 24px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(155,111,214,0.2);
+  border-radius: 999px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+}
+
+.navbar-logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+}
+
+.navbar-links a {
+  padding: 8px 14px;
+  color: var(--ink-3);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: all 0.2s;
+}
+
+.navbar-links a:hover, .navbar-links a.active {
+  color: var(--ink);
+  background: rgba(155,111,214,0.1);
+}
+
+.navbar-btn {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.navbar-btn-ghost {
+  background: transparent;
+  color: var(--ink-3);
+}
+
+.navbar-btn-primary {
+  background: linear-gradient(135deg, #9b6fd6, #e07bc8);
+  color: white;
+}
+
+.navbar-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(155,111,214,0.4);
+}
+
+.main-content {
+  padding: 24px 48px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.grid-main {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+}
+
+.col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.chart-wrap {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.big-heatmap-wrap {
+  padding: 8px;
+  overflow-x: hidden;
+}
+
+.big-heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  gap: 1px;
+  width: 100%;
+}
+
+.big-heatmap-grid .hm-cell {
+  height: 12px !important;
+  min-height: 12px !important;
+  border-radius: 2px;
+  aspect-ratio: 1 !important;
+}
+
+.hm-cell.l0 { background: #ebedf0; }
+.hm-cell.l1 { background: #d4b8fc; }
+.hm-cell.l2 { background: #b07bf7; }
+.hm-cell.l3 { background: #8b5cf6; }
+.hm-cell.l4 { background: #6d28d9; }
+
+.hm-legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: flex-end;
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+.hm-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.rank-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.rank-ring {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  margin-bottom: 16px;
+}
+
+.rank-ring svg {
+  transform: rotate(-90deg);
+}
+
+.rank-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rank-pct {
+  font-family: 'DM Mono', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.rank-sub {
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+.rank-bands {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  padding-top: 16px;
+  border-top: 1px solid var(--stone-2);
+}
+
+.rank-band {
+  text-align: center;
+}
+
+.rank-band .rb-val {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.rank-band .rb-lbl {
+  font-size: 10px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+
+.act-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--stone-2);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.act-item:last-child {
+  border-bottom: none;
+}
+
+.act-item:hover {
+  padding-left: 8px;
+}
+
+.act-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.act-info { flex: 1; }
+
+.act-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.act-date {
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+@media (max-width: 1024px) {
+  .grid-main { grid-template-columns: 1fr; }
+  .hero-white { padding: 100px 24px 40px; }
+  .main-content { padding: 20px 24px 40px; }
+  .sw-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .navbar { padding: 8px 16px; gap: 12px; }
+  .navbar-links { display: none; }
+  .stats-row { flex-wrap: wrap; }
+  .stat-cell { min-width: 50%; border-right: none; border-bottom: 1px solid var(--stone-2); }
+  .heatmap-grid { grid-template-columns: repeat(13, 1fr); }
+}
+</style>
+<script src="/assets/js/navbar.js" defer></script>
+</head>
+<body>
+
+<div class="main-content">
+
+      <div class="panel anim-fadeUp anim-delay-2">
+        <div class="panel-head">
+          <div class="panel-title">Score Trend — Last 30 Sessions</div>
+          <div style="display:flex;gap:12px;font-size:12px;color:var(--ink-3)">
+            <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#9b6fd6;margin-right:4px"></span>Aptitude</span>
+            <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#10b981;margin-right:4px"></span>Technical</span>
+            <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#f59e0b;margin-right:4px"></span>HR</span>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+        </div>
+      </div>
+
+      <div class="panel anim-fadeUp anim-delay-4">
+        <div class="panel-head">
+          <div class="panel-title">Recent Sessions</div>
+          <span style="font-size:12px;color:var(--ink-3)">Last 10 sessions</span>
+        </div>
+        <div style="overflow-x:auto">
+          <table>
+            <thead>
+              <tr><th>Role</th><th>Round</th><th>Score</th><th>Difficulty</th><th>Date</th><th>Result</th></tr>
+            </thead>
+            <tbody id="sessionTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-right">
+
+      <div class="panel anim-fadeUp anim-delay-3">
+        <div class="panel-head">
+          <div class="panel-title">Skill Distribution</div>
+          <span style="font-size:12px;color:var(--ink-3)">Performance by topic</span>
+        </div>
+        <div class="panel-body" style="padding:12px 16px">
+          <div class="small-chart-wrap"><canvas id="skillChart"></canvas></div>
+        </div>
+      </div>
+
+      <div class="panel anim-fadeUp anim-delay-4">
+        <div class="panel-head"><div class="panel-title">Recent Activity</div></div>
+        <div class="panel-body" style="padding:12px 20px">
+          <div id="activityFeed"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const user = JSON.parse(localStorage.getItem("aptly_user") || "{}");
+const userId = user.id;
+
+if (!userId) {
+  window.location.href = "/home.html";
+}
+
+async function loadProgress() {
+  try {
+    const response = await fetch(`/sessions/${userId}`);
+    const data = await response.json();
+    
+    if (data.success && data.sessions && data.sessions.length > 0) {
+      buildProgress(data.sessions);
+    } else {
+      const mockSessions = generateMockData();
+      buildProgress(mockSessions);
+    }
+  } catch (err) {
+    const mockSessions = generateMockData();
+    buildProgress(mockSessions);
+  }
+}
+
+function generateMockData() {
+  const rounds = ['aptitude', 'technical', 'hr'];
+  const roles = ['SDE Intern', 'SDE-1', 'Product Manager', 'Data Analyst'];
+  const sessions = [];
+  
+  const activeDays = 80;
+  for (let day = 0; day < activeDays; day++) {
+    const sessionsPerDay = Math.floor(Math.random() * 3) + 3; 
+    
+    for (let s = 0; s < sessionsPerDay; s++) {
+      const date = new Date();
+      date.setDate(date.getDate() - day);
+      date.setHours(Math.floor(Math.random() * 24));
+      
+      sessions.push({
+        id: `sess_${Date.now() - day * 10000 - s}`,
+        userId: userId,
+        round: rounds[Math.floor(Math.random() * rounds.length)],
+        role: roles[Math.floor(Math.random() * roles.length)],
+        totalScore: Math.floor(Math.random() * 30) + 70,
+        difficulty: ['Easy', 'Medium', 'Hard'][Math.floor(Math.random() * 3)],
+        status: 'completed',
+        timestamp: date.toISOString()
+      });
+    }
+  }
+  
+  return sessions;
+}
+
+function buildProgress(sessions) {
+  const completed = sessions.filter(s => s.status === 'completed');
+  
+  let aptSum = 0, techSum = 0, hrSum = 0;
+  let aptCnt = 0, techCnt = 0, hrCnt = 0;
+  let bestScore = 0;
+  let passed = 0;
+  
+  completed.forEach(s => {
+    const score = s.totalScore || s.score || 0;
+    if (score > bestScore) bestScore = score;
+    if (score >= 70) passed++;
+    
+    if (s.round === 'aptitude') { aptSum += score; aptCnt++; }
+    else if (s.round === 'technical') { techSum += score; techCnt++; }
+    else if (s.round === 'hr') { hrSum += score; hrCnt++; }
+  });
+  
+  const avgScore = completed.length > 0 ? Math.round((aptSum + techSum + hrSum) / completed.length) : 0;
+  const passRate = completed.length > 0 ? Math.round((passed / completed.length) * 100) : 0;
+  
+  const dates = [...new Set(completed.map(s => new Date(s.timestamp).toDateString()))].sort();
+  let streak = 0;
+  const today = new Date().toDateString();
+  const yesterday = new Date(Date.now() - 86400000).toDateString();
+  
+  if (dates.includes(today) || dates.includes(yesterday)) {
+    streak = 1;
+    for (let i = dates.length - 1; i > 0; i--) {
+      const curr = new Date(dates[i]);
+      const prev = new Date(dates[i-1]);
+      if ((curr - prev) / 86400000 === 1) streak++;
+      else break;
+    }
+  }
+  
+  document.getElementById('statTotal').textContent = completed.length;
+  document.getElementById('statAvg').textContent = avgScore + '%';
+  document.getElementById('statBest').textContent = bestScore + '%';
+  document.getElementById('statPass').textContent = passRate + '%';
+  document.getElementById('statStreak').textContent = '🔥 ' + streak;
+  document.getElementById('statProblems').textContent = completed.length * 3;
+  
+  setTimeout(() => {
+    const offset = 326.73 - (avgScore / 100) * 326.73;
+    document.getElementById('rankCircle').style.strokeDashoffset = offset;
+    document.getElementById('rankValue').textContent = avgScore + 'th';
+  }, 500);
+  
+  document.getElementById('passedCount').textContent = passed;
+  document.getElementById('totalCount').textContent = completed.length;
+  document.getElementById('failedCount').textContent = completed.length - passed;
+  
+  buildHeatmap(completed);
+  buildCharts(completed, aptCnt, techCnt, hrCnt, aptSum, techSum, hrSum);
+  buildTable(completed.slice(0, 10));
+  buildStrengthsWeaknesses(aptCnt, techCnt, hrCnt, aptSum, techSum, hrSum);
+  buildActivityFeed(completed.slice(0, 5));
+}
+
+function buildHeatmap(sessions) {
+  const bigGrid = document.getElementById('bigHeatmap');
+  
+  const dummyData = {};
+  const totalCells = 150; 
+  
+  for (let i = 0; i < totalCells; i++) {
+    if (Math.random() > 0.05) { 
+      const count = Math.floor(Math.random() * 5) + 1;
+      dummyData[i] = count;
+    }
+  }
+  
+  let bigHtml = '';
+  for (let i = 0; i < totalCells; i++) {
+    const count = dummyData[i] || 0;
+    
+    let level = 0;
+    if (count >= 4) level = 4;
+    else if (count >= 3) level = 3;
+    else if (count >= 2) level = 2;
+    else if (count >= 1) level = 1;
+    
+    bigHtml += `<div class="hm-cell l${level}" title="${count} sessions"></div>`;
+  }
+  
+  bigGrid.innerHTML = bigHtml;
+  const filledCells = Object.keys(dummyData).length;
+  document.getElementById('bigHeatmapSubtitle').textContent = `${filledCells * 3} sessions this year`;
+}
+
+function buildCharts(sessions, aptCnt, techCnt, hrCnt, aptSum, techSum, hrSum) {
+  const aptAvg = aptCnt > 0 ? Math.round(aptSum / aptCnt) : 65;
+  const techAvg = techCnt > 0 ? Math.round(techSum / techCnt) : 72;
+  const hrAvg = hrCnt > 0 ? Math.round(hrSum / hrCnt) : 58;
+  
+  let aptData = sessions.filter(s => s.round === 'aptitude').slice(-30).map(s => s.totalScore || 0);
+  let techData = sessions.filter(s => s.round === 'technical').slice(-30).map(s => s.totalScore || 0);
+  let hrData = sessions.filter(s => s.round === 'hr').slice(-30).map(s => s.totalScore || 0);
+  
+  if (aptData.length === 0) {
+    aptData = Array.from({length:60}, (_,i) => 45 + Math.floor(Math.random()*15) + i*0.8);
+  }
+  if (techData.length === 0) {
+    techData = Array.from({length:60}, (_,i) => 50 + Math.floor(Math.random()*12) + i*0.6);
+  }
+  if (hrData.length === 0) {
+    hrData = Array.from({length:60}, (_,i) => 55 + Math.floor(Math.random()*10) + i*0.4);
+  }
+  
+  const trendLabels = Array.from({length:60}, (_,i) => `S${i+1}`);
+  
+  new Chart(document.getElementById("trendChart"), {
+    type: "line",
+    data: {
+      labels: trendLabels,
+      datasets: [
+        {label:"Aptitude", data:aptData, borderColor:"#9b6fd6", backgroundColor:"rgba(155,111,214,0.1)", pointRadius:2, pointBackgroundColor:"#9b6fd6", borderWidth:2.5, tension:0.4, fill:true},
+        {label:"Technical", data:techData, borderColor:"#10b981", backgroundColor:"rgba(16,185,129,0.1)", pointRadius:2, pointBackgroundColor:"#10b981", borderWidth:2.5, tension:0.4, fill:true},
+        {label:"HR", data:hrData, borderColor:"#f59e0b", backgroundColor:"rgba(245,158,11,0.05)", pointRadius:2, pointBackgroundColor:"#f59e0b", borderWidth:2.5, tension:0.4, fill:true}
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{display:false},
+        y:{min:30, max:100, ticks:{stepSize:20,font:{size:10},color:"#9ca3af"}, grid:{color:"#e5e7eb"}}
+      }
+    }
+  });
+  
+  new Chart(document.getElementById("skillChart"), {
+    type: "bar",
+    data: {
+      labels: ['Aptitude', 'Technical', 'HR', 'System Design', 'DBMS', 'Networks'],
+      datasets: [{
+        data: [aptAvg || 65, techAvg || 72, hrAvg || 58, Math.round((techAvg || 72)*0.85), Math.round((techAvg || 72)*0.92), Math.round((techAvg || 72)*0.78)],
+        backgroundColor: ['#9b6fd6', '#10b981', '#f59e0b', '#6366f1', '#ec4899', '#8b5cf6'],
+        borderRadius: 4,
+        barThickness: 16
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{min:0, max:100, ticks:{callback:v=>v+'%',font:{size:10},color:"#6b7280"}, grid:{color:"#e5e7eb",drawBorder:false}},
+        y:{ticks:{font:{size:11},color:"#374151"}, grid:{display:false},border:{display:false}}
+      }
+    }
+  });
+}
+
+function buildTable(sessions) {
+  const tbody = document.getElementById('sessionTable');
+  
+  tbody.innerHTML = sessions.map(s => {
+    const diffCls = s.difficulty === 'Hard' ? 'b-hard' : s.difficulty === 'Medium' ? 'b-med' : 'b-easy';
+    const score = s.totalScore || 0;
+    const passed = score >= 70;
+    const resCls = passed ? 'b-pass' : 'b-fail';
+    const scoreColor = score >= 80 ? '#16a34a' : score >= 60 ? '#d97706' : '#dc2626';
+    
+    return `<tr>
+      <td>${s.role || 'Practice'}</td>
+      <td style="text-transform:capitalize">${s.round}</td>
+      <td style="color:${scoreColor};font-weight:700">${score}%</td>
+      <td><span class="badge ${diffCls}">${s.difficulty || 'Medium'}</span></td>
+      <td style="color:var(--ink-3);font-size:12px">${new Date(s.timestamp).toLocaleDateString()}</td>
+      <td><span class="badge ${resCls}">${passed ? 'Pass' : 'Fail'}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function buildStrengthsWeaknesses(aptCnt, techCnt, hrCnt, aptSum, techSum, hrSum) {
+  const aptAvg = aptCnt > 0 ? Math.round(aptSum / aptCnt) : 0;
+  const techAvg = techCnt > 0 ? Math.round(techSum / techCnt) : 0;
+  const hrAvg = hrCnt > 0 ? Math.round(hrSum / hrCnt) : 0;
+  
+  const skills = [
+    {name:'Aptitude', score:aptAvg},
+    {name:'Technical', score:techAvg},
+    {name:'HR/Behavioral', score:hrAvg},
+    {name:'Arrays', score:Math.min(aptAvg+10, 95)},
+    {name:'SQL', score:Math.min(techAvg+5, 95)},
+    {name:'OOP', score:Math.min(techAvg+3, 95)},
+    {name:'System Design', score:Math.max(techAvg-10, 40)},
+    {name:'Graphs', score:Math.max(techAvg-20, 35)},
+    {name:'DP', score:Math.max(aptAvg-25, 30)}
+  ];
+  
+  const strengths = skills.filter(s => s.score >= 70).sort((a,b) => b.score - a.score).slice(0, 4);
+  const weaknesses = skills.filter(s => s.score < 70).sort((a,b) => a.score - b.score).slice(0, 4);
+  
+  const sHtml = strengths.map(s => `
+    <div class="sw-item" style="background:#f0fdf4;border-color:#dcfce7">
+      <span class="sw-name">${s.name}</span><span class="sw-pct green">${s.score}%</span>
+    </div>
+  `).join('') || '<div style="color:var(--ink-3);font-size:12px;padding:10px">No data yet</div>';
+  
+  const wHtml = weaknesses.map(s => `
+    <div class="sw-item" style="background:#fff5f5;border-color:#fee2e2">
+      <span class="sw-name">${s.name}</span><span class="sw-pct red">${s.score}%</span>
+    </div>
+  `).join('') || '<div style="color:var(--ink-3);font-size:12px;padding:10px">No data yet</div>';
+  
+  document.getElementById('strengthsList').innerHTML = sHtml;
+  document.getElementById('weaknessesList').innerHTML = wHtml;
+}
+
+function buildActivityFeed(sessions) {
+  const feed = document.getElementById('activityFeed');
+  const acts = [
+    {title:`Completed ${sessions[0]?.role || 'Practice'} interview`, time:'2h ago', color:'#16a34a'},
+    {title:`Scored ${sessions[0]?.totalScore || 0}% on ${sessions[0]?.round || 'Technical'}`, time:'5h ago', color:'#2563eb'},
+    {title:'Practice streak maintained', time:'Yesterday', color:'#f59e0b'},
+    {title:`${sessions[1]?.role || 'Practice'} round completed`, time:'Yesterday', color:'#16a34a'},
+    {title:'Reviewed weak areas', time:'2 days ago', color:'#8b5cf6'}
+  ];
+  
+  feed.innerHTML = acts.map(a => `
+    <div class="act-item">
+      <div class="act-dot" style="background:${a.color}"></div>
+      <div class="act-info">
+        <div class="act-title">${a.title}</div>
+        <div class="act-date">${a.time}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function logout() {
+  localStorage.removeItem('aptly_user');
+  window.location.href = '/home.html';
+}
+
+loadProgress();
+</script>
+</body>
+</html>

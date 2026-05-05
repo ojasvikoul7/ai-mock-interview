@@ -1,0 +1,540 @@
+[
+  {
+    "id": "hr_cloud_architect_001",
+    "text": "Tell me about a time you led a Cloud Architect initiative that had significant impact.",
+    "answer": "Use STAR method. Situation: Team faced scaling challenges. Task: Lead architecture redesign. Action: Researched solutions, built prototype, got buy-in, executed with team. Result: 50% performance improvement, reduced costs. Learned: Communication is key, data drives decisions.",
+    "difficulty": "medium",
+    "keywords": [
+      "led",
+      "initiative",
+      "STAR",
+      "impact",
+      "results"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Leadership shown",
+        "Specific metrics",
+        "Reflection included"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_002",
+    "text": "Describe a situation where you had a conflict with a teammate. How did you resolve it?",
+    "answer": "Situation: Disagreement on technical approach. Task: Find best solution for project. Action: Listened to their view, presented data from prototypes, found compromise combining both approaches. Result: Better solution, maintained relationship. Learned: Data helps, ego hurts.",
+    "difficulty": "medium",
+    "keywords": [
+      "conflict",
+      "disagreement",
+      "compromise",
+      "data-driven",
+      "relationship"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Professional handling",
+        "Data used",
+        "Resolution focused"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_003",
+    "text": "Why do you want this Cloud Architect position?",
+    "answer": "I'm excited about this role because it aligns with my skills in cloud architect and offers growth opportunities. I've researched your company's products and mission, and I'm passionate about the problem you're solving. I believe I can contribute immediately while learning from the talented team here.",
+    "difficulty": "easy",
+    "keywords": [
+      "motivation",
+      "alignment",
+      "research",
+      "growth",
+      "contribution"
+    ],
+    "rubric": {
+      "points": [
+        "Specific reasons",
+        "Company research",
+        "Mutual benefit"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_004",
+    "text": "What are your greatest strengths and how do they apply to this role?",
+    "answer": "My strengths: 1) Analytical thinking - break down complex problems. 2) Communication - explain technical concepts to non-technical stakeholders. 3) Adaptability - quickly learn new technologies. 4) Attention to detail - catch issues early. Examples: [Provide specific instances where each strength added value].",
+    "difficulty": "easy",
+    "keywords": [
+      "strengths",
+      "analytical",
+      "communication",
+      "adaptability",
+      "examples"
+    ],
+    "rubric": {
+      "points": [
+        "Specific strengths",
+        "Relevance to role",
+        "Evidence provided"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_005",
+    "text": "Tell me about a time you failed and what you learned from it.",
+    "answer": "Situation: Project I led missed deadline. Task: Deliver feature for Q2. Action: Took ownership, analyzed what went wrong (underestimated dependencies). Result: Delivered late but with lessons. Applied learnings to next project - added buffer time, better risk assessment. Learned: Estimation is hard, communication prevents surprises.",
+    "difficulty": "medium",
+    "keywords": [
+      "failure",
+      "ownership",
+      "learning",
+      "improvement",
+      "resilience"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Honest admission",
+        "Responsibility taken",
+        "Growth shown"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_006",
+    "text": "How do you handle tight deadlines and pressure?",
+    "answer": "1) Prioritize ruthlessly - focus on MVP. 2) Communicate early about risks. 3) Break work into daily goals. 4) Remove distractions during focus time. 5) Ask for help when blocked. 6) Maintain work-life balance to sustain performance. Example: [Specific high-pressure situation and how I managed it].",
+    "difficulty": "easy",
+    "keywords": [
+      "prioritization",
+      "communication",
+      "time management",
+      "focus",
+      "balance"
+    ],
+    "rubric": {
+      "points": [
+        "Strategies listed",
+        "Process-oriented",
+        "Sustainability mentioned"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_007",
+    "text": "Describe your ideal work environment.",
+    "answer": "I thrive in environments with: 1) Psychological safety - can ask questions, take risks. 2) Clear goals but autonomy in how to achieve them. 3) Collaborative culture - knowledge sharing. 4) Feedback-rich - regular 1:1s, constructive criticism. 5) Growth mindset - learning opportunities. 6) Work-life balance respected.",
+    "difficulty": "easy",
+    "keywords": [
+      "culture",
+      "collaboration",
+      "autonomy",
+      "feedback",
+      "growth",
+      "balance"
+    ],
+    "rubric": {
+      "points": [
+        "Specific elements",
+        "Values aligned",
+        "Self-awareness"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_008",
+    "text": "Tell me about a time you had to learn something quickly for a project.",
+    "answer": "Situation: Project required technology I didn't know. Task: Deliver feature using new tech within 2 weeks. Action: Intensive learning plan - documentation, tutorials, small experiments, mentorship from expert. Result: Delivered on time with working solution. Learned: Just-in-time learning works, community is valuable.",
+    "difficulty": "medium",
+    "keywords": [
+      "learning",
+      "adaptability",
+      "proactiveness",
+      "resourcefulness",
+      "delivery"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Learning approach",
+        "Time pressure",
+        "Results delivered"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_009",
+    "text": "Where do you see yourself in 5 years?",
+    "answer": "I see myself as a senior expert in my field, contributing to architectural decisions and mentoring junior team members. I want to deepen my technical expertise while developing leadership skills. I'm also interested in [specific area relevant to company]. Long-term, I want to have significant impact on products users love.",
+    "difficulty": "easy",
+    "keywords": [
+      "growth",
+      "leadership",
+      "expertise",
+      "mentoring",
+      "impact"
+    ],
+    "rubric": {
+      "points": [
+        "Ambition shown",
+        "Realistic timeline",
+        "Alignment with role"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_010",
+    "text": "How do you handle feedback, especially critical feedback?",
+    "answer": "I welcome feedback as a growth opportunity. Process: 1) Listen actively without defending. 2) Ask clarifying questions. 3) Reflect on validity. 4) Create action plan. 5) Follow up on progress. Example: [Specific instance where critical feedback led to improvement]. I seek feedback proactively to improve continuously.",
+    "difficulty": "easy",
+    "keywords": [
+      "feedback",
+      "growth mindset",
+      "active listening",
+      "action plan",
+      "improvement"
+    ],
+    "rubric": {
+      "points": [
+        "Positive attitude",
+        "Process described",
+        "Proactive approach"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_011",
+    "text": "Tell me about a time you led a Cloud Architect initiative that had significant impact.",
+    "answer": "Use STAR method. Situation: Team faced scaling challenges. Task: Lead architecture redesign. Action: Researched solutions, built prototype, got buy-in, executed with team. Result: 50% performance improvement, reduced costs. Learned: Communication is key, data drives decisions.",
+    "difficulty": "medium",
+    "keywords": [
+      "led",
+      "initiative",
+      "STAR",
+      "impact",
+      "results"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Leadership shown",
+        "Specific metrics",
+        "Reflection included"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_012",
+    "text": "Describe a situation where you had a conflict with a teammate. How did you resolve it?",
+    "answer": "Situation: Disagreement on technical approach. Task: Find best solution for project. Action: Listened to their view, presented data from prototypes, found compromise combining both approaches. Result: Better solution, maintained relationship. Learned: Data helps, ego hurts.",
+    "difficulty": "medium",
+    "keywords": [
+      "conflict",
+      "disagreement",
+      "compromise",
+      "data-driven",
+      "relationship"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Professional handling",
+        "Data used",
+        "Resolution focused"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_013",
+    "text": "Why do you want this Cloud Architect position?",
+    "answer": "I'm excited about this role because it aligns with my skills in cloud architect and offers growth opportunities. I've researched your company's products and mission, and I'm passionate about the problem you're solving. I believe I can contribute immediately while learning from the talented team here.",
+    "difficulty": "easy",
+    "keywords": [
+      "motivation",
+      "alignment",
+      "research",
+      "growth",
+      "contribution"
+    ],
+    "rubric": {
+      "points": [
+        "Specific reasons",
+        "Company research",
+        "Mutual benefit"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_014",
+    "text": "What are your greatest strengths and how do they apply to this role?",
+    "answer": "My strengths: 1) Analytical thinking - break down complex problems. 2) Communication - explain technical concepts to non-technical stakeholders. 3) Adaptability - quickly learn new technologies. 4) Attention to detail - catch issues early. Examples: [Provide specific instances where each strength added value].",
+    "difficulty": "easy",
+    "keywords": [
+      "strengths",
+      "analytical",
+      "communication",
+      "adaptability",
+      "examples"
+    ],
+    "rubric": {
+      "points": [
+        "Specific strengths",
+        "Relevance to role",
+        "Evidence provided"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_015",
+    "text": "Tell me about a time you failed and what you learned from it.",
+    "answer": "Situation: Project I led missed deadline. Task: Deliver feature for Q2. Action: Took ownership, analyzed what went wrong (underestimated dependencies). Result: Delivered late but with lessons. Applied learnings to next project - added buffer time, better risk assessment. Learned: Estimation is hard, communication prevents surprises.",
+    "difficulty": "medium",
+    "keywords": [
+      "failure",
+      "ownership",
+      "learning",
+      "improvement",
+      "resilience"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Honest admission",
+        "Responsibility taken",
+        "Growth shown"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_016",
+    "text": "How do you handle tight deadlines and pressure?",
+    "answer": "1) Prioritize ruthlessly - focus on MVP. 2) Communicate early about risks. 3) Break work into daily goals. 4) Remove distractions during focus time. 5) Ask for help when blocked. 6) Maintain work-life balance to sustain performance. Example: [Specific high-pressure situation and how I managed it].",
+    "difficulty": "easy",
+    "keywords": [
+      "prioritization",
+      "communication",
+      "time management",
+      "focus",
+      "balance"
+    ],
+    "rubric": {
+      "points": [
+        "Strategies listed",
+        "Process-oriented",
+        "Sustainability mentioned"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_017",
+    "text": "Describe your ideal work environment.",
+    "answer": "I thrive in environments with: 1) Psychological safety - can ask questions, take risks. 2) Clear goals but autonomy in how to achieve them. 3) Collaborative culture - knowledge sharing. 4) Feedback-rich - regular 1:1s, constructive criticism. 5) Growth mindset - learning opportunities. 6) Work-life balance respected.",
+    "difficulty": "easy",
+    "keywords": [
+      "culture",
+      "collaboration",
+      "autonomy",
+      "feedback",
+      "growth",
+      "balance"
+    ],
+    "rubric": {
+      "points": [
+        "Specific elements",
+        "Values aligned",
+        "Self-awareness"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_018",
+    "text": "Tell me about a time you had to learn something quickly for a project.",
+    "answer": "Situation: Project required technology I didn't know. Task: Deliver feature using new tech within 2 weeks. Action: Intensive learning plan - documentation, tutorials, small experiments, mentorship from expert. Result: Delivered on time with working solution. Learned: Just-in-time learning works, community is valuable.",
+    "difficulty": "medium",
+    "keywords": [
+      "learning",
+      "adaptability",
+      "proactiveness",
+      "resourcefulness",
+      "delivery"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Learning approach",
+        "Time pressure",
+        "Results delivered"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_019",
+    "text": "Where do you see yourself in 5 years?",
+    "answer": "I see myself as a senior expert in my field, contributing to architectural decisions and mentoring junior team members. I want to deepen my technical expertise while developing leadership skills. I'm also interested in [specific area relevant to company]. Long-term, I want to have significant impact on products users love.",
+    "difficulty": "easy",
+    "keywords": [
+      "growth",
+      "leadership",
+      "expertise",
+      "mentoring",
+      "impact"
+    ],
+    "rubric": {
+      "points": [
+        "Ambition shown",
+        "Realistic timeline",
+        "Alignment with role"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_020",
+    "text": "How do you handle feedback, especially critical feedback?",
+    "answer": "I welcome feedback as a growth opportunity. Process: 1) Listen actively without defending. 2) Ask clarifying questions. 3) Reflect on validity. 4) Create action plan. 5) Follow up on progress. Example: [Specific instance where critical feedback led to improvement]. I seek feedback proactively to improve continuously.",
+    "difficulty": "easy",
+    "keywords": [
+      "feedback",
+      "growth mindset",
+      "active listening",
+      "action plan",
+      "improvement"
+    ],
+    "rubric": {
+      "points": [
+        "Positive attitude",
+        "Process described",
+        "Proactive approach"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_021",
+    "text": "Tell me about a time you led a Cloud Architect initiative that had significant impact.",
+    "answer": "Use STAR method. Situation: Team faced scaling challenges. Task: Lead architecture redesign. Action: Researched solutions, built prototype, got buy-in, executed with team. Result: 50% performance improvement, reduced costs. Learned: Communication is key, data drives decisions.",
+    "difficulty": "medium",
+    "keywords": [
+      "led",
+      "initiative",
+      "STAR",
+      "impact",
+      "results"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Leadership shown",
+        "Specific metrics",
+        "Reflection included"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_022",
+    "text": "Describe a situation where you had a conflict with a teammate. How did you resolve it?",
+    "answer": "Situation: Disagreement on technical approach. Task: Find best solution for project. Action: Listened to their view, presented data from prototypes, found compromise combining both approaches. Result: Better solution, maintained relationship. Learned: Data helps, ego hurts.",
+    "difficulty": "medium",
+    "keywords": [
+      "conflict",
+      "disagreement",
+      "compromise",
+      "data-driven",
+      "relationship"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Professional handling",
+        "Data used",
+        "Resolution focused"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_023",
+    "text": "Why do you want this Cloud Architect position?",
+    "answer": "I'm excited about this role because it aligns with my skills in cloud architect and offers growth opportunities. I've researched your company's products and mission, and I'm passionate about the problem you're solving. I believe I can contribute immediately while learning from the talented team here.",
+    "difficulty": "easy",
+    "keywords": [
+      "motivation",
+      "alignment",
+      "research",
+      "growth",
+      "contribution"
+    ],
+    "rubric": {
+      "points": [
+        "Specific reasons",
+        "Company research",
+        "Mutual benefit"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_024",
+    "text": "What are your greatest strengths and how do they apply to this role?",
+    "answer": "My strengths: 1) Analytical thinking - break down complex problems. 2) Communication - explain technical concepts to non-technical stakeholders. 3) Adaptability - quickly learn new technologies. 4) Attention to detail - catch issues early. Examples: [Provide specific instances where each strength added value].",
+    "difficulty": "easy",
+    "keywords": [
+      "strengths",
+      "analytical",
+      "communication",
+      "adaptability",
+      "examples"
+    ],
+    "rubric": {
+      "points": [
+        "Specific strengths",
+        "Relevance to role",
+        "Evidence provided"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "hr_cloud_architect_025",
+    "text": "Tell me about a time you failed and what you learned from it.",
+    "answer": "Situation: Project I led missed deadline. Task: Deliver feature for Q2. Action: Took ownership, analyzed what went wrong (underestimated dependencies). Result: Delivered late but with lessons. Applied learnings to next project - added buffer time, better risk assessment. Learned: Estimation is hard, communication prevents surprises.",
+    "difficulty": "medium",
+    "keywords": [
+      "failure",
+      "ownership",
+      "learning",
+      "improvement",
+      "resilience"
+    ],
+    "rubric": {
+      "star_method": true,
+      "points": [
+        "Honest admission",
+        "Responsibility taken",
+        "Growth shown"
+      ]
+    },
+    "time_limit": 180
+  }
+]

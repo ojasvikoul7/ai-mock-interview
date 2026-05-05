@@ -1,0 +1,474 @@
+[
+  {
+    "id": "tech_staff_engineer_001",
+    "text": "Implement in-order, pre-order, and post-order traversal of a binary tree iteratively.",
+    "answer": "Use stack for iterative. Time: O(n), Space: O(h) where h is height.",
+    "difficulty": "medium",
+    "keywords": [
+      "binary tree",
+      "traversal",
+      "stack",
+      "iterative",
+      "O(n)"
+    ],
+    "rubric": {
+      "points": [
+        "All three traversals",
+        "Iterative approach",
+        "Stack usage"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "binary_tree_traversal"
+  },
+  {
+    "id": "tech_staff_engineer_002",
+    "text": "What are different mechanisms for thread synchronization? Compare mutex, semaphore, and monitor.",
+    "answer": "Mutex (Mutual Exclusion): Binary lock, only one thread in critical section. Semaphore: Counter-based, allows N threads. Binary semaphore similar to mutex. Monitor: Higher-level construct with mutex + condition variables, easier to use. Lock types: Spinlock (busy wait, good for short critical sections), Reentrant lock (same thread can acquire multiple times), Read-Write lock (multiple readers or single writer). Deadlock prevention: Lock ordering, timeout, try-lock.",
+    "difficulty": "hard",
+    "keywords": [
+      "mutex",
+      "semaphore",
+      "monitor",
+      "deadlock",
+      "synchronization",
+      "lock"
+    ],
+    "rubric": {
+      "points": [
+        "Mutex explained",
+        "Semaphore explained",
+        "Deadlock prevention"
+      ],
+      "code_required": false
+    },
+    "time_limit": 600,
+    "type": "theory",
+    "category": "thread_synchronization"
+  },
+  {
+    "id": "tech_staff_engineer_003",
+    "text": "Find the length of the longest substring without repeating characters.",
+    "answer": "Sliding window with hash set. Time: O(n), Space: O(min(m,n)).",
+    "difficulty": "medium",
+    "keywords": [
+      "sliding window",
+      "hash set",
+      "O(n)",
+      "two pointers"
+    ],
+    "rubric": {
+      "points": [
+        "Sliding window approach",
+        "Window expansion/shrink",
+        "Complexity"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "longest_substring"
+  },
+  {
+    "id": "tech_staff_engineer_004",
+    "text": "How do database indexes work internally? Compare B-Tree vs Hash indexes.",
+    "answer": "B-Tree: Balanced tree, supports range queries and equality, O(log n) operations. Used in most DBs. Hash: O(1) equality lookup, no range support, hash collisions handled. B-Tree better for range queries, sorting. Hash better for exact match. Clustered index stores data in order, non-clustered stores pointers.",
+    "difficulty": "hard",
+    "keywords": [
+      "index",
+      "B-Tree",
+      "hash index",
+      "clustered",
+      "O(log n)"
+    ],
+    "rubric": {
+      "points": [
+        "B-Tree explained",
+        "Hash index explained",
+        "When to use each"
+      ],
+      "code_required": false
+    },
+    "time_limit": 600,
+    "type": "theory",
+    "category": "database_indexing"
+  },
+  {
+    "id": "tech_staff_engineer_005",
+    "text": "What is the time and space complexity of merge sort? Explain the recurrence relation.",
+    "answer": "Time: O(n log n). Space: O(n). Recurrence: T(n) = 2T(n/2) + O(n). Using Master Theorem: Case 2, so O(n log n). Merge step takes O(n) and we have log n levels.",
+    "difficulty": "easy",
+    "keywords": [
+      "O(n log n)",
+      "recurrence",
+      "master theorem",
+      "space complexity"
+    ],
+    "rubric": {
+      "points": [
+        "Time complexity correct",
+        "Space complexity correct",
+        "Recurrence explained"
+      ],
+      "code_required": false
+    },
+    "time_limit": 300,
+    "type": "theory",
+    "category": "time_complexity"
+  },
+  {
+    "id": "tech_staff_engineer_006",
+    "text": "Explain how the event loop works in Node.js or browser JavaScript.",
+    "answer": "Event loop enables single-threaded async execution. Components: Call Stack (sync code), Web APIs (async operations), Callback Queue (microtasks - Promises, macrotasks - setTimeout). Execution: Run sync code \u2192 Process microtasks \u2192 Render \u2192 Process macrotask \u2192 Repeat. Microtasks have priority over macrotasks. This allows non-blocking I/O despite single thread. setTimeout(fn, 0) defers to next tick.",
+    "difficulty": "medium",
+    "keywords": [
+      "event loop",
+      "async",
+      "microtask",
+      "macrotask",
+      "single threaded"
+    ],
+    "rubric": {
+      "points": [
+        "Call stack",
+        "Task queues",
+        "Execution order"
+      ],
+      "code_required": false
+    },
+    "time_limit": 300,
+    "type": "theory",
+    "category": "event_loop"
+  },
+  {
+    "id": "tech_staff_engineer_007",
+    "text": "Given an array of integers and a target sum, find two numbers that add up to the target. Return their indices.",
+    "answer": "Use hash map to store complement. Time: O(n), Space: O(n).",
+    "difficulty": "easy",
+    "keywords": [
+      "hash map",
+      "complement",
+      "O(n)",
+      "array"
+    ],
+    "rubric": {
+      "points": [
+        "Hash map approach",
+        "O(n) time complexity",
+        "O(n) space explained"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "two_sum"
+  },
+  {
+    "id": "tech_staff_engineer_008",
+    "text": "There are courses labeled 0 to n-1. Some courses have prerequisites. Determine if you can finish all courses.",
+    "answer": "Topological sort using Kahn's algorithm or DFS cycle detection. Time: O(V+E).",
+    "difficulty": "medium",
+    "keywords": [
+      "topological sort",
+      "graph",
+      "cycle detection",
+      "DFS",
+      "BFS"
+    ],
+    "rubric": {
+      "points": [
+        "Graph modeling",
+        "Cycle detection",
+        "Topological sort"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "course_schedule"
+  },
+  {
+    "id": "tech_staff_engineer_009",
+    "text": "Design a data structure that supports adding numbers and finding the median of all numbers.",
+    "answer": "Two heaps - max heap for lower half, min heap for upper half. Time: O(log n) add, O(1) median.",
+    "difficulty": "hard",
+    "keywords": [
+      "heap",
+      "median",
+      "two heaps",
+      "O(log n)"
+    ],
+    "rubric": {
+      "points": [
+        "Two heap approach",
+        "Balance maintenance",
+        "Complexity analysis"
+      ],
+      "code_required": true
+    },
+    "time_limit": 600,
+    "type": "coding",
+    "category": "median_finder"
+  },
+  {
+    "id": "tech_staff_engineer_010",
+    "text": "What are REST API design best practices? Explain idempotency and its importance.",
+    "answer": "REST: Stateless, cacheable, uniform interface (URIs), layered. Best practices: Proper HTTP methods (GET, POST, PUT, DELETE), status codes, versioning (/v1/), pagination, HATEOAS. Idempotency: Same result for repeated calls. GET, PUT, DELETE should be idempotent. Important for retries in distributed systems, prevents duplicate side effects.",
+    "difficulty": "medium",
+    "keywords": [
+      "REST",
+      "API design",
+      "idempotency",
+      "HTTP methods",
+      "stateless"
+    ],
+    "rubric": {
+      "points": [
+        "REST principles",
+        "HTTP methods",
+        "Idempotency explained"
+      ],
+      "code_required": false
+    },
+    "time_limit": 300,
+    "type": "theory",
+    "category": "rest_api_design"
+  },
+  {
+    "id": "tech_staff_engineer_011",
+    "text": "Given two strings, find the minimum number of operations (insert, delete, replace) to convert one to another.",
+    "answer": "Dynamic programming with 2D table. dp[i][j] = min operations. Time: O(m*n), Space: O(min(m,n)) optimized.",
+    "difficulty": "hard",
+    "keywords": [
+      "dynamic programming",
+      "edit distance",
+      "Levenshtein",
+      "O(m*n)"
+    ],
+    "rubric": {
+      "points": [
+        "DP table definition",
+        "Recurrence relation",
+        "Space optimization"
+      ],
+      "code_required": true
+    },
+    "time_limit": 600,
+    "type": "coding",
+    "category": "edit_distance"
+  },
+  {
+    "id": "tech_staff_engineer_012",
+    "text": "Given n non-negative integers representing an elevation map, compute how much water it can trap after raining.",
+    "answer": "Two pointers or precompute max left/right. Time: O(n), Space: O(1) or O(n).",
+    "difficulty": "hard",
+    "keywords": [
+      "two pointers",
+      "array",
+      "water trapping",
+      "O(n)"
+    ],
+    "rubric": {
+      "points": [
+        "Two pointer approach",
+        "Precomputation approach",
+        "Space optimization"
+      ],
+      "code_required": true
+    },
+    "time_limit": 600,
+    "type": "coding",
+    "category": "trapping_rain_water"
+  },
+  {
+    "id": "tech_staff_engineer_013",
+    "text": "Explain the TLS handshake process in detail.",
+    "answer": "1) ClientHello: Client sends supported cipher suites, TLS version, random. 2) ServerHello: Server chooses cipher, sends certificate (public key), ServerKeyExchange, ServerHelloDone. 3) Client verifies certificate, generates PreMasterSecret, encrypts with server's public key, sends ClientKeyExchange. 4) Both generate session keys from PreMasterSecret + randoms. 5) ChangeCipherSpec + Finished (encrypted). 6) Server responds with Finished. Asymmetric crypto for key exchange, symmetric for data encryption.",
+    "difficulty": "hard",
+    "keywords": [
+      "TLS",
+      "handshake",
+      "certificate",
+      "session keys",
+      "asymmetric",
+      "symmetric"
+    ],
+    "rubric": {
+      "points": [
+        "All steps described",
+        "Certificate verification",
+        "Key exchange"
+      ],
+      "code_required": false
+    },
+    "time_limit": 600,
+    "type": "theory",
+    "category": "tls_handshake"
+  },
+  {
+    "id": "tech_staff_engineer_014",
+    "text": "Design and implement an LRU (Least Recently Used) Cache with get and put operations in O(1) time.",
+    "answer": "Hash map + Doubly Linked List. Both operations O(1).",
+    "difficulty": "medium",
+    "keywords": [
+      "LRU",
+      "hash map",
+      "linked list",
+      "O(1)",
+      "design"
+    ],
+    "rubric": {
+      "points": [
+        "Data structures correct",
+        "O(1) operations",
+        "Eviction logic"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "lru_cache"
+  },
+  {
+    "id": "tech_staff_engineer_015",
+    "text": "Given a string and a dictionary of words, determine if the string can be segmented into space-separated dictionary words.",
+    "answer": "Dynamic programming. dp[i] = True if s[0:i] can be segmented. Time: O(n^2), Space: O(n).",
+    "difficulty": "medium",
+    "keywords": [
+      "dynamic programming",
+      "string",
+      "segmentation",
+      "O(n^2)"
+    ],
+    "rubric": {
+      "points": [
+        "DP approach",
+        "State definition",
+        "Transition logic"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "word_break"
+  },
+  {
+    "id": "tech_staff_engineer_016",
+    "text": "Given a collection of intervals, merge all overlapping intervals.",
+    "answer": "Sort by start time, then merge. Time: O(n log n), Space: O(n).",
+    "difficulty": "medium",
+    "keywords": [
+      "sorting",
+      "intervals",
+      "O(n log n)",
+      "merge"
+    ],
+    "rubric": {
+      "points": [
+        "Sorting approach",
+        "Merge logic",
+        "Complexity analysis"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "merge_intervals"
+  },
+  {
+    "id": "tech_staff_engineer_017",
+    "text": "Find the kth largest element in an unsorted array.",
+    "answer": "Min-heap of size k or quickselect. Time: O(n log k) or O(n) avg.",
+    "difficulty": "medium",
+    "keywords": [
+      "heap",
+      "quickselect",
+      "partition",
+      "O(n log k)"
+    ],
+    "rubric": {
+      "points": [
+        "Heap approach",
+        "Quickselect option",
+        "Complexity analysis"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "kth_largest"
+  },
+  {
+    "id": "tech_staff_engineer_018",
+    "text": "Compare TCP and UDP protocols. When would you choose one over the other?",
+    "answer": "TCP: Connection-oriented, reliable delivery, ordered, flow control, congestion control, 3-way handshake, retransmission. Used for HTTP, FTP, email. UDP: Connectionless, no reliability guarantee, low latency, no handshake, used for DNS, streaming, gaming, VoIP. Choose TCP for reliability, UDP for speed and when packet loss is acceptable.",
+    "difficulty": "easy",
+    "keywords": [
+      "TCP",
+      "UDP",
+      "reliability",
+      "handshake",
+      "connection-oriented"
+    ],
+    "rubric": {
+      "points": [
+        "Key differences",
+        "Use cases",
+        "Trade-offs"
+      ],
+      "code_required": false
+    },
+    "time_limit": 300,
+    "type": "theory",
+    "category": "tcp_vs_udp"
+  },
+  {
+    "id": "tech_staff_engineer_019",
+    "text": "Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+    "answer": "Use stack. Push opening, pop and match closing. Time: O(n), Space: O(n).",
+    "difficulty": "easy",
+    "keywords": [
+      "stack",
+      "parentheses",
+      "matching",
+      "O(n)"
+    ],
+    "rubric": {
+      "points": [
+        "Stack approach",
+        "Matching logic",
+        "Edge cases"
+      ],
+      "code_required": true
+    },
+    "time_limit": 300,
+    "type": "coding",
+    "category": "valid_parentheses"
+  },
+  {
+    "id": "tech_staff_engineer_020",
+    "text": "Explain the CAP theorem. What are CP and AP systems with examples?",
+    "answer": "CAP: Consistency (all nodes see same data), Availability (every request gets response), Partition Tolerance (system works despite network partitions). In distributed systems, you can only guarantee 2 of 3. CP (Consistency + Partition Tolerance): MongoDB, HBase, Zookeeper - consistent during partitions. AP (Availability + Partition Tolerance): Cassandra, DynamoDB, CouchDB - available but may return stale data. No distributed system can be CA.",
+    "difficulty": "hard",
+    "keywords": [
+      "CAP theorem",
+      "consistency",
+      "availability",
+      "partition tolerance",
+      "distributed"
+    ],
+    "rubric": {
+      "points": [
+        "All three properties",
+        "CP vs AP examples",
+        "Trade-offs explained"
+      ],
+      "code_required": false
+    },
+    "time_limit": 600,
+    "type": "theory",
+    "category": "cap_theorem"
+  }
+]

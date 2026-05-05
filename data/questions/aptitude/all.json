@@ -1,0 +1,1908 @@
+[
+  {
+    "id": "apt_001",
+    "text": "A train travels 360 km in 4 hours. What is its average speed?",
+    "answer": "The average speed is 90 km/hr. Speed = Distance/Time = 360/4 = 90 km/hr.",
+    "difficulty": "easy",
+    "keywords": [
+      "90",
+      "km/hr",
+      "speed",
+      "distance",
+      "time"
+    ],
+    "rubric": {
+      "points": [
+        "Formula stated",
+        "Correct calculation",
+        "Right units"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_002",
+    "text": "A can complete work in 12 days, B in 15 days. How long working together?",
+    "answer": "They complete it in 6.67 days. A's rate = 1/12 per day, B's rate = 1/15 per day. Combined rate = 1/12 + 1/15 = 9/60 = 3/20. Time = 20/3 = 6.67 days.",
+    "difficulty": "medium",
+    "keywords": [
+      "6.67",
+      "work rate",
+      "combined",
+      "efficiency"
+    ],
+    "rubric": {
+      "points": [
+        "Individual rates calculated",
+        "Combined rate found",
+        "Correct final time"
+      ]
+    },
+    "time_limit": 180
+  },
+  {
+    "id": "apt_003",
+    "text": "Find the odd one out: 2, 3, 5, 9, 11, 13",
+    "answer": "9 is the odd one out. All others (2, 3, 5, 11, 13) are prime numbers, while 9 is composite (3\u00d73).",
+    "difficulty": "easy",
+    "keywords": [
+      "9",
+      "prime",
+      "composite",
+      "odd one out"
+    ],
+    "rubric": {
+      "points": [
+        "Correct number identified",
+        "Prime vs composite explained"
+      ]
+    },
+    "time_limit": 60
+  },
+  {
+    "id": "apt_004",
+    "text": "Complete the series: 2, 6, 12, 20, 30, ?",
+    "answer": "The next number is 42. Pattern is n\u00d7(n+1): 1\u00d72=2, 2\u00d73=6, 3\u00d74=12, 4\u00d75=20, 5\u00d76=30, 6\u00d77=42.",
+    "difficulty": "medium",
+    "keywords": [
+      "42",
+      "series",
+      "pattern",
+      "n(n+1)",
+      "multiplication"
+    ],
+    "rubric": {
+      "points": [
+        "Pattern identified",
+        "Formula explained",
+        "Next number correct"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_005",
+    "text": "If 20% of a number is 80, what is 35% of that number?",
+    "answer": "The number is 400 (80/0.2). 35% of 400 = 140.",
+    "difficulty": "easy",
+    "keywords": [
+      "140",
+      "percentage",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Original number found",
+        "Percentage calculated correctly"
+      ]
+    },
+    "time_limit": 90
+  },
+  {
+    "id": "apt_006",
+    "text": "A shopkeeper sells an item at 20% profit for Rs. 240. What was the cost price?",
+    "answer": "The cost price was Rs. 200. Selling price = 120% of CP, so CP = 240/1.2 = 200.",
+    "difficulty": "easy",
+    "keywords": [
+      "200",
+      "cost price",
+      "profit",
+      "percentage"
+    ],
+    "rubric": {
+      "points": [
+        "Profit percentage understood",
+        "Correct formula applied"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_007",
+    "text": "The ratio of ages of A and B is 3:5. After 10 years, it becomes 5:7. Find their present ages.",
+    "answer": "A is 15 years, B is 25 years. Let ages be 3x and 5x. (3x+10)/(5x+10) = 5/7. Solving: 21x+70 = 25x+50, so 4x=20, x=5.",
+    "difficulty": "hard",
+    "keywords": [
+      "15",
+      "25",
+      "ratio",
+      "equations"
+    ],
+    "rubric": {
+      "points": [
+        "Variables set correctly",
+        "Equation formed",
+        "Solved correctly"
+      ]
+    },
+    "time_limit": 240
+  },
+  {
+    "id": "apt_008",
+    "text": "Choose the synonym for 'Ephemeral': (a) Eternal (b) Temporary (c) Strong (d) Weak",
+    "answer": "(b) Temporary. Ephemeral means lasting for a very short time, fleeting, transient.",
+    "difficulty": "medium",
+    "keywords": [
+      "temporary",
+      "fleeting",
+      "short-lived",
+      "transient"
+    ],
+    "rubric": {
+      "points": [
+        "Correct choice",
+        "Meaning explained"
+      ]
+    },
+    "time_limit": 60
+  },
+  {
+    "id": "apt_009",
+    "text": "Identify the error: 'The team of players are practicing hard.'",
+    "answer": "Subject-verb agreement error. 'Team' is singular, so use 'is' not 'are'. Correct: 'The team of players is practicing hard.'",
+    "difficulty": "easy",
+    "keywords": [
+      "subject-verb agreement",
+      "singular",
+      "is",
+      "team"
+    ],
+    "rubric": {
+      "points": [
+        "Error identified",
+        "Correct form given",
+        "Grammar rule explained"
+      ]
+    },
+    "time_limit": 90
+  },
+  {
+    "id": "apt_010",
+    "text": "Arrange in order: P, Q, R, S. P comes after Q, R comes before S, Q comes before R.",
+    "answer": "The order is Q, P, R, S. Q before R, R before S, P after Q. So: Q first, then P, then R, then S.",
+    "difficulty": "medium",
+    "keywords": [
+      "QPRS",
+      "order",
+      "sequence",
+      "logic"
+    ],
+    "rubric": {
+      "points": [
+        "All constraints satisfied",
+        "Correct final order"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_011",
+    "text": "Sample aptitude question #11 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 11. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_012",
+    "text": "Sample aptitude question #12 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 12. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_013",
+    "text": "Sample aptitude question #13 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 13. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_014",
+    "text": "Sample aptitude question #14 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 14. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_015",
+    "text": "Sample aptitude question #15 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 15. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_016",
+    "text": "Sample aptitude question #16 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 16. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_017",
+    "text": "Sample aptitude question #17 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 17. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_018",
+    "text": "Sample aptitude question #18 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 18. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_019",
+    "text": "Sample aptitude question #19 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 19. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_020",
+    "text": "Sample aptitude question #20 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 20. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_021",
+    "text": "Sample aptitude question #21 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 21. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_022",
+    "text": "Sample aptitude question #22 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 22. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_023",
+    "text": "Sample aptitude question #23 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 23. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_024",
+    "text": "Sample aptitude question #24 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 24. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_025",
+    "text": "Sample aptitude question #25 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 25. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_026",
+    "text": "Sample aptitude question #26 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 26. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_027",
+    "text": "Sample aptitude question #27 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 27. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_028",
+    "text": "Sample aptitude question #28 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 28. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_029",
+    "text": "Sample aptitude question #29 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 29. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_030",
+    "text": "Sample aptitude question #30 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 30. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_031",
+    "text": "Sample aptitude question #31 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 31. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_032",
+    "text": "Sample aptitude question #32 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 32. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_033",
+    "text": "Sample aptitude question #33 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 33. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_034",
+    "text": "Sample aptitude question #34 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 34. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_035",
+    "text": "Sample aptitude question #35 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 35. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_036",
+    "text": "Sample aptitude question #36 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 36. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_037",
+    "text": "Sample aptitude question #37 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 37. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_038",
+    "text": "Sample aptitude question #38 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 38. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_039",
+    "text": "Sample aptitude question #39 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 39. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_040",
+    "text": "Sample aptitude question #40 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 40. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_041",
+    "text": "Sample aptitude question #41 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 41. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_042",
+    "text": "Sample aptitude question #42 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 42. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_043",
+    "text": "Sample aptitude question #43 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 43. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_044",
+    "text": "Sample aptitude question #44 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 44. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_045",
+    "text": "Sample aptitude question #45 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 45. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_046",
+    "text": "Sample aptitude question #46 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 46. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_047",
+    "text": "Sample aptitude question #47 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 47. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_048",
+    "text": "Sample aptitude question #48 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 48. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_049",
+    "text": "Sample aptitude question #49 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 49. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_050",
+    "text": "Sample aptitude question #50 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 50. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_051",
+    "text": "Sample aptitude question #51 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 51. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_052",
+    "text": "Sample aptitude question #52 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 52. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_053",
+    "text": "Sample aptitude question #53 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 53. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_054",
+    "text": "Sample aptitude question #54 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 54. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_055",
+    "text": "Sample aptitude question #55 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 55. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_056",
+    "text": "Sample aptitude question #56 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 56. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_057",
+    "text": "Sample aptitude question #57 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 57. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_058",
+    "text": "Sample aptitude question #58 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 58. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_059",
+    "text": "Sample aptitude question #59 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 59. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_060",
+    "text": "Sample aptitude question #60 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 60. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_061",
+    "text": "Sample aptitude question #61 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 61. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_062",
+    "text": "Sample aptitude question #62 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 62. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_063",
+    "text": "Sample aptitude question #63 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 63. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_064",
+    "text": "Sample aptitude question #64 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 64. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_065",
+    "text": "Sample aptitude question #65 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 65. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_066",
+    "text": "Sample aptitude question #66 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 66. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_067",
+    "text": "Sample aptitude question #67 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 67. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_068",
+    "text": "Sample aptitude question #68 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 68. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_069",
+    "text": "Sample aptitude question #69 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 69. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_070",
+    "text": "Sample aptitude question #70 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 70. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_071",
+    "text": "Sample aptitude question #71 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 71. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_072",
+    "text": "Sample aptitude question #72 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 72. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_073",
+    "text": "Sample aptitude question #73 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 73. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_074",
+    "text": "Sample aptitude question #74 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 74. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_075",
+    "text": "Sample aptitude question #75 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 75. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_076",
+    "text": "Sample aptitude question #76 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 76. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_077",
+    "text": "Sample aptitude question #77 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 77. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_078",
+    "text": "Sample aptitude question #78 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 78. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_079",
+    "text": "Sample aptitude question #79 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 79. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_080",
+    "text": "Sample aptitude question #80 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 80. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_081",
+    "text": "Sample aptitude question #81 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 81. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_082",
+    "text": "Sample aptitude question #82 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 82. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_083",
+    "text": "Sample aptitude question #83 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 83. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_084",
+    "text": "Sample aptitude question #84 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 84. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_085",
+    "text": "Sample aptitude question #85 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 85. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_086",
+    "text": "Sample aptitude question #86 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 86. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_087",
+    "text": "Sample aptitude question #87 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 87. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_088",
+    "text": "Sample aptitude question #88 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 88. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_089",
+    "text": "Sample aptitude question #89 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 89. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_090",
+    "text": "Sample aptitude question #90 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 90. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_091",
+    "text": "Sample aptitude question #91 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 91. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_092",
+    "text": "Sample aptitude question #92 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 92. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_093",
+    "text": "Sample aptitude question #93 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 93. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_094",
+    "text": "Sample aptitude question #94 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 94. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_095",
+    "text": "Sample aptitude question #95 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 95. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_096",
+    "text": "Sample aptitude question #96 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 96. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "hard",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_097",
+    "text": "Sample aptitude question #97 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 97. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_098",
+    "text": "Sample aptitude question #98 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 98. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_099",
+    "text": "Sample aptitude question #99 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 99. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "easy",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  },
+  {
+    "id": "apt_100",
+    "text": "Sample aptitude question #100 about problem solving",
+    "answer": "This is the detailed expected answer for aptitude question 100. It explains the approach, shows calculations, and provides the final answer.",
+    "difficulty": "medium",
+    "keywords": [
+      "logic",
+      "reasoning",
+      "calculation"
+    ],
+    "rubric": {
+      "points": [
+        "Correct approach",
+        "Accurate calculation",
+        "Clear explanation"
+      ]
+    },
+    "time_limit": 120
+  }
+]
