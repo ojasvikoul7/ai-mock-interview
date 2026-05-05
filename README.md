@@ -77,7 +77,6 @@ Aptly provides a unified platform where users can:
 * **Frontend:** HTML, CSS, JavaScript
 * **Backend:** Java / Flask (depending on implementation)
 * **Core Logic:** Custom NLP-based semantic analysis
-* **Database:** (Add if used – e.g., Firebase / MySQL)
 
 ---
 
